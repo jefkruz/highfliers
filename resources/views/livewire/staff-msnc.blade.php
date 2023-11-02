@@ -50,7 +50,7 @@
                                 <button  wire:click="edit({{ $user->id }})"   class="btn btn-primary btn-sm">Edit</button>
                                 <a href="/staffgrade/{{$user->id}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                 <a href="/staffreview/{{$user->userID}}"> <button    class="btn btn-secondary btn-sm">Reviews</button></a>
-{{--                                <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
+                                <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
 
