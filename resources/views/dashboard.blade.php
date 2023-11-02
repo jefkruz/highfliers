@@ -47,7 +47,20 @@
                     <a href="{{route('alldept')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-fuchsia">
+                    <div class="inner">
+                        <h3>{{$amdlStaff}}</h3>
 
+                        <p>AMDL HQ Staff</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-users-line"></i>
+                    </div>
+                    <a href="{{route('allstaffamdl')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-danger">
@@ -64,16 +77,16 @@
             </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-gradient-fuchsia">
+                <div class="small-box bg-lightblue">
                     <div class="inner">
-                        <h3>{{$amdlStaff}}</h3>
+                        <h3>{{$amdlRank}}</h3>
 
-                        <p>AMDL HQ Staff</p>
+                        <p>AMDL Ranks</p>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-users-line"></i>
+                        <i class="fa fa-certificate text-white"></i>
                     </div>
-                    <a href="{{route('allstaffamdl')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('allrankamdl')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -91,20 +104,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-lightblue">
-                    <div class="inner">
-                        <h3>{{$amdlRank}}</h3>
 
-                        <p>AMDL Ranks</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-certificate text-white"></i>
-                    </div>
-                    <a href="{{route('allrankamdl')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-gradient-primary">
