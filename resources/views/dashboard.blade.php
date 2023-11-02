@@ -3,6 +3,7 @@
 @section('content')
     <div class="row">
         @if(session('role')== 'admin')
+            <a href="{{route('organizations.index')}}">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-blue">
@@ -16,6 +17,7 @@
                     </div>
                     <a href="{{route('organizations.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
+            </a>
             </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
@@ -177,11 +179,14 @@
 
 
             @if(session('role')== 'director')
-{{--{{dd($amdl[1]->organization->name)}}--}}
+
                     @foreach($amdl as $department)
+
                     <div class="col-lg-3 col-6">
                     <!-- small box -->
+
                     <div class="small-box bg-blue">
+{{--                        <a href="{{route('directorsDepartmentAmdl',encrypt($department->organization->id))}}" >--}}
                         <div class="inner">
 
                             <h3>{{$department->organization->seeker->count() ?? ''}} </h3>
@@ -191,11 +196,13 @@
                         <div class="icon">
                             <i class="fa fa-people-roof"></i>
                         </div>
-{{--                        {{route('directorstaffamdl',$department->id)}}--}}
 
                         <a href="{{route('directorsDepartmentAmdl',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+{{--                        </a>--}}
                     </div>
+
                 </div>
+
                     @endforeach
 
                     @foreach($msnc as $msncstaff)
