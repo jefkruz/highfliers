@@ -47,7 +47,10 @@ class Admin extends Model
     {
         return Organization::find($this->organization_id);
     }
-
+    public function department()
+    {
+        return TblDept::find($this->department_id);
+    }
 
 
 }
