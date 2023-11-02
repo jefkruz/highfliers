@@ -22,7 +22,7 @@
             <div class="inner">
                 <h3>{{$sdms->count()}}</h3>
 
-                <p>SDM Admins</p>
+                <p>SDM/Admin</p>
             </div>
             <div class="icon">
                 <i class="fa fa-people-roof"></i>
