@@ -61,7 +61,7 @@ class AdminController extends Controller
             ->get();
 
         $data['msnc'] = DB::table('admin_offices')
-            ->join('msnc.tbl_depts', 'admin_offices.department_id', '=', 'msnc.tbl_depts.deptID')
+            ->join('db_msnc2.tbl_depts', 'admin_offices.department_id', '=', 'db_msnc2.tbl_depts.deptID')
             ->where('admin_offices.admin_id',$admin->id)
             ->where('admin_offices.company', 'msnc')
             ->get();
