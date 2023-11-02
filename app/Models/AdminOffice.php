@@ -2,27 +2,64 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class AdminOffice
+ *
+ * @property $id
+ * @property $admin_id
+ * @property $organization_id
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Admin $admin
+ * @property Organization $organization
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
 class AdminOffice extends Model
 {
-    use HasFactory;
-    protected $connection = 'mysql';
+
+
+
+    //protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
     protected $guarded;
 
-    public function org()
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function admin()
     {
-        return $this->belongsTo(Organization::class);
+        return $this->hasOne('App\Models\Admin', 'id', 'admin_id');
     }
-    public function user()
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function organizationcount()
     {
-        return $this->belongsTo(Admin::class);
+        return Organization::find($this->organization_id);
     }
-//    public function organization()
-//    {
-//        return Organization::find($this->organization_id);
-//    }
+    public function organization()
+    {
+        return $this->hasOne('App\Models\Organization', 'id', 'organization_id');
+    }
+    public function station()
+    {
+        return $this->hasOne('App\Models\TblStation', 'stationID', 'station_id');
+    }
+    public function department()
+    {
+        return $this->hasOne('App\Models\TblDept', 'deptID', 'department_id');
+    }
 
 
 }

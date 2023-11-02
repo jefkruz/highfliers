@@ -105,7 +105,7 @@
             </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-gradient-maroon">
+                <div class="small-box bg-gradient-primary">
                     <div class="inner">
                         <h3>{{$directors}}</h3>
 
@@ -119,9 +119,51 @@
             </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
-                <div class="small-box bg-yellow">
+                <div class="small-box bg-gradient-success">
                     <div class="inner">
-                        <h3>{{$users->count()}}</h3>
+                        <h3>{{$sdms}}</h3>
+
+                        <p> SDM Admins</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user "></i>
+                    </div>
+                    <a href="{{route('sdms')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-danger">
+                    <div class="inner">
+                        <h3>{{$hrs}}</h3>
+
+                        <p>HR Managers</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user "></i>
+                    </div>
+                    <a href="{{route('hrs')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-secondary">
+                    <div class="inner">
+                        <h3>{{$supervisors}}</h3>
+
+                        <p> Supervisors</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-user "></i>
+                    </div>
+                    <a href="{{route('sdms')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{$admins}}</h3>
 
                         <p>Administrators</p>
                     </div>
@@ -135,16 +177,16 @@
 
 
             @if(session('role')== 'director')
-
+{{--{{dd($amdl[1]->organization->name)}}--}}
                     @foreach($amdl as $department)
                     <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-blue">
                         <div class="inner">
 
-                            <h3>{{$department->count ?? ''}} </h3>
+                            <h3>{{$department->organization->seeker->count() ?? ''}} </h3>
 
-                            <p>{{$department->name ?? '' }} </p>
+                            <p>{{$department->organization->name ?? '' }} </p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-people-roof"></i>
@@ -156,15 +198,15 @@
                 </div>
                     @endforeach
 
-                    @foreach($msnc as $department)
+                    @foreach($msnc as $msncstaff)
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
 
-                                    <h3>{{$director_seeker ?? ''}} </h3>
+                                    <h3>{{$msncstaff->department->tblUser->count() ?? ''}} </h3>
 
-                                    <p>{{$department->deptName ?? '' }} </p>
+                                    <p>{{$msncstaff->department->deptName ?? '' }} </p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-people-roof"></i>

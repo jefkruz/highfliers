@@ -25,7 +25,7 @@ class AdminController extends Controller
     protected $data;
     public function __construct()
     {
-        $this->data['users'] = Admin::all();
+
         $this->data['roles'] = Role::all();
         $this->data['organization'] = Organization::all();
         $this->data['station'] = TblStation::all();
@@ -36,7 +36,14 @@ class AdminController extends Controller
         $this->data['amdlRank'] = Rank::count();
         $this->data['directors'] = Admin::where('role_id', '6')
             ->count();
-
+        $this->data['sdms'] = Admin::where('role_id', '5')
+            ->count();
+        $this->data['hrs'] = Admin::where('role_id', '7')
+            ->count();
+        $this->data['supervisors'] = Admin::where('role_id', '9')
+            ->count();
+        $this->data['admins'] = Admin::where('role_id', '1')
+            ->count();
     }
 
     public function home()
@@ -51,20 +58,9 @@ class AdminController extends Controller
 
         $admin = Session::get('admin');
         $data['page_title'] = 'Directors Dashboard';
-
-        $data['amdl'] = DB::table('admin_offices')
-            ->join('organizations', 'admin_offices.organization_id', '=', 'organizations.id')
-            ->join('seekers', 'organizations.id', '=', 'seekers.organization_id')
-            ->select('organizations.id as id', 'organizations.name as name', DB::raw("count(seekers.organization_id) as count"))
-            ->where('admin_offices.admin_id',$admin->id)
-            ->where('admin_offices.company', 'amdl')->groupBy('organizations.id')
-            ->get();
-
-        $data['msnc'] = DB::table('admin_offices')
-            ->join('db_msnc2.tbl_depts', 'admin_offices.department_id', '=', 'db_msnc2.tbl_depts.deptID')
-            ->where('admin_offices.admin_id',$admin->id)
-            ->where('admin_offices.company', 'msnc')
-            ->get();
+        $data['amdl'] = AdminOffice::where('admin_id', $admin->id)
+            ->where('company', 'amdl')->get();
+        $data['msnc'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
 
         return view('dashboard', $data);
     }
@@ -85,9 +81,42 @@ class AdminController extends Controller
         return view('directors_departments', $data);
     }
 
+    public function directors()
+    {
+
+        $data['page_title'] = 'All Directors';
+        $data['users'] = Admin::where('role_id',6)->get();
+        return view('admins.index',$data);
+    }
+
+    public function sdms()
+    {
+
+        $data['page_title'] = 'All SDM Managers';
+        $data['users'] = Admin::where('role_id',5)->get();
+        return view('admins.index',$data);
+    }
+
+    public function hrs()
+    {
+
+        $data['page_title'] = 'All HR Managers';
+        $data['users'] = Admin::where('role_id',7)->get();
+        return view('admins.index',$data);
+    }
+
+    public function supervisors()
+    {
+
+        $data['page_title'] = 'All Supervisors';
+        $data['users'] = Admin::where('role_id',9)->get();
+        return view('admins.index',$data);
+    }
+
     public function index()
     {
         $data = $this->data;
+        $data['users'] = Admin::where('role_id', '1')->get();
         $data['roles'] = Role::all();
         $data['page_title'] = 'Administrators';
         return view('admins.index', $data);

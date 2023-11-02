@@ -62,6 +62,7 @@ class Admins extends Component
        //dd( $this->selected->count());
        if($this->selected->count() ==0) {
            if ($this->company == 'amdl') {
+               //dd($this->role_id);
                $this->validate([
                    'name' => 'required',
                    'username' => 'required|unique:admins',

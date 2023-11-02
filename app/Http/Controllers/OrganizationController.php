@@ -34,12 +34,7 @@ class OrganizationController extends Controller
     }
 
 
-    public function directors()
-    {
-       // $organizations = Organization::paginate();
 
-        return view('organization.director');
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -148,14 +143,7 @@ class OrganizationController extends Controller
     }
 
 
-    public function adddirector()
-    {
-        // dd($id);
-        $organizations = Organization::all();
-        $roles = Role::all();
 
-        return view('organization.add_director', compact('organizations','roles'));
-    }
 
     public function organizationsUsers(Request $request)
     {

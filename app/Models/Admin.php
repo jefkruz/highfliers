@@ -2,17 +2,41 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Authenticatable
+/**
+ * Class Admin
+ *
+ * @property $id
+ * @property $organization_id
+ * @property $created_at
+ * @property $updated_at
+ *
+ * @property Organization $organization
+ * @package App
+ * @mixin \Illuminate\Database\Eloquent\Builder
+ */
+class Admin extends Model
 {
-    protected $connection = 'mysql';
-    use HasFactory, Notifiable;
 
-    public $guarded = [];
+    static $rules = [
+		'organization_id' => 'required',
+    ];
+
+    //protected $perPage = 20;
+
+    /**
+     * Attributes that should be mass-assignable.
+     *
+     * @var array
+     */
+    protected $guarded;
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+
     public function role()
     {
         return Role::find($this->role_id);
@@ -25,8 +49,5 @@ class Admin extends Authenticatable
     }
 
 
-    static $rules = [
-        'company' => 'required',
-        'role_id' => 'required',
-    ];
+
 }

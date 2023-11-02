@@ -45,12 +45,14 @@
 
                                 <td>{{$user->organization->name?? 'null'}}</td>
                                 <td>
-                                    <a href="{{route('amdlProfile',$user->id)}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
+                                    <a href="{{route('amdlProfile',$user->id)}}"> <button   class="btn btn-primary btn-sm"><i class="fa fa-user"></i>View  Profile</button></a>
 
-                                    <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</button>
+                                    <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit Profile</button>
+                                    @if(session('role')== 'director')
                                     <a href="{{route('staffgradeamdl',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm"><i class="fa fa-pen"></i>  Grade</button></a>
-                                    <a href="{{route('staffreviewamdl',encrypt($user->id))}}"> <button    class="btn btn-primary btn-sm"><i class="fa fa-magnifying-glass"></i>  Reviews</button></a>
-                                    {{--                                <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
+                                    <a href="{{route('staffreviewamdl',encrypt($user->id))}}"> <button    class="btn btn-primary btn-sm"><i class="fa fa-magnifying-glass"></i>  Review Staff </button></a>
+                                    @endif
+{{--                                    <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>--}}
                                 </td>
                             </tr>
 

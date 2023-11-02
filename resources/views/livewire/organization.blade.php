@@ -22,7 +22,7 @@
 
             <a href="{{route('organizations.show',$organization->id)}}">
 
-                    <div class="info-box bg-success">
+                    <div class="info-box bg-primary">
                         <span class="info-box-icon"><i class="fa fa-people-roof"></i></span>
 
                         <div class="info-box-content">

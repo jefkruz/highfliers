@@ -42,12 +42,16 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
 
     Route::get('/', [AdminController::class, 'home'])->name('admin');
     Route::resource('admins', AdminController::class);
+    Route::get('directors', [AdminController::class, 'directors'])->name('directors');
+    Route::get('sdms', [AdminController::class, 'sdms'])->name('sdms');
+    Route::get('hrs', [AdminController::class, 'hrs'])->name('hrs');
+    Route::get('supervisors', [AdminController::class, 'supervisors'])->name('supervisors');
 
 
     //AMDL ROUTES
     Route::get('/amdl/profile/{id}', [OrganizationController::class,'amdlProfile'])->name('amdlProfile');
     Route::resource('organizations', OrganizationController::class);
-    Route::get('directors/amdl', [OrganizationController::class, 'directors'])->name('directors');
+
     Route::get('/adddirector/', [OrganizationController::class, 'adddirector'])->name('adddirector');
     Route::get('/allstaffamdl', [StationController::class,'allstaffamdl'])->name('allstaffamdl');
     //MSNC ROUTES
