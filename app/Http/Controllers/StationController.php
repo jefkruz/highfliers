@@ -58,24 +58,20 @@ class StationController extends Controller
         //
     }
 
-    public function fetchDepartments($stationId)
-    {
 
-        $departments = TblDept::where('stationID', $stationId)->get();
-
-        return response()->json(['departments' => $departments]);
-    }
 
     public function deptall($id)
     {
-        $dept = TblDept::where('stationID',Crypt::decrypt($id))->First();
+        $id = decrypt($id);
+        $dept = TblDept::where('stationID',$id)->First();
         //dd( $document);
         return view('station.department',compact('dept') );
     }
 
     public function deptstaff($id)
     {
-        $dept = TblDept::where('deptID',Crypt::decrypt($id))->First();
+        $id = decrypt($id);
+        $dept = TblDept::where('deptID',$id)->First();
         //dd( $document);
         return view('station.deptstaff',compact('dept') );
     }
@@ -97,6 +93,7 @@ class StationController extends Controller
 
     public function staffgradeamdl($id)
     {
+        $id = decrypt($id);
         $dept = Seeker::find($id);
         //dd( $dept);
         return view('station.staffgradeamdl',compact('dept') );
@@ -163,6 +160,7 @@ class StationController extends Controller
 
     public function staffreviewamdl($id)
     {
+        $id = decrypt($id);
         $dept = Seeker::find($id);
         //dd( $dept);
         return view('station.staffreviewamdl',compact('dept') );

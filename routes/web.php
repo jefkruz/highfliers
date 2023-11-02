@@ -51,6 +51,8 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::get('/adddirector/', [OrganizationController::class, 'adddirector'])->name('adddirector');
     Route::get('/allstaffamdl', [StationController::class,'allstaffamdl'])->name('allstaffamdl');
     //MSNC ROUTES
+
+
     Route::resource('/stations', StationController::class);
 
 

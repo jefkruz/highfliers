@@ -48,8 +48,8 @@
                                     <a href="{{route('amdlProfile',$user->id)}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
 
                                     <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</button>
-                                    <a href="/staffgradeamdl/{{$user->id}}"> <button    class="btn btn-info btn-sm"><i class="fa fa-pen"></i>  Grade</button></a>
-                                    <a href="/staffreviewamdl/{{$user->id}}"> <button    class="btn btn-primary btn-sm"><i class="fa fa-magnifying-glass"></i>  Reviews</button></a>
+                                    <a href="{{route('staffgradeamdl',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm"><i class="fa fa-pen"></i>  Grade</button></a>
+                                    <a href="{{route('staffreviewamdl',encrypt($user->id))}}"> <button    class="btn btn-primary btn-sm"><i class="fa fa-magnifying-glass"></i>  Reviews</button></a>
                                     {{--                                <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
                                 </td>
                             </tr>
