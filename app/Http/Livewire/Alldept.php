@@ -32,8 +32,8 @@ class Alldept extends Component
         //return view('livewire.alldept');
         $this->emit('userStore');
         return view('livewire.dept',['organizations' => $this->search === null ?
-            TblDept::orderBy('deptName')->paginate($this->perPage):
-            TblDept::where('deptName', 'like', '%' . $this->search . '%')
+            TblDept::where('stationID',1)->orderBy('deptName')->paginate($this->perPage):
+            TblDept::where('stationID',1)->where('deptName', 'like', '%' . $this->search . '%')
                 ->latest()->paginate($this->perPage)]);
     }
 }
