@@ -65,20 +65,36 @@ class AdminController extends Controller
         return view('dashboard', $data);
     }
 
-    public function directorsDepartment($id)
+    public function directorsDepartmentAmdl($id)
     {
+
        $id = decrypt($id);
-        $admin = Session::get('admin');
+
+                $data['department'] = Organization::where('id', $id)->firstOrFail();
+                $data['staff'] = Seeker::where('organization_id', $id)->get();
+                $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
+                $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',7)->get();
+                $data['supervisors'] = Admin::where('organization_id', $id)->where('role_id',9)->get();
 
 
-
-        $data['department'] = Organization::where('id', $id)->firstOrFail();
-        $data['staff'] = Seeker::where('organization_id', $id)->get();
-        $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
-        $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
         $data['page_title'] = $data['department']['name'];
 
-        return view('directors_departments', $data);
+        return view('directors_amdl_departments', $data);
+    }
+    public function directorsDepartmentMsnc($id)
+    {
+
+        $id = decrypt($id);
+
+        $admin = Session::get('admin');
+
+        $data['department'] = TblDept::where('deptID', $id)->firstOrFail();
+        $data['staff'] = TblUser::where('deptID', $id)->get();
+        $data['sdms'] = Admin::where('station_id', $id)->where('role_id',5)->get();
+        $data['hrs'] = Admin::where('station_id', $id)->where('role_id',7)->get();
+        $data['supervisors'] = Admin::where('station_id', $id)->where('role_id',9)->get();
+        $data['page_title'] = $data['department']['deptName'];
+        return view('directors_msnc_departments', $data);
     }
 
     public function directors()
@@ -96,6 +112,22 @@ class AdminController extends Controller
         $data['users'] = Admin::where('role_id',5)->get();
         return view('admins.index',$data);
     }
+    public function amdlSdms()
+    {
+        $admin = Session::get('admin');
+        $data['page_title'] = ' SDM Managers';
+        $data['users'] = Admin::where('role_id',5)->where('department_id', $admin->department_id)->get();
+        return view('admins.index',$data);
+    }
+    public function msncSdms()
+    {
+        $admin = Session::get('admin');
+        $data['page_title'] = ' SDM Managers';
+        $data['users'] = Admin::where('role_id',5)->where('station_id', $admin->station_id)->get();
+        return view('admins.index',$data);
+    }
+
+
 
     public function hrs()
     {
@@ -104,12 +136,40 @@ class AdminController extends Controller
         $data['users'] = Admin::where('role_id',7)->get();
         return view('admins.index',$data);
     }
+    public function amdlHrs()
+    {
+        $admin = Session::get('admin');
+        $data['page_title'] = ' HR Managers';
+        $data['users'] = Admin::where('role_id',7)->where('department_id', $admin->department_id)->get();
+        return view('admins.index',$data);
+    }
+    public function msncHrs()
+    {
+        $admin = Session::get('admin');
+        $data['page_title'] = ' SDM Managers';
+        $data['users'] = Admin::where('role_id',7)->where('station_id', $admin->station_id)->get();
+        return view('admins.index',$data);
+    }
 
     public function supervisors()
     {
 
         $data['page_title'] = 'All Supervisors';
         $data['users'] = Admin::where('role_id',9)->get();
+        return view('admins.index',$data);
+    }
+    public function amdlSupervisors()
+    {
+        $admin = Session::get('admin');
+        $data['page_title'] = ' Supervisors';
+        $data['users'] = Admin::where('role_id',9)->where('department_id', $admin->department_id)->get();
+        return view('admins.index',$data);
+    }
+    public function msncSupervisors()
+    {
+        $admin = Session::get('admin');
+        $data['page_title'] = ' Supervisors';
+        $data['users'] = Admin::where('role_id',9)->where('station_id', $admin->station_id)->get();
         return view('admins.index',$data);
     }
 

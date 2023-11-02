@@ -81,7 +81,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+                    @if(session('role')== 'admin')
                     <li class="nav-item">
                         <a href="{{route('admin')}}" class="nav-link {{$dash_menu}}">
                             <i class="nav-icon fa fa-tachometer"></i>
@@ -90,7 +90,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </p>
                         </a>
                     </li>
-                    @if(session('role')== 'admin')
+
                     <li class="nav-item">
                         <a href="{{route('organizations.index')}}" class="nav-link {{$organization_menu}}">
                             <i class="nav-icon fa fa-people-roof"> </i>
@@ -166,7 +166,16 @@ $station_menu = isset($station_menu) ? 'active' : '';
                         </li>
                     @endif
 
-
+                        @if(session('role')== 'director')
+                            <li class="nav-item">
+                                <a href="{{route('directorsHome')}}" class="nav-link {{$dash_menu}}">
+                                    <i class="nav-icon fa fa-tachometer"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
 
 
 

@@ -96,7 +96,19 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
 Route::group(['middleware' => 'checkRole:director', 'prefix' => 'director'], function(){
 
     Route::get('/', [AdminController::class, 'directorsHome'])->name('directorsHome');
-    Route::get('directors/department/{id}', [AdminController::class, 'directorsDepartment'])->name('directorsDepartment');
+    //AMDL ROLES
+    Route::get('/amdl/supervisors', [AdminController::class, 'amdlSupervisors'])->name('amdlSupervisors');
+    Route::get('/amdl/sdms', [AdminController::class, 'amdlHrs'])->name('amdlHrs');
+    Route::get('/amdl/hrs', [AdminController::class, 'amdlSdms'])->name('amdlSdms');
+
+    //MSNC ROLES
+    Route::get('/msnc/supervisors', [AdminController::class, 'msncSupervisors'])->name('msncSupervisors');
+    Route::get('/msnc/sdms', [AdminController::class, 'msncHrs'])->name('msncHrs');
+    Route::get('/msnc/hrs', [AdminController::class, 'msncSdms'])->name('msncSdms');
+
+
+    Route::get('department/msnc/{id}', [AdminController::class, 'directorsDepartmentMsnc'])->name('directorsDepartmentMsnc');
+    Route::get('department/amdl/{id}', [AdminController::class, 'directorsDepartmentAmdl'])->name('directorsDepartmentAmdl');
     Route::get('/directorstaffamdl/{id}', [StationController::class,'directorstaffamdl'])->name('directorstaffamdl');
 
 });

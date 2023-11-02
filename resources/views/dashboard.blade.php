@@ -193,7 +193,7 @@
                         </div>
 {{--                        {{route('directorstaffamdl',$department->id)}}--}}
 
-                        <a href="{{route('directorsDepartment',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{{route('directorsDepartmentAmdl',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                     @endforeach
@@ -207,11 +207,12 @@
                                     <h3>{{$msncstaff->department->tblUser->count() ?? ''}} </h3>
 
                                     <p>{{$msncstaff->department->deptName ?? '' }} </p>
+
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-people-roof"></i>
                                 </div>
-                                <a href="/directorstaffamdl" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                                <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     @endforeach
