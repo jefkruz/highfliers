@@ -13,10 +13,10 @@
                  $str=$organization->deptName;
      preg_match_all('/(?<=\b)\w/iu',$str,$matches);
      $result=mb_strtoupper(implode('',$matches[0]));
-            $encrypt = Crypt::encrypt($id)
+          //$encrypt = Crypt::encrypt($id)--}}
             @endphp
             <div class="col-xl-3 col-sm-6 mt-5">
-                <a href="/deptstaff/{{$encrypt}}">
+                <a href="{{route('deptstaff',encrypt($id))}}">
 
                     <div class="info-box bg-info">
                         <span class="info-box-icon"><i class="fa fa-people-roof"></i></span>
