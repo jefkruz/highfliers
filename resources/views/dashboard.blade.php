@@ -3,43 +3,43 @@
 @section('content')
     <div class="row">
         @if(session('role')== 'admin')
-            <a href="{{route('organizations.index')}}">
+
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-blue">
                     <div class="inner">
                         <h3>{{$organization->count()}}</h3>
 
-                        <p>AMDL Organizations </p>
+                        <p>AMDL HQ Departments </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-people-roof"></i>
                     </div>
                     <a href="{{route('organizations.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </a>
-            </div>
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-success">
-                    <div class="inner">
-                        <h3>{{$station->count()}}</h3>
 
-                        <p>Mission Stations (MSNC)</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fa fa-people-roof"></i>
-                    </div>
-                    <a href="{{route('stations.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
             </div>
+{{--            <div class="col-lg-3 col-6">--}}
+{{--                <!-- small box -->--}}
+{{--                <div class="small-box bg-success">--}}
+{{--                    <div class="inner">--}}
+{{--                        <h3>{{$station->count()}}</h3>--}}
+
+{{--                        <p>Mission Stations (MSNC)</p>--}}
+{{--                    </div>--}}
+{{--                    <div class="icon">--}}
+{{--                        <i class="fa fa-people-roof"></i>--}}
+{{--                    </div>--}}
+{{--                    <a href="{{route('stations.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>{{$msncOffice}}</h3>
 
-                        <p>Group Offices (MSNC)</p>
+                        <p>MSNC HQ departments</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-building"></i>
@@ -54,7 +54,7 @@
                     <div class="inner">
                         <h3>{{$msncStaff}}</h3>
 
-                        <p>MSNC Staff </p>
+                        <p>MSNC HQ Staff </p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users-line"></i>
@@ -68,7 +68,7 @@
                     <div class="inner">
                         <h3>{{$amdlStaff}}</h3>
 
-                        <p>AMDL Staff</p>
+                        <p>AMDL HQ Staff</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users-line"></i>
