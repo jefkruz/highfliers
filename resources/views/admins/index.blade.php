@@ -45,6 +45,8 @@
                                             <td>
                                                 @if(!empty($user->organization_id))
                                                 {{ $user->organization()->name}}
+                                                @else
+                                                    {{$user->department()}}
                                                 @endif
                                             </td>
 

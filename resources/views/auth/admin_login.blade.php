@@ -29,7 +29,11 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-
+            @if (session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="social-auth-links text-center mb-3">
 
                 <div class="container-login100-form-btn">

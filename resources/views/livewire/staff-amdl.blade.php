@@ -9,6 +9,7 @@
                             <input type="text" wire:model="search" class="form-control form-control-lg" placeholder="Search...">
 
                         </div>
+
                     </form>
                     @if (session()->has('message'))
                         <div class="alert alert-success">

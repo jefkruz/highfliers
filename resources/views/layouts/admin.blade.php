@@ -95,24 +95,24 @@ $station_menu = isset($station_menu) ? 'active' : '';
                         <a href="{{route('organizations.index')}}" class="nav-link {{$organization_menu}}">
                             <i class="nav-icon fa fa-people-roof"> </i>
                             <p>
-                                AMDL  Organizations
+                                AMDL HQ Departments
                             </p>
                         </a>
                     </li>
-                        <li class="nav-item">
-                            <a href="{{route('stations.index')}}" class="nav-link {{$station_menu}}">
-                                <i class="nav-icon fa fa-people-roof"> </i>
-                                <p>
-                                     MSNC Mission Stations
-                                </p>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{route('stations.index')}}" class="nav-link {{$station_menu}}">--}}
+{{--                                <i class="nav-icon fa fa-people-roof"> </i>--}}
+{{--                                <p>--}}
+{{--                                     MSNC Mission Stations--}}
+{{--                                </p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
 
                         <li class="nav-item">
                             <a href="{{route('alldept')}}" class="nav-link ">
                                 <i class="nav-icon fa fa-building"></i>
                                 <p>
-                                    MSNC Group Offices
+                                    MSNC HQ Departments
                                 </p>
                             </a>
                         </li>
@@ -149,10 +149,34 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link ">
+                            <a href="{{route('directors')}}" class="nav-link ">
                                 <i class="nav-icon fa fa-users-rectangle"></i>
                                 <p>
-                                   MSNC Directors
+                                   Directors
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('directors')}}" class="nav-link ">
+                                <i class="nav-icon fa fa-users-rectangle"></i>
+                                <p>
+                                    Directors
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('sdms')}}" class="nav-link ">
+                                <i class="nav-icon fa fa-users-rectangle"></i>
+                                <p>
+                                    SDM/Admin
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('hrs')}}" class="nav-link ">
+                                <i class="nav-icon fa fa-users-rectangle"></i>
+                                <p>
+                                   HR Managers
                                 </p>
                             </a>
                         </li>
