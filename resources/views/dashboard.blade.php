@@ -131,14 +131,13 @@
                     <a href="{{route('admins.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-
         @endif
+
+
             @if(session('role')== 'director')
 
-
-
-                @foreach($amdl as $department)
-                <div class="col-lg-3 col-6">
+                    @foreach($amdl as $department)
+                    <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-blue">
                         <div class="inner">
@@ -150,7 +149,9 @@
                         <div class="icon">
                             <i class="fa fa-people-roof"></i>
                         </div>
-                        <a href="/directorstaffamdl/{{$department->id}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+{{--                        {{route('directorstaffamdl',$department->id)}}--}}
+
+                        <a href="{{route('directorsDepartment',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                     @endforeach
@@ -174,7 +175,9 @@
                     @endforeach
             @endif
 
+
             @can('isDepartment')
+
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box bg-blue">

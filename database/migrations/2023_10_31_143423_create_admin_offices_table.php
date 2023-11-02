@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('admin_id');
             $table->string('company');
-            $table->string('organization_id');
-            $table->string('station_id');
-            $table->string('department_id');
+            $table->string('organization_id')->nullable();
+            $table->string('station_id')->nullable();
+            $table->string('department_id')->nullable();
             $table->timestamps();
         });
     }

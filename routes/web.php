@@ -35,9 +35,9 @@ Route::get('kc/admin/{token}', [AuthController::class, 'successfulLogin'])->name
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::get('/fetchDepartments/{stationId}', [StationController::class, 'fetchDepartments'])->name('fetchDepartments');
+//Route::get('/fetchDepartments/{stationId}', [StationController::class, 'fetchDepartments'])->name('fetchDepartments');
 
-Route::get('/directorstaffamdl/{id}', [StationController::class,'directorstaffamdl'])->name('directorstaffamdl');
+
 Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(){
 
     Route::get('/', [AdminController::class, 'home'])->name('admin');
@@ -90,4 +90,7 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
 Route::group(['middleware' => 'checkRole:director', 'prefix' => 'director'], function(){
 
     Route::get('/', [AdminController::class, 'directorsHome'])->name('directorsHome');
+    Route::get('directors/department/{id}', [AdminController::class, 'directorsDepartment'])->name('directorsDepartment');
+    Route::get('/directorstaffamdl/{id}', [StationController::class,'directorstaffamdl'])->name('directorstaffamdl');
+
 });

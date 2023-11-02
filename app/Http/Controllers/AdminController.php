@@ -69,6 +69,22 @@ class AdminController extends Controller
         return view('dashboard', $data);
     }
 
+    public function directorsDepartment($id)
+    {
+       $id = decrypt($id);
+        $admin = Session::get('admin');
+
+
+
+        $data['department'] = Organization::where('id', $id)->firstOrFail();
+        $data['staff'] = Seeker::where('organization_id', $id)->get();
+        $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
+        $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
+        $data['page_title'] = $data['department']['name'];
+
+        return view('directors_departments', $data);
+    }
+
     public function index()
     {
         $data = $this->data;
