@@ -60,11 +60,6 @@
                                     <a href="{{route('amdlProfile',encrypt($user->id))}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
 
                                     <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"> <i class="fa fa-edit"></i> Edit</button>
-
-{{--                                @can('isDepartment')--}}
-{{--                                    <button  wire:click="hr({{ $user->id }})"   class="btn btn-dark btn-sm">Make HR</button>--}}
-{{--                                    <button  wire:click="supervisor({{ $user->id }})"   class="btn btn-warning btn-sm">Make Supervisor</button>--}}
-{{--                                    @endcan--}}
                                     <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                     <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-secondary btn-sm">Review Staff</button></a>
 {{--                                    <a href="/directorgoals/{{$user->id}}"> <button    class="btn btn-danger btn-sm">Appraisals</button></a>--}}
