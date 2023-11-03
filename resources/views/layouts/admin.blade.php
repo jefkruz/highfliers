@@ -199,6 +199,33 @@ $station_menu = isset($station_menu) ? 'active' : '';
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{route('directorsHome')}}" class="nav-link">
+                                    <i class="nav-icon fas fa-chart-pie"></i>
+                                    <p>
+                                       Departments
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview" style="display: none;">
+                                        @foreach($amdl as $department)
+                                        <li class="nav-item">
+                                            <a href="{{route('directorsDepartmentAmdl',encrypt($department->organization->id))}}" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>{{$department->organization->name ?? '' }}</p>
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                        @foreach($msnc as $department)
+                                            <li class="nav-item">
+                                                <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}" class="nav-link">
+                                                    <i class="far fa-circle nav-icon"></i>
+                                                    <p>{{$msncstaff->department->deptName ?? '' }}</p>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                </ul>
+                            </li>
                         @endif
 
 
