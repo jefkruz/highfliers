@@ -1,7 +1,7 @@
 <div>
     <div class="row">
-        <a href="/depthr" class="btn btn-info btn-sm m-2">   See HR</a>
-        <a href="/deptSupervisor" class="btn btn-warning btn-sm m-2">See Supervisor</a>
+{{--        <a href="/depthr" class="btn btn-info btn-sm m-2">   See HR</a>--}}
+{{--        <a href="/deptSupervisor" class="btn btn-warning btn-sm m-2">See Supervisor</a>--}}
 
 
 
@@ -12,10 +12,11 @@
 
                     <form class="app-search  d-lg">
                         <div class="position-relative">
-                            <input type="text" wire:model="search" class="form-control" placeholder="Search...">
+                            <input type="text" wire:model="search" class="form-control form-control-lg" placeholder="Search...">
                             <span class="bx bx-search-alt"></span>
                         </div>
                     </form>
+                    <br>
                     @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
@@ -26,6 +27,7 @@
                         @include('livewire.updatestaffdept')
 
                     @endif
+                    <br>
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                         <tr>
@@ -49,21 +51,22 @@
                                 <td>{{$user->first_name}}</td>
                                 <td>{{$user->other_name}}</td>
                                 <td>{{$user->last_name}}</td>
-                                <td>{{$user->rank->rank?? 'null'}}</td>
+                                <td>{{$user->rank()->rank ?? 'null'}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->blw_portal_id}}</td>
 
                                 <td>{{$user->organization->name?? 'null'}}</td>
                                 <td>
-{{--                                    <button  wire:click="edit({{ $user->id }})"   class="btn btn-primary btn-sm">Edit</button>--}}
                                     <a href="{{route('amdlProfile',$user->id)}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
 
-                                @can('isDepartment')
-                                    <button  wire:click="hr({{ $user->id }})"   class="btn btn-dark btn-sm">Make HR</button>
-                                    <button  wire:click="supervisor({{ $user->id }})"   class="btn btn-warning btn-sm">Make Supervisor</button>
-                                    @endcan
-                                    <a href="/staffgradeamdl/{{$user->id}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
-                                    <a href="/staffreviewamdl/{{$user->id}}"> <button    class="btn btn-secondary btn-sm">Reviews</button></a>
+                                    <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"> <i class="fa fa-edit"></i> Edit</button>
+
+{{--                                @can('isDepartment')--}}
+{{--                                    <button  wire:click="hr({{ $user->id }})"   class="btn btn-dark btn-sm">Make HR</button>--}}
+{{--                                    <button  wire:click="supervisor({{ $user->id }})"   class="btn btn-warning btn-sm">Make Supervisor</button>--}}
+{{--                                    @endcan--}}
+                                    <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
+                                    <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-secondary btn-sm">Review Staff</button></a>
 {{--                                    <a href="/directorgoals/{{$user->id}}"> <button    class="btn btn-danger btn-sm">Appraisals</button></a>--}}
                                     {{--                                <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
                                 </td>

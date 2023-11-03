@@ -11,7 +11,7 @@
     <div class="row mb-4">
         <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Other Name</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="horizontal-firstname-input"  required   wire:model="otherName">
+            <input type="text" class="form-control" id="horizontal-firstname-input"   wire:model="otherName">
             @error('otherName') <span class="text-danger">{{ $message }}</span>@enderror
         </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="row mb-4">
         <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Last Name</label>
         <div class="col-sm-9">
-            <input type="text" class="form-control" id="horizontal-firstname-input" required   wire:model="otherName">
+            <input type="text" class="form-control" id="horizontal-firstname-input" required   wire:model="lastName">
             @error('LastName') <span class="text-danger">{{ $message }}</span>@enderror
         </div>
     </div>
@@ -34,9 +34,9 @@
     </div>
     <div class="row mb-4">
         <label for="horizontal-email-input" class="col-sm-3 col-form-label">Ranks</label>
-        <div class="col-sm-auto">
+        <div class="col-sm-9">
 
-            <select class="form-select" id="autoSizingSelect" wire:model="rank">
+            <select class="form-control" id="autoSizingSelect" wire:model="rank">
                 <option selected>Choose...</option>
                 @foreach ($ranks as $rank)
                 <option value="{{$rank->id}}">{{$rank->rank}}</option>

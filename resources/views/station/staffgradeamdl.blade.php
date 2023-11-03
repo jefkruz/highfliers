@@ -5,7 +5,7 @@
 
 
 
-<h1>{{$dept->title.' '. $dept->first_name.' '.$dept->other_name.' '.$dept->last_name }}</h1>
+<h2>{{$dept->title.' '. $dept->first_name.' '.$dept->other_name.' '.$dept->last_name }}</h2>
     @livewire('amdl-grade',['department'  => $dept])
     <script type="text/javascript">
         window.onscroll = function (ev) {

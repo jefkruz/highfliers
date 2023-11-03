@@ -85,13 +85,14 @@ class StationController extends Controller
 
     public function staffgrade($id)
     {
+        $id = decrypt($id);
         $dept = TblUser::find($id);
         //dd( $dept);
         return view('station.staffgrade',compact('dept') );
     }
 
 
-    public function staffgradeamdl($id)
+    public function staffGradeAmdl($id)
     {
         $id = decrypt($id);
         $dept = Seeker::find($id);
@@ -234,9 +235,10 @@ class StationController extends Controller
         return view('station.deptSupervisor' );
     }
 
-    public function directorstaffamdl($id)
+    public function directorStaffAmdl($id)
     {
         //dd($id);
+        $id = decrypt($id);
         $dept = Organization::find($id);
         return view('station.directorstaffamdl',compact('dept')  );
     }

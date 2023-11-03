@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Grade extends Model
 {
     protected $connection = 'mysql';
-    protected $guarded = [];
+    protected $guarded;
 
     function seeker() {
         return $this->belongsTo(Seeker::class);

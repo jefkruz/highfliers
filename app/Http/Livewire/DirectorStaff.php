@@ -182,11 +182,11 @@ class DirectorStaff extends Component
 //        $post->save();
         $this->validate([
             'firstName' => 'required',
-            'otherName' => 'required',
+//            'otherName' => 'required',
             'lastName' => 'required',
             'rank' => 'required',
             'blw_portal_id' => 'required',
-            'nomenclature_rank' => 'required',
+//            'nomenclature_rank' => 'required',
         ]);
 
         Seeker::updateOrCreate(['id' => $this->User_id], [
@@ -213,7 +213,7 @@ class DirectorStaff extends Component
     public function delete($id)
     {
         Seeker::where('id',$id)->delete();
-        session()->flash('message', 'Post Deleted Successfully.');
+        session()->flash('message', 'Staff Deleted Successfully.');
     }
 
 }

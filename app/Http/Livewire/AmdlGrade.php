@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Seeker;
 use Livewire\Component;
 use App\Models\Grade;
 class AmdlGrade extends Component
@@ -33,7 +34,7 @@ class AmdlGrade extends Component
     {
         return view('livewire.amdl-grade',['users' => $this->search === null ?
             Grade::where('seeker_id',$this->department->id)->orderBy('year')->paginate($this->perPage):
-            User::where('seeker_id',$this->department->id)
+            Seeker::where('id',$this->department->id)
 
                 ->latest()->paginate($this->perPage)]);
     }

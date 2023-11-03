@@ -21,9 +21,10 @@ class Seeker extends Model
     {
         return $this->belongsTo(Admin::class);
     }
+
     public function rank()
     {
-        return $this->belongsTo(Rank::class);
+        return Rank::find($this->rank_id);
     }
 
     public function job()

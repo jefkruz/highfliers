@@ -48,7 +48,7 @@
 
 
                     <button  class="btn bg-navy btn-block"><b>JOB: {{ucwords($member->jobTitle)}}</b> </button>
-                    <button class="btn bg-maroon btn-block"><b>RANK: </b> </button>
+                    <button class="btn bg-maroon btn-block"><b>RANK: {{ucwords($member->rank()->rank ?? '')}}</b> </button>
 
                 </div>
                 <!-- /.card-body -->
@@ -98,7 +98,7 @@
                         <li class="nav-item"><a class="nav-link active" href="#goals" data-toggle="tab">Goals</a></li>
                         <li class="nav-item"><a class="nav-link" href="#grades" data-toggle="tab">Grades</a></li>
                         <li class="nav-item"><a class="nav-link" href="#reviews" data-toggle="tab">Reviews</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#skills" data-toggle="tab">Skills</a></li>
+{{--                        <li class="nav-item"><a class="nav-link" href="#skills" data-toggle="tab">Skills</a></li>--}}
                     </ul>
                 </div><!-- /.card-header -->
                 <div class="card-body">
@@ -193,30 +193,30 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tab-pane" id="skills">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>ABILITY</th>
-                                    <th>COMPETENCY</th>
-                                    <th>DESCRIPTION</th>
+{{--                        <div class="tab-pane" id="skills">--}}
+{{--                            <table class="table table-striped">--}}
+{{--                                <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th>#</th>--}}
+{{--                                    <th>ABILITY</th>--}}
+{{--                                    <th>COMPETENCY</th>--}}
+{{--                                    <th>DESCRIPTION</th>--}}
 
 
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($skills as $i => $skill)
-                                    <tr>
-                                        <td>{{$i + 1}}</td>
-                                        <td>{{$skill->ability}}</td>
-                                        <td>{{$skill->competency}}</td>
-                                        <td>{{$skill->description}}</td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+{{--                                </tr>--}}
+{{--                                </thead>--}}
+{{--                                <tbody>--}}
+{{--                                @foreach($skills as $i => $skill)--}}
+{{--                                    <tr>--}}
+{{--                                        <td>{{$i + 1}}</td>--}}
+{{--                                        <td>{{$skill->ability}}</td>--}}
+{{--                                        <td>{{$skill->competency}}</td>--}}
+{{--                                        <td>{{$skill->description}}</td>--}}
+{{--                                    </tr>--}}
+{{--                                @endforeach--}}
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+{{--                        </div>--}}
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->

@@ -5,7 +5,7 @@
 
 
 
-<h1>{{$dept->title.' '. $dept->firstName.' '.$dept->otherName.' '.$dept->lastName }}</h1>
+<h2>{{$dept->title.' '. $dept->firstName.' '.$dept->otherName.' '.$dept->lastName }}</h2>
     @livewire('staffgrade',['department'  => $dept])
     <script type="text/javascript">
         window.onscroll = function (ev) {

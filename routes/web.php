@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\StationController;
@@ -35,7 +36,6 @@ Route::get('kc/admin/{token}', [AuthController::class, 'successfulLogin'])->name
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
-//Route::get('/fetchDepartments/{stationId}', [StationController::class, 'fetchDepartments'])->name('fetchDepartments');
 
 
 Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(){
@@ -49,7 +49,6 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
 
 
     //AMDL ROUTES
-    Route::get('amdl/profile/{id}', [OrganizationController::class,'amdlProfile'])->name('amdlProfile');
     Route::resource('organizations', OrganizationController::class);
 
     Route::get('adddirector/', [OrganizationController::class, 'adddirector'])->name('adddirector');
@@ -71,7 +70,6 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::get('/alldept', [StationController::class,'alldept'])->name('alldept');
     Route::get('/depthr', [StationController::class,'depthr'])->name('depthr');
     Route::get('/deptSupervisor', [StationController::class,'deptSupervisor'])->name('deptSupervisor');
-    Route::get('/directorstaffamdl', [StationController::class,'directorstaffamdl'])->name('directorstaffamdl');
     Route::get('/addstaff/{id}', [StationController::class,'addstaff'])->name('addstaff');
     Route::get('/MydeptGoals', [StationController::class,'MydeptGoals'])->name('MydeptGoals');
     Route::get('/allrank', [StationController::class,'allrank'])->name('allrank');
@@ -79,10 +77,7 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::get('/rankstaff/{id}', [StationController::class,'rankstaff'])->name('rankstaff');
     Route::get('/rankstaffamdl/{id}', [StationController::class,'rankstaffamdl'])->name('rankstaffamdl');
     Route::get('/deptstaff/{id}', [StationController::class,'deptstaff'])->name('deptstaff');
-    Route::get('/staffgrade/{id}', [StationController::class,'staffgrade'])->name('staffgrade');
-    Route::get('/staffgradeamdl/{id}', [StationController::class,'staffgradeamdl'])->name('staffgradeamdl');
-    Route::get('/staffreview/{id}', [StationController::class,'staffreview'])->name('staffreview');
-    Route::get('/staffreviewamdl/{id}', [StationController::class,'staffreviewamdl'])->name('staffreviewamdl');
+
     Route::get('/goals/{id}', [StationController::class,'goals'])->name('goals');
     Route::get('/directorgoals/{id}', [StationController::class,'directorgoals'])->name('directorgoals');
     Route::get('/hrgoals/{id}/{gid}', [StationController::class,'hrgoals'])->name('hrgoals');
@@ -109,6 +104,18 @@ Route::group(['middleware' => 'checkRole:director', 'prefix' => 'director'], fun
 
     Route::get('department/msnc/{id}', [AdminController::class, 'directorsDepartmentMsnc'])->name('directorsDepartmentMsnc');
     Route::get('department/amdl/{id}', [AdminController::class, 'directorsDepartmentAmdl'])->name('directorsDepartmentAmdl');
-    Route::get('/directorstaffamdl/{id}', [StationController::class,'directorstaffamdl'])->name('directorstaffamdl');
+
+});
+
+Route::group(['middleware' => 'isAdmin'], function(){
+    Route::get('amdl/profile/{id}', [OrganizationController::class,'amdlProfile'])->name('amdlProfile');
+    Route::get('staffgradeamdl/{id}', [StationController::class,'staffGradeamdl'])->name('staffGradeAmdl');
+
+    Route::get('/directorstaffamdl/{id}', [StationController::class,'directorStaffAmdl'])->name('directorStaffAmdl');
+    Route::get('grade/{id}', [GradeController::class,'grade'])->name('grade');
+    Route::post('grade/{id}', [GradeController::class,'amdlStoreGrade'])->name('amdlStoreGrade');
+    Route::get('/staffgradeAmdl/{id}', [StationController::class,'staffGradeAmdl'])->name('staffGradeAmdl');
+    Route::get('/staffreview/{id}', [StationController::class,'staffreview'])->name('staffreview');
+    Route::get('/staffreviewamdl/{id}', [StationController::class,'staffReviewAmdl'])->name('staffReviewAmdl');
 
 });
