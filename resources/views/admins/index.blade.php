@@ -37,7 +37,7 @@
                                 <tbody>
 
                                 @foreach ($users as $i=> $user)
-                                    {{dd($user)}}
+
                                     <tr>
                                         <td>{{ ++$i }}</td>
 
@@ -48,7 +48,7 @@
                                                 @if(($user->company == 'amdl'))
 
 {{--                                                    @foreach($user->amdls as $amdl)--}}
-{{--                                                        {{ $amdl->organization->name ?? ' ' }}--}}
+                                                        {{ $user->organization->name ?? ' ' }}
 {{--                                                    @endforeach--}}
 
                                                 @else
