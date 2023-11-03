@@ -47,7 +47,7 @@
                                             <td>
                                                 @if(($user->company == 'amdl'))
 
-                                                       @foreach( $user->adminOffices->department_id as $department)
+                                                       @foreach( $user->adminOffices->organization_id as $department)
                                                         <button class="btn-sm btn-primary"> {{ $department ?? ' ' }}</button>
                                                     @endforeach
 
