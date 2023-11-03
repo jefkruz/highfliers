@@ -177,6 +177,7 @@ class AdminController extends Controller
     {
         $data = $this->data;
         $data['users'] = Admin::where('role_id', '1')->get();
+//        $data['departments'] = Admin::where('role_id', '1')->get();
         $data['roles'] = Role::all();
         $data['page_title'] = 'Administrators';
         return view('admins.index', $data);

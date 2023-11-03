@@ -45,9 +45,15 @@ class Admin extends Model
     {
         return $this->hasOne('App\Models\Organization', 'id', 'organization_id');
     }
+
     public function department()
     {
         return $this->hasOne('App\Models\TblDept', 'deptID', 'department_id');
+    }
+
+    public function amdls()
+    {
+        return AdminOffice::where('user_id',$this->user_id)->get();
     }
 
 
