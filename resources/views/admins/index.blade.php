@@ -20,7 +20,7 @@
                         </div>
                     </div>
 
-                    {{$departments}}
+
                         <div class="card-body table-responsive">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead >
@@ -37,6 +37,7 @@
                                 <tbody>
 
                                 @foreach ($users as $i=> $user)
+                                    {{dd($user)}}
                                     <tr>
                                         <td>{{ ++$i }}</td>
 

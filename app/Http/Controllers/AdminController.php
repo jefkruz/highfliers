@@ -102,14 +102,14 @@ class AdminController extends Controller
 
         $data['page_title'] = 'All Directors';
         $users = Admin::where('role_id',6)->get();
-        $data['users'] = Admin::where('role_id',6)->get();
+//        $data['users'] = Admin::where('role_id',6)->get();
         $payload = [];
 
         foreach($users as $g){
             array_push($payload, $g);
         }
 
-        $data['departments'] = $payload;
+        $data['users'] = $payload;
         return view('admins.index',$data);
     }
 
