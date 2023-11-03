@@ -29,7 +29,7 @@ class AdminController extends Controller
         $this->data['roles'] = Role::all();
         $this->data['organization'] = Organization::all();
         $this->data['station'] = TblStation::all();
-        $this->data['msncOffice'] = TblDept::where('stationID',1)->count();
+        $this->data['msncOffice'] = TblDept::where('mission_station_id',1)->count();
         $this->data['amdlStaff'] = Seeker::count();
         $this->data['msncStaff'] = TblUser::count();
         $this->data['msncRank'] = TblRank::count();
