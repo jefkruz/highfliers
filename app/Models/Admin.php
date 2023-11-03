@@ -53,7 +53,7 @@ class Admin extends Model
 
     public function amdls()
     {
-        return AdminOffice::where('admin_id',$this->id)->get();
+        return AdminOffice::where('admin_id',$this->id)->first();
     }
 
 
