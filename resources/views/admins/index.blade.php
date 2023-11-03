@@ -48,7 +48,7 @@
                                                 @if(($user->company == 'amdl'))
 
                                                        @foreach( $user->adminOffices as $department)
-                                                        <button class="btn-sm btn-primary"> {{ $department ?? ' ' }}</button>
+                                                        <button class="btn-sm btn-primary"> {{ $department->organization_id ?? ' ' }}</button>
                                                     @endforeach
 
 
