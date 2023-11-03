@@ -43,10 +43,10 @@
 
 
                                             <td>
-                                                @if(!empty($user->organization_id))
+                                                @if(($user->company == 'amdl'))
                                                 {{ $user->organization()->name }}
                                                 @else
-                                                    {{$user->department_id}}
+                                                    {{$user->department()}}
                                                 @endif
                                             </td>
 
