@@ -11,6 +11,7 @@
                         </div>
 
                     </form>
+                    <br>
                     @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
@@ -22,6 +23,7 @@
                     @else
                         @include('livewire.createstaffmsnc')
                     @endif
+
                     <table id="datatable" class="table table-bordered dt-responsive mt-1  nowrap w-100">
                         <thead>
                         <tr>
@@ -41,7 +43,7 @@
                             <tr>
                                 <td>{{$user->first_name}}</td>
                                 <td>{{$user->last_name}}</td>
-                                 <td>{{$user->rank->rank?? 'null'}}</td>
+                                 <td>{{$user->rank()->rank?? 'null'}}</td>
                                 <td>{{$user->email}}</td>
 
                                 <td>{{$user->organization->name?? 'null'}}</td>

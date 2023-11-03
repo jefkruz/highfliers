@@ -148,29 +148,6 @@ class OrganizationController extends Controller
 
 
 
-    public function organizationsUsers(Request $request)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'role_id' => 'required',
-            'organization_id' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required'
-        ]);
 
-        $user = new Admin([
-            'name' => $request->input('name'),
-            'role_id' => $request->input('role_id'),
-            'email' => $request->input('email'),
-            'ministry' => 'AMDL',
-            'organization_id' => $request->input('organization_id'),
-            'password' => bcrypt($request->input('password')),
-
-        ]);
-        $user->save();
-
-        return redirect()->route('adddirector')
-            ->with('success', 'User created successfully.');
-    }
 
 }

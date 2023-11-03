@@ -97,7 +97,8 @@
                                 <div class="row mb-4">
                                     <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Other Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="horizontal-firstname-input">
+                                        <input type="text" class="form-control" wire:model="otherName" >
+                                        @error('otherName') <span class="text-danger">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
 

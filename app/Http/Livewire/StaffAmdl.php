@@ -116,10 +116,10 @@ class StaffAmdl extends Component
 //        $post->save();
         $this->validate([
             'firstName' => 'required',
-            'otherName' => 'required',
+//            'otherName' => 'required',
             'lastName' => 'required',
             'rank' => 'required',
-            'nomenclature_rank' => 'required',
+//            'nomenclature_rank' => 'required',
         ]);
 
         Seeker::updateOrCreate(['id' => $this->User_id], [
@@ -127,7 +127,7 @@ class StaffAmdl extends Component
             'other_name' => $this->otherName,
             'last_name' => $this->lastName,
             'rank_id' => $this->rank,
-            'nomenclature_rank' => $this->nomenclature_rank,
+//            'nomenclature_rank' => $this->nomenclature_rank,
         ]);
 
 
