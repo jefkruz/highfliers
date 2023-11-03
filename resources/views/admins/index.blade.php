@@ -45,19 +45,22 @@
 
 
                                             <td>
-{{--                                                @if($user->department_id  == 0  )--}}
+
 
                                                        @foreach( $user->adminOffices as $office)
+                                                    @if(!empty($office->organization_id)  )
                                                         <button class="badge btn-primary m-1"> {{ $office->organization->name ?? ' ' }}</button>
+                                                    @endif
                                                        @endforeach
-{{--                                                @endif--}}
 
-{{--                                                @if($user->organization_id  == 0)--}}
+
 
                                                         @foreach( $user->adminOffices as $office)
+                                                               @if(!empty($office->department_id)  )
                                                             <button class="badge btn-primary m-1"> {{ $office->department->deptName ?? ' ' }}</button>
+                                                               @endif
                                                         @endforeach
-{{--                                                @endif--}}
+
                                             </td>
 
                                         <td>{{ $user->name }}</td>
