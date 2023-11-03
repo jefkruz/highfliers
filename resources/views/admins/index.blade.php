@@ -47,9 +47,9 @@
                                             <td>
                                                 @if(($user->company == 'amdl'))
 
-                                                    @foreach($user()->amdls as $amdl)
-                                                        {{ $amdl ?? ' ' }}
-                                                    @endforeach
+
+                                                        {{ $user->adminOffices ?? ' ' }}
+
 
                                                 @else
                                                     {{$user->department->deptName}}

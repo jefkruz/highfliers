@@ -51,9 +51,8 @@ class Admin extends Model
         return $this->hasOne('App\Models\TblDept', 'deptID', 'department_id');
     }
 
-    public function amdls()
-    {
-        return AdminOffice::where('admin_id',$this->id)->get();
+    public function adminOffices() {
+        return $this->hasMany(AdminOffice::class, 'admin_id', 'id');
     }
 
 
