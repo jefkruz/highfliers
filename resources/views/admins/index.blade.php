@@ -48,12 +48,15 @@
                                                 @if(($user->company == 'amdl'))
 
                                                        @foreach( $user->adminOffices as $department)
-                                                        <button class="btn-sm btn-primary m-1"> {{ $department->organization->name ?? ' ' }}</button>
-                                                    @endforeach
+                                                        <button class="badge btn-primary m-1"> {{ $department->organization->name ?? ' ' }}</button>
+                                                       @endforeach
+                                                @endif
 
+                                                @if({{$user->company == 'msnc'}})
 
-                                                @else
-                                                    {{$user->department->deptName}}
+                                                        @foreach( $user->adminOffices as $department)
+                                                            <button class="badge btn-primary m-1"> {{ $department->department->deptName ?? ' ' }}</button>
+                                                        @endforeach
                                                 @endif
                                             </td>
 
