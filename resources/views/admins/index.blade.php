@@ -28,7 +28,7 @@
                                     <th>S/N</th>
 
                                     <th>Role </th>
-                                    <th>Department</th>
+                                    <th>Departments</th>
                                     <th>Name</th>
                                     <th>Phone</th>
                                     <th></th>
@@ -45,19 +45,19 @@
 
 
                                             <td>
-                                                @if(($user->company == 'amdl'))
+
 
                                                        @foreach( $user->adminOffices as $office)
                                                         <button class="badge btn-primary m-1"> {{ $office->organization->name ?? ' ' }}</button>
                                                        @endforeach
-                                                @endif
 
-                                                @if($user->company == 'msnc')
+
+
 
                                                         @foreach( $user->adminOffices as $office)
                                                             <button class="badge btn-primary m-1"> {{ $office->department->deptName ?? ' ' }}</button>
                                                         @endforeach
-                                                @endif
+
                                             </td>
 
                                         <td>{{ $user->name }}</td>
