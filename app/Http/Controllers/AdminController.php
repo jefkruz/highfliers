@@ -101,7 +101,15 @@ class AdminController extends Controller
     {
 
         $data['page_title'] = 'All Directors';
+        $users = Admin::where('role_id',6)->get();
         $data['users'] = Admin::where('role_id',6)->get();
+        $payload = [];
+
+        foreach($users as $g){
+            array_push($payload, $g);
+        }
+
+        $data['departments'] = $payload;
         return view('admins.index',$data);
     }
 
@@ -178,13 +186,7 @@ class AdminController extends Controller
         $data = $this->data;
         $users = Admin::where('role_id', '1')->get();
         $data['users'] = Admin::where('role_id', '1')->get();
-        $payload = [];
 
-        foreach($users as $g){
-            array_push($payload, $g);
-        }
-
-        $data['departments'] = $payload;
         $data['roles'] = Role::all();
         $data['page_title'] = 'Administrators';
         return view('admins.index', $data);
