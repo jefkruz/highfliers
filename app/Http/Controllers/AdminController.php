@@ -179,6 +179,7 @@ class AdminController extends Controller
         $users = Admin::where('role_id', '1')->get();
         $data['users'] = Admin::where('role_id', '1')->get();
         $payload = [];
+
         foreach($users as $g){
             array_push($payload, $g);
         }

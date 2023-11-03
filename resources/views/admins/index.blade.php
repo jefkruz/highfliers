@@ -20,7 +20,7 @@
                         </div>
                     </div>
 
-
+                    {{$departments}}
                         <div class="card-body table-responsive">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead >
@@ -35,6 +35,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach ($users as $i=> $user)
                                     <tr>
                                         <td>{{ ++$i }}</td>
@@ -44,7 +45,7 @@
 
                                             <td>
                                                 @if(($user->company == 'amdl'))
-                                                    {{$departments}}
+
 {{--                                                    @foreach($user->amdls as $amdl)--}}
 {{--                                                        {{ $amdl->organization->name ?? ' ' }}--}}
 {{--                                                    @endforeach--}}
