@@ -44,7 +44,7 @@
 
                                             <td>
                                                 @if(!empty($user->organization_id))
-                                                {{ $user->organization() }}
+                                                {{ $user->organization()->name }}
                                                 @else
                                                     {{$user->department_id}}
                                                 @endif

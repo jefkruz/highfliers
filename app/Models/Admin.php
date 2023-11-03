@@ -47,7 +47,7 @@ class Admin extends Model
     }
     public function department()
     {
-        return TblDept::find($this->department_id);
+        return TblDept::where('deptID',$this->department_id)->first();
     }
 
 
