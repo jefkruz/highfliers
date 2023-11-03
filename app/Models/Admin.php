@@ -33,9 +33,7 @@ class Admin extends Model
     protected $guarded;
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
+
 
     public function role()
     {
