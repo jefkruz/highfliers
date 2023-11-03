@@ -101,6 +101,7 @@ Route::group(['middleware' => 'checkRole:sdm', 'prefix' => 'sdm'], function(){
 
 Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('amdl/profile/{id}', [OrganizationController::class,'amdlProfile'])->name('amdlProfile');
+    Route::get('msnc/profile/{id}', [StationController::class,'msncProfile'])->name('msncProfile');
     Route::get('staffgradeamdl/{id}', [StationController::class,'staffGradeamdl'])->name('staffGradeAmdl');
 
     Route::get('/directorstaffamdl/{id}', [StationController::class,'directorStaffAmdl'])->name('directorStaffAmdl');

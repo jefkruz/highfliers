@@ -80,6 +80,7 @@ class OrganizationController extends Controller
 
     public function amdlProfile($id)
     {
+        $id = decrypt($id);
         $data['page_title'] = 'Staff Profile';
         $data['member'] = Seeker::where('id',$id)->firstOrfail();
         $data['grades'] = Grade::where('seeker_id',$id)->get();
@@ -89,6 +90,8 @@ class OrganizationController extends Controller
         $data['organization_menu'] = true;
         return view('organization.profile', $data);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

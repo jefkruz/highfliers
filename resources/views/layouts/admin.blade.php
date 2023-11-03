@@ -148,14 +148,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('directors')}}" class="nav-link ">
-                                <i class="nav-icon fa fa-users-rectangle"></i>
-                                <p>
-                                   Directors
-                                </p>
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a href="{{route('directors')}}" class="nav-link ">
                                 <i class="nav-icon fa fa-users-rectangle"></i>

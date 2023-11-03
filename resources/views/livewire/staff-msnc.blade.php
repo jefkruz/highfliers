@@ -45,12 +45,12 @@
 
                             <td>{{$user->tblDept->deptName?? 'null'}}</td>
                             <td>
-                                <a href="{{route('amdlProfile',$user->id)}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
+                                <a href="{{route('msncProfile',encrypt($user->userID))}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
 
                                 <button  wire:click="edit({{ $user->id }})"   class="btn btn-primary btn-sm">Edit</button>
                                 <a href="/staffgrade/{{$user->id}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                 <a href="/staffreview/{{$user->userID}}"> <button    class="btn btn-secondary btn-sm">Reviews</button></a>
-                                <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button>
+                                <button wire:click="delete({{ $user->userID }})" class="btn btn-danger btn-sm">Delete</button>
                             </td>
                         </tr>
 

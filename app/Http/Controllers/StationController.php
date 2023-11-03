@@ -210,6 +210,20 @@ class StationController extends Controller
         return view('station.depthr' );
     }
 
+    public function msncProfile($id)
+    {
+        $id = decrypt($id);
+
+        $data['page_title'] = 'Staff Profile';
+        $data['member'] = TblUser::where('userID',$id)->firstOrfail();
+//        $data['grades'] = Grade::where('seeker_id',$id)->get();
+//        $data['reviews'] = Review::where('seeker_id',$id)->get();
+//        $data['goals'] = Goal::where('seeker_id',$id)->get();
+//        $data['skills'] = Skill::where('seeker_id',$id)->get();
+        $data['station_menu'] = true;
+        return view('station.profile', $data);
+    }
+
 
     public function addstaff($id)
     {
