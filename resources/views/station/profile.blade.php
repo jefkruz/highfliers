@@ -16,7 +16,7 @@
 
                     <p class="text-muted text-center mb-0 bg-info"></p>
 
-                    <p class="text-muted text-center text-bold mb-0 bg-primary">PORTAL ID: {{$member->blw_portal_id}}</p>
+                    <p class="text-muted text-center text-bold mb-0 bg-primary">PORTAL ID: {{$member->portal_id}}</p>
 
 
                         <p class="text-muted text-bold text-center mb-0 bg-maroon mt-1"> REG CODE: {{$member->reg_code_id}}</p>
@@ -33,7 +33,7 @@
                             <span>Current Department</span> <b class="float-right">{{$member->tblDept->deptName}}</b>
                         </li>
                         <li class="list-group-item">
-                            <span>Phone number</span> <b class="float-right">{{$member->phone}}</b>
+                            <span>Phone number</span> <b class="float-right">{{$member->phoneNum}}</b>
                         </li>
                         <li class="list-group-item">
                             <span>Kingschat Number</span> <b class="float-right">{{$member->kcphone}}</b>
@@ -80,7 +80,7 @@
 
                     <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                    <p class="text-muted">{{$member->address}},{{$member->state}} {{$member->country}}</p>
+                    <p class="text-muted">{{$member->postalAddress}},{{$member->state}} {{$member->country}}</p>
 
                     <hr>
 
