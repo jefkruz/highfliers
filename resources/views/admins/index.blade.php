@@ -46,7 +46,7 @@
                                                 @if(($user->company == 'amdl'))
                                                 {{ $user->organization->name ?? ' ' }}
                                                 @else
-                                                    {{$user->department}}
+                                                    {{$user->department->deptName}}
                                                 @endif
                                             </td>
 
