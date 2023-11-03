@@ -176,8 +176,14 @@ class AdminController extends Controller
     public function index()
     {
         $data = $this->data;
+        $users = Admin::where('role_id', '1')->get();
         $data['users'] = Admin::where('role_id', '1')->get();
-//        $data['departments'] = Admin::where('role_id', '1')->get();
+        $payload = [];
+        foreach($users as $g){
+            array_push($payload, $g);
+        }
+
+        $data['departments'] = $payload;
         $data['roles'] = Role::all();
         $data['page_title'] = 'Administrators';
         return view('admins.index', $data);

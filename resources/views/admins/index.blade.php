@@ -44,10 +44,10 @@
 
                                             <td>
                                                 @if(($user->company == 'amdl'))
-                                                    {{$user->amdls}}
-                                                    @foreach($user->amdls as $amdl)
-                                                        {{ $amdl->organization->name ?? ' ' }}
-                                                    @endforeach
+                                                    {{$departments}}
+{{--                                                    @foreach($user->amdls as $amdl)--}}
+{{--                                                        {{ $amdl->organization->name ?? ' ' }}--}}
+{{--                                                    @endforeach--}}
 
                                                 @else
                                                     {{$user->department->deptName}}
