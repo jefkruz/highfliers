@@ -43,11 +43,11 @@ class Admin extends Model
 
     public function organization()
     {
-        return Organization::find($this->organization_id);
+        return $this->hasOne('App\Models\Organization', 'id', 'organization_id');
     }
     public function department()
     {
-        return TblDept::where('deptID',$this->department_id)->first();
+        return $this->hasOne('App\Models\TblDept', 'deptID', 'department_id');
     }
 
 
