@@ -55,7 +55,7 @@
                                                 @if($user->company == 'msnc')
 
                                                         @foreach( $user->adminOffices as $office)
-                                                            <button class="badge btn-primary m-1"> {{ $office->department->deptName ?? ' ' }}</button>
+                                                            <button class="badge btn-primary m-1"> {{ $office->department_id ?? ' ' }}</button>
                                                         @endforeach
                                                 @endif
                                             </td>
