@@ -276,24 +276,58 @@
             @endif
 
 
-            @can('isDepartment')
+            @if(session('role')== 'sdm')
 
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-blue">
-                        <div class="inner">
-                            <h3>{{$director_seeker ?? ''}}</h3>
+                @foreach($amdl as $department)
 
-                            <p>{{Auth::user()->organization->name ?? '' }} </p>
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-blue">
+
+                            <div class="inner">
+                                <a href="{{route('directorStaffAmdl',encrypt($department->organization->id))}}">
+                                    <h3 class="text-white">{{$department->organization->seeker->count() ?? ''}} </h3>
+
+                                    <p class="text-white"> {{$department->organization->name ?? '' }} </p>
+                                </a>
+                            </div>
+                            <a href="{{route('directorStaffAmdl',encrypt($department->organization->id))}}">
+                                <div class="icon">
+
+                                    <i class="fa fa-people-roof"></i>
+                                </div>
+                            </a>
+                            <a href="{{route('directorStaffAmdl',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
                         </div>
-                        <div class="icon">
-                            <i class="fa fa-people-roof"></i>
-                        </div>
-                        <a href="/directorstaffamdl" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
                     </div>
-                </div>
 
-            @endcan
+                @endforeach
+
+                @foreach($msnc as $msncstaff)
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-blue">
+                            <div class="inner">
+                                <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}">
+                                    <h3 class="text-white">{{$msncstaff->department->tblUser->count() ?? ''}} </h3>
+
+                                    <p class="text-white"> {{$msncstaff->department->deptName ?? '' }} </p>
+                                </a>
+                            </div>
+                            <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}">
+                                <div class="icon">
+                                    <i class="fa fa-people-roof"></i>
+                                </div>
+                            </a>
+                            <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                @endforeach
+
+
+            @endif
 
             @can('isSupervisor')
                 <div class="col-lg-3 col-6">

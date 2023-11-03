@@ -64,6 +64,17 @@ class AdminController extends Controller
 
         return view('dashboard', $data);
     }
+    public function sdmHome()
+    {
+
+        $admin = Session::get('admin');
+        $data['page_title'] = 'SDM/Admin Dashboard';
+        $data['amdl'] = AdminOffice::where('admin_id', $admin->id)
+            ->where('company', 'amdl')->get();
+        $data['msnc'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
+
+        return view('dashboard', $data);
+    }
 
     public function directorsDepartmentAmdl($id)
     {
@@ -83,7 +94,6 @@ class AdminController extends Controller
     }
     public function directorsDepartmentMsnc($id)
     {
-
         $id = decrypt($id);
 
         $admin = Session::get('admin');

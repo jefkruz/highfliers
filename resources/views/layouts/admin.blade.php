@@ -228,7 +228,16 @@ $station_menu = isset($station_menu) ? 'active' : '';
 {{--                            </li>--}}
                         @endif
 
-
+                        @if(session('role')== 'sdm')
+                            <li class="nav-item">
+                                <a href="{{route('sdmHome')}}" class="nav-link {{$dash_menu}}">
+                                    <i class="nav-icon fa fa-tachometer"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                        @endif
 
                 </ul>
             </nav>

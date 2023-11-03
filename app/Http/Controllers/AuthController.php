@@ -97,8 +97,8 @@ class AuthController extends Controller
                 return redirect('/director');
                 break;
 
-            case 'manager':
-                return redirect('/manager');
+            case 'sdm':
+                return redirect('/sdm');
                 break;
 
             case 'hr':

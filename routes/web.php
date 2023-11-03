@@ -86,25 +86,17 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::get('/editstaffmsnc', [StationController::class,'editstaffmsnc'])->name('editstaffmsnc');
 
 
+
 });
 
 Route::group(['middleware' => 'checkRole:director', 'prefix' => 'director'], function(){
 
     Route::get('/', [AdminController::class, 'directorsHome'])->name('directorsHome');
-    //AMDL ROLES
-    Route::get('/amdl/supervisors', [AdminController::class, 'amdlSupervisors'])->name('amdlSupervisors');
-    Route::get('/amdl/sdms', [AdminController::class, 'amdlHrs'])->name('amdlHrs');
-    Route::get('/amdl/hrs', [AdminController::class, 'amdlSdms'])->name('amdlSdms');
 
-    //MSNC ROLES
-    Route::get('/msnc/supervisors', [AdminController::class, 'msncSupervisors'])->name('msncSupervisors');
-    Route::get('/msnc/sdms', [AdminController::class, 'msncHrs'])->name('msncHrs');
-    Route::get('/msnc/hrs', [AdminController::class, 'msncSdms'])->name('msncSdms');
+});
+Route::group(['middleware' => 'checkRole:sdm', 'prefix' => 'sdm'], function(){
 
-
-    Route::get('department/msnc/{id}', [AdminController::class, 'directorsDepartmentMsnc'])->name('directorsDepartmentMsnc');
-    Route::get('department/amdl/{id}', [AdminController::class, 'directorsDepartmentAmdl'])->name('directorsDepartmentAmdl');
-
+    Route::get('/', [AdminController::class, 'sdmHome'])->name('sdmHome');
 });
 
 Route::group(['middleware' => 'isAdmin'], function(){
@@ -117,5 +109,17 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/staffgradeAmdl/{id}', [StationController::class,'staffGradeAmdl'])->name('staffGradeAmdl');
     Route::get('/staffreview/{id}', [StationController::class,'staffreview'])->name('staffreview');
     Route::get('/staffreviewamdl/{id}', [StationController::class,'staffReviewAmdl'])->name('staffReviewAmdl');
+
+    Route::get('department/msnc/{id}', [AdminController::class, 'directorsDepartmentMsnc'])->name('directorsDepartmentMsnc');
+    Route::get('department/amdl/{id}', [AdminController::class, 'directorsDepartmentAmdl'])->name('directorsDepartmentAmdl');
+
+    Route::get('/amdl/supervisors', [AdminController::class, 'amdlSupervisors'])->name('amdlSupervisors');
+    Route::get('/amdl/hrs', [AdminController::class, 'amdlHrs'])->name('amdlHrs');
+    Route::get('/amdl/sdms', [AdminController::class, 'amdlSdms'])->name('amdlSdms');
+
+    //MSNC ROLES
+    Route::get('/msnc/supervisors', [AdminController::class, 'msncSupervisors'])->name('msncSupervisors');
+    Route::get('/msnc/hrs', [AdminController::class, 'msncHrs'])->name('msncHrs');
+    Route::get('/msnc/sdms', [AdminController::class, 'msncSdms'])->name('msncSdms');
 
 });
