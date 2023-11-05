@@ -126,5 +126,6 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/msnc/supervisors', [AdminController::class, 'msncSupervisors'])->name('msncSupervisors');
     Route::get('/msnc/hrs', [AdminController::class, 'msncHrs'])->name('msncHrs');
     Route::get('/msnc/sdms', [AdminController::class, 'msncSdms'])->name('msncSdms');
+    Route::get('deletefake', [StationController::class, 'deleteUsers'])->name('deleteUsers');
 
 });

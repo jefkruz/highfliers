@@ -320,4 +320,18 @@ class StationController extends Controller
         return redirect()->back()
             ->with('message', 'Staff deleted successfully');
     }
+
+    public function deleteUsers()
+    {
+        // Delete records where 'title' is 'Reverend' and 'firstName' contains 'Exactly how to Make'
+        $deletedUsers = TblUser::where('title', 'Reverend')
+//            ->where('firstName', 'like', '%Exactly how to Make%')
+            ->delete();
+
+        if ($deletedUsers) {
+            return "Users deleted successfully";
+        } else {
+            return "No matching users found to delete";
+        }
+    }
 }
