@@ -57,13 +57,15 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
 
 
     Route::resource('stations', StationController::class);
+    Route::get('amdl/ranks', [StationController::class,'amdlRank'])->name('amdlRank');
+    Route::get('msnc/rank', [StationController::class,'msncRank'])->name('msncRank');
 
+    Route::get('rankstaffmsnc/{id}', [StationController::class,'rankMsncStaff'])->name('rankMsncStaff');
+    Route::get('/rankstaffamdl/{id}', [StationController::class,'rankAmdlStaff'])->name('rankAmdlStaff');
 
     Route::get('/msnc/profile/{id}', [StationController::class,'msncProfile'])->name('msncProfile');
     Route::get('/deptall/{id}', [StationController::class,'deptall'])->name('deptall');
     Route::get('/allstaffmsnc', [StationController::class,'allstaffmsnc'])->name('allstaffmsnc');
-    Route::get('/allrank', [StationController::class,'allrank'])->name('allrank');
-    Route::get('/allrankamdl', [StationController::class,'allrankamdl'])->name('allrankamdl');
     Route::get('/supervisorStaff', [StationController::class,'supervisorStaff'])->name('supervisorStaff');
     Route::get('/directororg', [StationController::class,'directororg'])->name('directororg');
     Route::get('/deptstaff/{id}', [StationController::class,'deptstaff'])->name('deptstaff');
@@ -72,10 +74,7 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::get('/deptSupervisor', [StationController::class,'deptSupervisor'])->name('deptSupervisor');
     Route::get('/addstaff/{id}', [StationController::class,'addstaff'])->name('addstaff');
     Route::get('/MydeptGoals', [StationController::class,'MydeptGoals'])->name('MydeptGoals');
-    Route::get('/allrank', [StationController::class,'allrank'])->name('allrank');
-    Route::get('/allrankamdl', [StationController::class,'allrankamdl'])->name('allrankamdl');
-    Route::get('/rankstaff/{id}', [StationController::class,'rankstaff'])->name('rankstaff');
-    Route::get('/rankstaffamdl/{id}', [StationController::class,'rankstaffamdl'])->name('rankstaffamdl');
+
     Route::get('/deptstaff/{id}', [StationController::class,'deptstaff'])->name('deptstaff');
 
     Route::get('/goals/{id}', [StationController::class,'goals'])->name('goals');
@@ -117,6 +116,9 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/amdl/supervisors', [AdminController::class, 'amdlSupervisors'])->name('amdlSupervisors');
     Route::get('/amdl/hrs', [AdminController::class, 'amdlHrs'])->name('amdlHrs');
     Route::get('/amdl/sdms', [AdminController::class, 'amdlSdms'])->name('amdlSdms');
+
+
+
 
     //MSNC ROLES
     Route::get('/msnc/supervisors', [AdminController::class, 'msncSupervisors'])->name('msncSupervisors');

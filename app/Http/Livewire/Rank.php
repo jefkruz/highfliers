@@ -31,7 +31,7 @@ class Rank extends Component
     {
         $this->emit('userStore');
         //return view('livewire.rank');
-        return view('livewire.rank',['posts' => $this->search === null ?
+        return view('livewire.msncrank',['posts' => $this->search === null ?
             TblRank::orderBy('rank')->paginate($this->perPage):
             TblRank::where('rank', 'like', '%' . $this->search . '%')
 

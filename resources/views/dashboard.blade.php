@@ -98,37 +98,37 @@
                 <!-- small box -->
                 <div class="small-box bg-lightblue">
                     <div class="inner">
-                        <a href="{{route('allrankamdl')}}">
+                        <a href="{{route('amdlRank')}}">
                         <h3 class="text-white">{{$amdlRank}}</h3>
 
                         <p class="text-white">AMDL Ranks</p>
                         </a>
                     </div>
-                    <a href="{{route('allrankamdl')}}">
+                    <a href="{{route('amdlRank')}}">
                     <div class="icon">
                         <i class="fa fa-certificate text-white"></i>
                     </div>
                     </a>
-                    <a href="{{route('allrankamdl')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('amdlRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-purple">
                     <div class="inner">
-                        <a href="{{route('allrank')}}">
+                        <a href="{{route('msncRank')}}">
                         <h3 class="text-white">{{$msncRank}}</h3>
 
                         <p class="text-white">MSNC Ranks</p>
                         </a>
                     </div>
-                    <a href="{{route('allrank')}}">
+                    <a href="{{route('msncRank')}}">
                     <div class="icon">
                         <i class="fa fa-certificate text-white"></i>
                     </div>
                     </a>
 
-                    <a href="{{route('allrank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('msncRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 

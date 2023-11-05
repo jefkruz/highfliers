@@ -23,7 +23,7 @@ class TblUser extends Model
 
     public function tblRank()
     {
-        return $this->belongsTo(TblRank::class);
+        return $this->belongsTo(TblRank::class,'rank_id');
     }
 
 }

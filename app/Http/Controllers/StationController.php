@@ -167,14 +167,16 @@ class StationController extends Controller
         return view('station.staffreviewamdl',compact('dept') );
     }
 
-    public function rankstaff($id)
+    public function rankMsncStaff($id)
     {
+        $id = decrypt($id);
         $dept = TblRank::find($id);
         //dd( $dept);
-        return view('station.staffrank',compact('dept') );
+        return view('station.staffrankmsnc',compact('dept') );
     }
-    public function rankstaffamdl($id)
+    public function rankAmdlStaff($id)
     {
+        $id = decrypt($id);
         $dept = Rank::find($id);
         //dd( $dept);
         return view('station.staffrankamdl',compact('dept') );
@@ -265,16 +267,16 @@ class StationController extends Controller
         return view('station.MydeptGoals' );
     }
 
-    public function allrank()
+    public function msncRank()
     {
 
-        return view('station.allrank' );
+        return view('station.msncrank' );
     }
 
-    public function allrankamdl()
+    public function amdlRank()
     {
 
-        return view('station.allrankamdl' );
+        return view('station.amdlrank' );
     }
 
 

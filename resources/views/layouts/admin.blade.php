@@ -133,7 +133,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('allrankamdl')}}" class="nav-link ">
+                            <a href="{{route('amdlRank')}}" class="nav-link ">
                                 <i class="nav-icon fa fa-certificate"></i>
                                 <p>
                                     AMDL Ranks
@@ -141,7 +141,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('allrank')}}" class="nav-link ">
+                            <a href="{{route('msncRank')}}" class="nav-link ">
                                 <i class="nav-icon fa fa-certificate"></i>
                                 <p>
                                     MSNC Ranks

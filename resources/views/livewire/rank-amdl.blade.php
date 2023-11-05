@@ -14,29 +14,39 @@
     @else
         @include('livewire.create')
     @endif
+    <br>
+    <div class="row">
+        <div class="col-sm-10 ">
+            <div class="card">
+                <div class="card-body table-responsive">
+                   <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
 
-    <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
-        <thead>
-        <tr>
+                        <th>S/N</th>
+                        <th>Rank</th>
 
-            <th>Rank</th>
+                        <th >Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($posts as $i=> $post)
+                        <tr>
 
-            <th width="150px">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach($posts as $post)
-            <tr>
+                            <td>{{++$i}}</td>
+                            <td>{{ $post->rank }}</td>
 
-                <td>{{ $post->rank }}</td>
-
-                <td>
-                    <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>
-                    {{--                    <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
-                    <a href="/rankstaffamdl/{{ $post->id }}"> <button class="btn btn-info btn-sm">See </button></a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                            <td>
+                                <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit Rank</button>
+                                {{--                    <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
+                                <a href="{{route('rankAmdlStaff',encrypt($post->id))}}"> <button class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View Staff </button></a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

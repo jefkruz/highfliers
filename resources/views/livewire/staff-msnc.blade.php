@@ -21,12 +21,13 @@
                     @else
                         @include('livewire.createstaffmsnc')
                     @endif
+                    <br>
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
-{{--                            <th>Rank</th>--}}
+                            <th>Rank</th>
                             <th>Email</th>
                             <th>Department</th>
                             <th>Action</th>
@@ -40,7 +41,7 @@
                         <tr>
                             <td>{{$user->firstName}}</td>
                             <td>{{$user->lastName}}</td>
-{{--                            <td>{{dd($user->tblRank)}}</td>--}}
+                            <td>{{$user->tblRank->rank ?? ''}}</td>
                             <td>{{$user->emailAddress}}</td>
 
                             <td>{{$user->tblDept->deptName?? 'null'}}</td>
