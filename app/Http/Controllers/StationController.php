@@ -324,7 +324,7 @@ class StationController extends Controller
     public function deleteUsers()
     {
         // Delete records where 'title' is 'Reverend' and 'firstName' contains 'Exactly how to Make'
-        $deletedUsers = TblUser::where('firstName', 'like', '%Just how would certainl%')
+        $deletedUsers = TblUser::where('firstName', 'like', '%Just how would certain%')
             ->delete();
 
         if ($deletedUsers) {
