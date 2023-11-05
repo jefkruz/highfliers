@@ -313,4 +313,11 @@ class StationController extends Controller
     {
         //
     }
+
+    public function msncStaffDelete($id)
+    {
+        TblUser::where('userID',$id)->delete();
+        return redirect()->back()
+            ->with('message', 'Staff deleted successfully');
+    }
 }

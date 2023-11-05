@@ -74,9 +74,10 @@ class StaffMsnc extends Component
      */
     public function edit($id)
     {
-        $post = TblUser::find($id);
+
+        $post = TblUser::where('userID',$id)->first();
        // dd($post);
-        $this->User_id = $id;
+        $this->userID = $id;
         $this->firstName = $post->firstName;
         $this->otherName = $post->otherName;
         $this->lastName = $post->lastName;
@@ -144,7 +145,7 @@ class StaffMsnc extends Component
      */
     public function delete($id)
     {
-        TblUser::where('rankID',$id)->delete();
-        session()->flash('message', 'Post Deleted Successfully.');
+        TblUser::where('userID',$id)->delete();
+        session()->flash('message', 'Staff Deleted Successfully.');
     }
 }

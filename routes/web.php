@@ -76,6 +76,7 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::get('/MydeptGoals', [StationController::class,'MydeptGoals'])->name('MydeptGoals');
 
     Route::get('/deptstaff/{id}', [StationController::class,'deptstaff'])->name('deptstaff');
+    Route::delete('msncstaffdelete/{id}', [StationController::class,'msncStaffDelete'])->name('msncStaffDelete');
 
     Route::get('/goals/{id}', [StationController::class,'goals'])->name('goals');
     Route::get('/directorgoals/{id}', [StationController::class,'directorgoals'])->name('directorgoals');
@@ -105,6 +106,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
 
     Route::get('/directorstaffamdl/{id}', [StationController::class,'directorStaffAmdl'])->name('directorStaffAmdl');
     Route::get('grade/{id}', [GradeController::class,'grade'])->name('grade');
+    Route::get('grade/msnc/{id}', [GradeController::class,'msncGrade'])->name('msncGrade');
     Route::post('grade/{id}', [GradeController::class,'amdlStoreGrade'])->name('amdlStoreGrade');
     Route::get('/staffgradeAmdl/{id}', [StationController::class,'staffGradeAmdl'])->name('staffGradeAmdl');
     Route::get('/staffreview/{id}', [StationController::class,'staffreview'])->name('staffreview');

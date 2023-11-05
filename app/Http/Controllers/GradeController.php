@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\Seeker;
+use App\Models\TblUser;
 use Illuminate\Http\Request;
 
 class GradeController extends Controller
@@ -16,6 +17,16 @@ class GradeController extends Controller
         $staff = Seeker::where('id', $id)->first();
         $data['staff'] = Seeker::where('id', $id)->first();
         $data['page_title'] = 'Grade '. $staff->title.' '. $staff->first_name.' '.$staff->other_name.' '.$staff->last_name ;
+        return view('grades.create', $data);
+    }
+
+    public function msncGrade($id)
+    {
+
+        $id = decrypt($id);
+        $staff = TblUser::where('userID', $id)->first();
+        $data['staff'] = TblUser::where('userID', $id)->first();
+        $data['page_title'] = 'Grade '.  $staff->firstName.' '.$staff->otherName.' '.$staff->lastName ;
         return view('grades.create', $data);
     }
 
