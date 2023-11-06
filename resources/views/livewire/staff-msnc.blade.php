@@ -10,12 +10,13 @@
 
                         </div>
                     </form>
+
                     @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}
                         </div>
                     @endif
-
+                    <br>
                     @if($updateMode)
                         @include('livewire.updatestaffmsnc')
                     @else
@@ -53,13 +54,13 @@
                                 <button  wire:click="edit({{ $user->userID}})"   class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit Profile</button>
                                 <a href="{{route('msncGrade',encrypt($user->userID))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                 <a href="/staffreview/{{$user->userID}}"> <button    class="btn btn-secondary btn-sm">Reviews</button></a>
-                                <form action="{{ route('msncStaffDelete',$user->userID) }}" method="POST"
-                                    {{--                                      onsubmit="return confirm('Are You sure you want to delete')"--}}
-                                >
-                                   @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                </form>
+{{--                                <form action="{{ route('msncStaffDelete',$user->userID) }}" method="POST"--}}
+{{--                                    --}}{{--                                      onsubmit="return confirm('Are You sure you want to delete')"--}}
+{{--                                >--}}
+{{--                                   @csrf--}}
+{{--                                    @method('DELETE')--}}
+{{--                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>--}}
+{{--                                </form>--}}
 {{--                                <button wire:click="delete({{ $user->userID }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Delete</button>--}}
                             </td>
                         </tr>

@@ -10,4 +10,9 @@ class Rank extends Model
     protected $connection = 'mysql';
     use HasFactory;
     protected $guarded;
+
+    public function seekers()
+    {
+        return $this->hasMany(Seeker::class, 'rank_id');
+    }
 }

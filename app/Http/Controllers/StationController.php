@@ -174,6 +174,7 @@ class StationController extends Controller
         //dd( $dept);
         return view('station.staffrankmsnc',compact('dept') );
     }
+
     public function rankAmdlStaff($id)
     {
         $id = decrypt($id);
@@ -181,6 +182,36 @@ class StationController extends Controller
         //dd( $dept);
         return view('station.staffrankamdl',compact('dept') );
     }
+
+    public function rankMsncDept($id)
+    {
+
+    }
+
+    public function rankAmdlDept($id)
+    {
+        $id = decrypt($id);
+        $data['ranks'] = Seeker::join('ranks', 'seekers.rank_id', '=', 'ranks.id')
+            ->where('seekers.organization_id', $id)
+            ->get();
+
+
+           return view('organization.amdl_rank', $data);
+
+    }
+
+    public function deptRankAmdl($id)
+    {
+        $id = decrypt($id);
+//        $dept = decrypt($dept);
+        $s = explode($id);
+        dd($s);
+
+        $data['staff'] = Seeker::where('organization_id', $dept)->where('rank_id',$id)->get();
+        dd( $data['staff']);
+        return view('organization.amdl_rank', $data);
+    }
+
     public function staffreview($id)
     {
         $dept = TblUser::where('userID',$id)->first();

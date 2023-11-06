@@ -27,6 +27,11 @@ class Seeker extends Model
         return Rank::find($this->rank_id);
     }
 
+    public function level()
+    {
+        return $this->belongsTo(Rank::class, 'rank_id');
+    }
+
     public function job()
     {
         return $this->belongsTo(Job::class);

@@ -119,7 +119,7 @@ class Deptstaff extends Component
     public function update()
     {
 
-dd($this->rank);
+//dd($this->rank);
 //        $post = TblRank::where('rankID',$this->rankID)->first();
 //
 //        $post->rank = $this->rank;
@@ -130,13 +130,18 @@ dd($this->rank);
             'lastName' => 'required',
             'rank' => 'required',
         ]);
-
-        TblUser::updateOrCreate(['id' => $this->User_id], [
-            'firstName' => $this->firstName,
-            'otherName' => $this->otherName,
-            'lastName' => $this->lastName,
-            'rank_id' => $this->rank,
-        ]);
+          $profile =TblUser::where('userID',$this->User_id)->first();
+        $profile->firstName = $this->firstName;
+        $profile->otherName = $this->otherName;
+        $profile->lastName=$this->lastName;
+        $profile->rank_id=$this->rank_id;
+        $profile->save();
+       // TblUser::updateOrCreate(['id' => $this->User_id], [
+//            'firstName' => $this->firstName,
+//            'otherName' => $this->otherName,
+//            'lastName' => $this->lastName,
+//            'rank_id' => $this->rank,
+//        ]);
 
 
         $this->updateMode = false;
@@ -152,7 +157,7 @@ dd($this->rank);
      */
     public function delete($id)
     {
-        TblUser::where('rankID',$id)->delete();
+        //TblUser::where('rankID',$id)->delete();
         session()->flash('message', 'Post Deleted Successfully.');
     }
 }

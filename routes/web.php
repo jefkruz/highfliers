@@ -120,6 +120,11 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/amdl/sdms', [AdminController::class, 'amdlSdms'])->name('amdlSdms');
 
 
+    Route::get('rankdeptmsnc/{id}', [StationController::class,'rankMsncDept'])->name('rankMsncDept');
+    Route::get('/rankdeptamdl/{id}', [StationController::class,'rankAmdlDept'])->name('rankAmdlDept');
+
+    Route::get('deptrankmsnc/{id}/{dept}', [StationController::class,'rankMsncStaff'])->name('rankMsncStaff');
+    Route::get('deptrankamdl/{id}', [StationController::class,'deptRankAmdl'])->name('deptRankAmdl');
 
 
     //MSNC ROLES
