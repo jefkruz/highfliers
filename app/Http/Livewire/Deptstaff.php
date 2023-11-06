@@ -126,7 +126,7 @@ class Deptstaff extends Component
 //        $post->save();
         $this->validate([
             'firstName' => 'required',
-            'otherName' => 'required',
+//            'otherName' => 'required',
             'lastName' => 'required',
             'rank' => 'required',
         ]);
