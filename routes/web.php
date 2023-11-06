@@ -124,7 +124,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/rankdeptamdl/{id}', [StationController::class,'rankAmdlDept'])->name('rankAmdlDept');
 
     Route::get('deptrankmsnc/{id}/{dept}', [StationController::class,'rankMsncStaff'])->name('rankMsncStaff');
-    Route::get('deptrankamdl/{id}', [StationController::class,'deptRankAmdl'])->name('deptRankAmdl');
+    Route::get('deptrankamdl/{id1}/{id2}', [StationController::class,'deptRankAmdl'])->name('deptRankAmdl');
 
 
     //MSNC ROLES

@@ -191,10 +191,14 @@ class StationController extends Controller
     public function rankAmdlDept($id)
     {
         $id = decrypt($id);
-        $data['ranks'] = Seeker::join('ranks', 'seekers.rank_id', '=', 'ranks.id')
-            ->where('seekers.organization_id', $id)
+//        $data['ranks'] = Seeker::join('ranks', 'seekers.rank_id', '=', 'ranks.id')
+//            ->where('seekers.organization_id', $id)
+//            ->groupBy('seekers.rank_id')
+//            ->get();
+        $seekersByRank = Seeker::where('organization_id', 5)
+            ->groupBy('rank_id')
             ->get();
-
+        dd($seekersByRank);
 
            return view('organization.amdl_rank', $data);
 

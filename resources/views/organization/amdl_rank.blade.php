@@ -27,7 +27,7 @@
                                     <tr>
 
                                         <td>{{++$i }}</td>
-                                        <td>{{$rank->level->rank}}</td>
+                                        <td>{{$rank->level->rank}} || {{$rank->level->id}}</td>
 
                                         <td>
 {{--                                            <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>--}}
