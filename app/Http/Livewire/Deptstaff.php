@@ -85,8 +85,8 @@ class Deptstaff extends Component
      */
     public function edit($id)
     {
-        $post = TblUser::find($id);
-        // dd($post);
+        $post = TblUser::where('userID',$id)->first();
+         //dd($post);
         $this->User_id = $id;
         $this->firstName = $post->firstName;
         $this->otherName = $post->otherName;
@@ -119,7 +119,7 @@ class Deptstaff extends Component
     public function update()
     {
 
-
+dd($this->rank);
 //        $post = TblRank::where('rankID',$this->rankID)->first();
 //
 //        $post->rank = $this->rank;
