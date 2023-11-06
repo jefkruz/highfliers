@@ -12,6 +12,8 @@ use App\Models\TblDept;
 use App\Models\TblUser;
 use App\Models\Seeker;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
+
 class StationController extends Controller
 {
     /**
@@ -191,28 +193,27 @@ class StationController extends Controller
     public function rankAmdlDept($id)
     {
         $id = decrypt($id);
-//        $data['ranks'] = Seeker::join('ranks', 'seekers.rank_id', '=', 'ranks.id')
-//            ->where('seekers.organization_id', $id)
-//            ->groupBy('seekers.rank_id')
-//            ->get();
-        $seekersByRank = Seeker::where('organization_id', 5)
+//
+        $data['ranks'] = Seeker::where('organization_id', $id)
+            ->select('rank_id', DB::raw('COUNT(id) as id_count'))
             ->groupBy('rank_id')
             ->get();
-        dd($seekersByRank);
 
+        $data['organization_id']=$id;
            return view('organization.amdl_rank', $data);
 
     }
 
-    public function deptRankAmdl($id)
+    public function deptRankAmdl($id, $id2)
     {
         $id = decrypt($id);
-//        $dept = decrypt($dept);
-        $s = explode($id);
-        dd($s);
+       // dd($id2);
+       $dept = decrypt($id2);
+        //$s = explode($id);
+
 
         $data['staff'] = Seeker::where('organization_id', $dept)->where('rank_id',$id)->get();
-        dd( $data['staff']);
+        //dd( $data['staff']);
         return view('organization.amdl_rank', $data);
     }
 

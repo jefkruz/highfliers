@@ -16,6 +16,7 @@
 
                                     <th>S/N</th>
                                     <th>Rank</th>
+                                    <th>Numbers</th>
 
                                     <th>Action</th>
 
@@ -24,17 +25,26 @@
                                 <tbody>
 
                                 @foreach($ranks as  $i=> $rank)
+{{--                                    --}}
+@php
+$null= $rank->level->rank?? 'null';
+//echo $null;
+@endphp
+@if($null != 'null')
                                     <tr>
 
                                         <td>{{++$i }}</td>
-                                        <td>{{$rank->level->rank}} || {{$rank->level->id}}</td>
+
+                                        <td>{{$rank->level->rank?? 'null'}} </td>
+                                        <td>{{$rank->id_count?? 'null'}} </td>
 
                                         <td>
 {{--                                            <button wire:click="edit({{ $post->id }})" class="btn btn-primary btn-sm">Edit</button>--}}
                                             {{--                    <button wire:click="delete({{ $post->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
-                                            <a href="{{route('deptRankAmdl',['id1' => encrypt($rank->id), 'id2' => $rank->organization_id])}}"> <button class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View Staff</button></a>
+                                            <a href="{{route('deptRankAmdl',['id1' => encrypt($rank->rank_id), 'id2' => encrypt($organization_id)])}}"> <button class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View Staff</button></a>
                                         </td>
                                     </tr>
+                                    @endif
                                 @endforeach
                                 </tbody>
                             </table>
