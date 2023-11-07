@@ -196,6 +196,16 @@ class StationController extends Controller
 
     public function rankMsncDept($id)
     {
+        $id = decrypt($id);
+//
+        $data['ranks'] = TblUser::where('deptID', $id)
+            ->select('rank_id', DB::raw('COUNT(id) as id_count'))
+            ->groupBy('rank_id')
+            ->get();
+
+//        $data['organization_id']=$id;
+        $data['organization']= TblDept::where('id',$id)->first();
+        return view('organization.amdl_rank', $data);
 
     }
 
@@ -208,11 +218,13 @@ class StationController extends Controller
             ->groupBy('rank_id')
             ->get();
 
-        $data['organization_id']=$id;
+//        $data['organization_id']=$id;
         $data['organization']= Organization::where('id',$id)->first();
            return view('organization.amdl_rank', $data);
 
     }
+
+
 
     public function deptRankAmdl($id, $id2)
     {

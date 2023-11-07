@@ -25,14 +25,14 @@
         <div class="small-box bg-warning">
             <div class="inner">
                 <a href=" {{route('rankAmdlDept',encrypt($department->id))}}">
-                <h3 class="text-dark">{{$ranks}}</h3>
+                    <h3 class="text-dark"><i class="fa fa-spin"></i></h3>
 
                 <p class="text-dark">Staff Ranks</p>
                 </a>
             </div>
             <a href=" {{route('rankAmdlDept',encrypt($department->id))}}">
             <div class="icon">
-                <i class="fa fa-people-roof"></i>
+                <i class="fa fa-layer-group"></i>
             </div>
             </a>
             <a href=" {{route('rankAmdlDept',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>

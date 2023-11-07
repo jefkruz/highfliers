@@ -86,10 +86,10 @@ class AdminController extends Controller
                 $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
                 $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',7)->get();
                 $data['supervisors'] = Admin::where('organization_id', $id)->where('role_id',9)->get();
-        $data['ranks'] = Seeker::where('organization_id', $id)
-            ->select('rank_id', DB::raw('COUNT(id) as id_count'))
-            ->groupBy('rank_id')
-            ->count();
+//        $data['ranks'] = Seeker::where('organization_id', $id)
+////            ->select('rank_id', DB::raw('COUNT(id) as id_count'))
+//            ->groupBy('rank_id')
+//            ->count();
 
         $data['page_title'] = $data['department']['name'];
 
