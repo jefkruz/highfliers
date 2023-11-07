@@ -25,9 +25,9 @@
         <div class="small-box bg-warning">
             <div class="inner">
                 <a href=" {{route('rankAmdlDept',encrypt($department->id))}}">
-                    <h3 class="text-dark"><i class="fa fa-spin"></i></h3>
+                    <h3 class="text-white"><i class="fa fa-spin"></i></h3>
 
-                <p class="text-dark">Staff Ranks</p>
+                <p class="text-white">Staff Ranks</p>
                 </a>
             </div>
             <a href=" {{route('rankAmdlDept',encrypt($department->id))}}">
@@ -81,7 +81,7 @@
                 <a href="{{route('amdlHrs')}}">
                 <h3 class="text-white">{{$hrs->count()}}</h3>
 
-                <p class="text-white">HR Managers</p>
+                <p class="text-white">Payroll Managers</p>
                 </a>
             </div>
             <a href="{{route('amdlHrs')}}">

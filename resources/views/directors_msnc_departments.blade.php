@@ -25,9 +25,9 @@
             <div class="small-box bg-warning">
                 <div class="inner">
                     <a href=" {{route('rankMsncDept',encrypt($department->deptID))}}">
-                        <h3 class="text-dark"><i class="fa fa-spin"></i></h3>
+                        <h3 class="text-white"><i class="fa fa-spin"></i></h3>
 
-                        <p class="text-dark">Staff Ranks</p>
+                        <p class="text-white">Staff Ranks</p>
                     </a>
                 </div>
                 <a href=" {{route('rankMsncDept',encrypt($department->deptID))}}">
@@ -76,7 +76,7 @@
             <div class="inner">
                 <h3>{{$hrs->count()}}</h3>
 
-                <p>HR Managers</p>
+                <p>Payroll Managers</p>
             </div>
             <div class="icon">
                 <i class="fa fa-users"></i>
