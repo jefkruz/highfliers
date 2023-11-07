@@ -303,6 +303,24 @@
 
                     </div>
 
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <a href=" {{route('rankAmdlDept',encrypt($department->organization->id))}}">
+                                    <h3 class="text-white"><i class="fa fa-spin"></i></h3>
+
+                                    <p class="text-white">{{$department->organization->name ?? '' }} Staff Ranks</p>
+                                </a>
+                            </div>
+                            <a href=" {{route('rankAmdlDept',encrypt($department->organization->id))}}">
+                                <div class="icon">
+                                    <i class="fa fa-layer-group"></i>
+                                </div>
+                            </a>
+                            <a href=" {{route('rankAmdlDept',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
                 @endforeach
 
                 @foreach($msnc as $msncstaff)
