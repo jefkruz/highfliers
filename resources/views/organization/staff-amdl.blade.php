@@ -1,62 +1,50 @@
 @extends('layouts.admin')
 
-
-
 @section('content')
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
 
+                <div class="card-body table-responsive">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead >
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Rank</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                        <div class="card-body table-responsive">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead >
-                                <tr>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{$user->first_name}}</td>
+                                <td>{{$user->last_name}}</td>
+                                <td>{{$user->rank()->rank?? 'null'}}</td>
+                                <td>{{$user->email}}</td>
 
-                                    <th>S/N</th>
-                                    <th>Rank</th>
-                                    <th>Numbers</th>
-                                    <th>Department</th>
+                                <td>{{$user->organization->name?? 'null'}}</td>
+                                <td>
+                                    <a href="{{route('amdlProfile',encrypt($user->id))}}"> <button   class="btn btn-primary btn-sm"><i class="fa fa-user"></i>View  Profile</button></a>
 
-                                    <th>Action</th>
+                                </td>
+                            </tr>
 
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                @foreach($ranks as  $i=> $rank)
-{{--                                    --}}
-@php
-$null= $rank->level->rank?? 'null';
-//echo $null;
-@endphp
-@if($null != 'null')
-                                    <tr>
-
-                                        <td>{{++$i }}</td>
-
-                                        <td>{{$rank->level->rank?? 'null'}} </td>
-                                        <td>{{$rank->id_count?? 'null'}} Staff Members </td>
-                                        <td>{{$organization->name}} </td>
-
-                                        <td>
-                                            <a href="{{route('viewRankDeptStaff',['id1' => encrypt($rank->rank_id), 'id2' => encrypt($organization->id)])}}"> <button class="btn btn-info btn-sm"><i class="fa fa-eye"></i> View Staff</button></a>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
+
         </div>
+    </div>
 
 @endsection
-
 @section('style')
     <link rel="stylesheet" href="{{asset('admin_assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin_assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -101,3 +89,4 @@ $null= $rank->level->rank?? 'null';
         });
     </script>
 @endsection
+

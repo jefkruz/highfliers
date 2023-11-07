@@ -186,12 +186,12 @@ class StationController extends Controller
         //dd( $dept);
         return view('station.staffrankamdl',compact('dept') );
     }
-    public function viewRankAmdlStaff($id)
+    public function viewRankDeptStaff($id1, $id2)
     {
-        $id = decrypt($id);
-        $dept = Rank::find($id);
-        //dd( $dept);
-        return view('station.staffrankamdl',compact('dept') );
+        $id = decrypt($id1);
+        $dept= decrypt($id2);
+        $data['users'] = Seeker::where('organization_id',$dept)->where('rank_id',$id)->get();
+        return view('organization.staff-amdl',$data);
     }
 
     public function rankMsncDept($id)
@@ -209,6 +209,7 @@ class StationController extends Controller
             ->get();
 
         $data['organization_id']=$id;
+        $data['organization']= Organization::where('id',$id)->first();
            return view('organization.amdl_rank', $data);
 
     }

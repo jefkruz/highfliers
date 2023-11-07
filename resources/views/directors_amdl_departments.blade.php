@@ -25,7 +25,7 @@
         <div class="small-box bg-warning">
             <div class="inner">
                 <a href=" {{route('rankAmdlDept',encrypt($department->id))}}">
-                <h3 class="text-dark">{{0}}</h3>
+                <h3 class="text-dark">{{$ranks}}</h3>
 
                 <p class="text-dark">Staff Ranks</p>
                 </a>
