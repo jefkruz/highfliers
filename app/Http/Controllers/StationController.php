@@ -204,7 +204,7 @@ class StationController extends Controller
             ->get();
 
 //        $data['organization_id']=$id;
-        $data['organization']= TblDept::where('id',$id)->first();
+        $data['organization']= TblDept::where('deptID',$id)->first();
         return view('organization.msnc_rank', $data);
 
     }

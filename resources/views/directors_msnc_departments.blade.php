@@ -24,18 +24,18 @@
             <!-- small box -->
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <a href=" {{route('rankMsncDept',encrypt($department->id))}}">
+                    <a href=" {{route('rankMsncDept',encrypt($department->deptID))}}">
                         <h3 class="text-dark"><i class="fa fa-spin"></i></h3>
 
                         <p class="text-dark">Staff Ranks</p>
                     </a>
                 </div>
-                <a href=" {{route('rankMsncDept',encrypt($department->id))}}">
+                <a href=" {{route('rankMsncDept',encrypt($department->deptID))}}">
                     <div class="icon">
                         <i class="fa fa-layer-group"></i>
                     </div>
                 </a>
-                <a href=" {{route('rankMsncDept',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href=" {{route('rankMsncDept',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     <div class="col-lg-3 col-6">
