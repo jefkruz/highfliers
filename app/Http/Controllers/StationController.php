@@ -179,6 +179,15 @@ class StationController extends Controller
 
     public function rankAmdlStaff($id)
     {
+
+        $id = decrypt($id);
+
+        $dept = Rank::find($id);
+        //dd( $dept);
+        return view('station.staffrankamdl',compact('dept') );
+    }
+    public function viewRankAmdlStaff($id)
+    {
         $id = decrypt($id);
         $dept = Rank::find($id);
         //dd( $dept);
