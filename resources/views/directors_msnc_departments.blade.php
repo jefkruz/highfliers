@@ -62,7 +62,7 @@
             <div class="inner">
                 <h3>{{$sdms->count()}}</h3>
 
-                <p>SDM/Admin</p>
+                <p>Staff Development Managers</p>
             </div>
             <div class="icon">
                 <i class="fa fa-people-roof"></i>
@@ -90,7 +90,7 @@
                 <div class="inner">
                     <h3>{{$supervisors->count()}}</h3>
 
-                    <p>HOD's</p>
+                    <p>HODs/Supervisors</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-users"></i>

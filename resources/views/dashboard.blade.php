@@ -311,7 +311,7 @@
                                 <a href=" {{route('rankAmdlDept',encrypt($department->organization->id))}}">
                                     <h3 class="text-white"><i class="fa fa-spin"></i></h3>
 
-                                    <p class="text-white">{{$department->organization->name ?? '' }} Staff Ranks</p>
+                                    <p class="text-white">Staff Ranks</p>
                                 </a>
                             </div>
                             <a href=" {{route('rankAmdlDept',encrypt($department->organization->id))}}">
@@ -330,7 +330,7 @@
                                 <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}">
                                     <h3 class="text-white">{{$amdlunits}}</h3>
 
-                                    <p class="text-white">{{$department->organization->name ?? '' }}  Sub Departments</p>
+                                    <p class="text-white"> Sub Departments</p>
                                 </a>
                             </div>
                             <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}">
@@ -388,7 +388,7 @@
                                     <a href=" {{route('subdepartments.createMsnc',encrypt($msncstaff->department->deptID))}}">
                                         <h3 class="text-white">{{$msncunits}}</h3>
 
-                                        <p class="text-white">{{$msncstaff->department->deptName ?? '' }}  Sub Departments</p>
+                                        <p class="text-white"> Sub Departments</p>
                                     </a>
                                 </div>
                                 <a href=" {{route('subdepartments.createMsnc',encrypt($msncstaff->department->deptID))}}">

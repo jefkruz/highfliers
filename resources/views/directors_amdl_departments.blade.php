@@ -100,7 +100,7 @@
                     <a href="{{route('amdlSupervisors')}}">
                     <h3 class="text-white">{{$supervisors->count()}}</h3>
 
-                    <p class="text-white">HOD's</p>
+                    <p class="text-white">HODs/Supervisors</p>
                     </a>
                 </div>
                 <a href="{{route('amdlSupervisors')}}">
