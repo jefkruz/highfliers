@@ -119,7 +119,7 @@ class Deptstaff extends Component
     public function update()
     {
 
-//dd($this->rank);
+//($this->rank);
 //        $post = TblRank::where('rankID',$this->rankID)->first();
 //
 //        $post->rank = $this->rank;
@@ -130,12 +130,20 @@ class Deptstaff extends Component
             'lastName' => 'required',
             'rank' => 'required',
         ]);
-          $profile =TblUser::where('userID',$this->User_id)->first();
-        $profile->firstName = $this->firstName;
-        $profile->otherName = $this->otherName;
-        $profile->lastName=$this->lastName;
-        $profile->rank_id=$this->rank_id;
-        $profile->save();
+          $profile1 =TblUser::where('userID',$this->User_id) ->first();   
+          //dd($profile1->id);
+            $profile = TblUser::find($profile1->id) ->update([
+             'firstName' => $this->firstName,
+              'lastName' => $this->lastName,
+           'rank_id' => $this->rank
+        ]);
+        
+       //d( $profile1);
+    //    $profile->firstName = $this->firstName;
+      //  $profile->otherName = $this->otherName;
+        //$profile->lastName=$this->lastName;
+        //$profile->rank_id = $this->rank_id;
+        //$profile->save();
        // TblUser::updateOrCreate(['id' => $this->User_id], [
 //            'firstName' => $this->firstName,
 //            'otherName' => $this->otherName,

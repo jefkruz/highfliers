@@ -36,7 +36,9 @@ class StaffMsnc extends Component
         //return view('livewire.staff-msnc');
 
         return view('livewire.staff-msnc',['users' => $this->search === null ?
-            TblUser::orderBy('lastName')->paginate($this->perPage):
+            TblUser::where('mission_station_id','1')->
+        
+            orderBy('lastName')->paginate($this->perPage):
             TblUser::where('firstName', 'like', '%' . $this->search . '%')
             ->orWhere('otherName', 'like', '%' . $this->search . '%')
             ->orWhere('lastName', 'like', '%' . $this->search . '%')
@@ -123,6 +125,14 @@ class StaffMsnc extends Component
 //            'nomenclature_rank' => 'required',
         ]);
 //dd(  $this->userID);
+
+        $profile1 =TblUser::where('userID',$this->User_id) ->first();   
+          //dd($profile1->id);
+            $profile = TblUser::find($profile1->id) ->update([
+             'firstName' => $this->firstName,
+              'lastName' => $this->lastName,
+           'rank_id' => $this->rank
+        ]);
  $profile = TblUser::where('userID',$this->userID)->first();
  //dd( $profile);
         //TblUser::update(['userID' => $this->User_id], [
@@ -151,7 +161,8 @@ class StaffMsnc extends Component
      */
     public function delete($id)
     {
-        TblUser::where('userID',$id)->delete();
+    //dd('bbb');
+        TblUser::find($id)->delete();
         session()->flash('message', 'Staff Deleted Successfully.');
     }
 }
