@@ -193,6 +193,13 @@ class StationController extends Controller
         $data['users'] = Seeker::where('organization_id',$dept)->where('rank_id',$id)->get();
         return view('organization.staff-amdl',$data);
     }
+    public function viewRankDeptStaffMsnc($id1, $id2)
+    {
+        $id = decrypt($id1);
+        $dept= decrypt($id2);
+        $data['users'] = TblUser::where('deptID',$dept)->where('rank_id',$id)->get();
+        return view('organization.staff-msnc',$data);
+    }
 
     public function rankMsncDept($id)
     {
