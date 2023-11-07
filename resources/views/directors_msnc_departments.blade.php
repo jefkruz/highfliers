@@ -35,7 +35,7 @@
                         <i class="fa fa-layer-group"></i>
                     </div>
                 </a>
-                <a href=" {{route('rankMsncDept',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href=" {{route('rankMsncDept',encrypt($department->deptID))}}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-6">
@@ -90,7 +90,7 @@
                 <div class="inner">
                     <h3>{{$supervisors->count()}}</h3>
 
-                    <p>Supervisors</p>
+                    <p>HOD's</p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-users"></i>

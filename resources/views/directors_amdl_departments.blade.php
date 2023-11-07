@@ -89,7 +89,7 @@
                 <i class="fa fa-users"></i>
             </div>
             </a>
-            <a href="{{route('amdlHrs')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{route('amdlHrs')}}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
 
@@ -100,7 +100,7 @@
                     <a href="{{route('amdlSupervisors')}}">
                     <h3 class="text-white">{{$supervisors->count()}}</h3>
 
-                    <p class="text-white">Supervisors</p>
+                    <p class="text-white">HOD's</p>
                     </a>
                 </div>
                 <a href="{{route('amdlSupervisors')}}">
