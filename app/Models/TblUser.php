@@ -25,5 +25,9 @@ class TblUser extends Model
     {
         return $this->belongsTo(TblRank::class,'rank_id');
     }
+    public function level()
+    {
+        return $this->belongsTo(Rank::class, 'rank_id');
+    }
 
 }
