@@ -74,6 +74,8 @@ class AdminController extends Controller
             ->where('company', 'amdl')->get();
         $data['msnc'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
          $data['amdlunits'] = SubDepartment::where('department_id',$admin->organization_id)->count();
+        $data['msncunits'] = SubDepartment::where('department_id',$admin->deptID)->count();
+
         return view('dashboard', $data);
     }
 
@@ -105,6 +107,8 @@ class AdminController extends Controller
         $admin = Session::get('admin');
 
         $data['department'] = TblDept::where('deptID', $id)->firstOrFail();
+        $data['msncunits'] = SubDepartment::where('department_id',$id)->count();
+
         $data['staff'] = TblUser::where('deptID', $id)->get();
         $data['sdms'] = Admin::where('station_id', $id)->where('role_id',5)->get();
         $data['hrs'] = Admin::where('station_id', $id)->where('role_id',7)->get();

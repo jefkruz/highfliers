@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\Organization;
 use App\Models\SubDepartment;
+use App\Models\TblDept;
 use Illuminate\Http\Request;
 
 /**
@@ -41,6 +42,15 @@ class SubDepartmentController extends Controller
         return view('sub-department.create', $data);
     }
 
+    public function createMsnc($id)
+    {
+        $id = decrypt($id);
+        $data['dept'] = TblDept::where('deptID',$id)->first();
+//        $data['hods'] = Admin::where('organization_id',$id)->where('role_id',10)->get();
+        $data['page_title'] = 'Create Sub-Department';
+        return view('sub-department.createmsnc', $data);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -63,7 +73,22 @@ class SubDepartmentController extends Controller
         return redirect()->back()
             ->with('message', 'SubDepartment created successfully.');
     }
+    public function storeMsnc(Request $request)
+    {
+        $request->validate([
+            'department_id' => 'required',
+            'name' => 'required|unique:sub_departments',
 
+        ]);
+        $ev = new SubDepartment();
+
+        $ev->department_id = $request->department_id;
+        $ev->name = $request->name;
+        $ev->save();
+
+        return redirect()->back()
+            ->with('message', 'SubDepartment created successfully.');
+    }
     /**
      * Display the specified resource.
      *

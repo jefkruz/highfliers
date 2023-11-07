@@ -381,6 +381,24 @@
                                 <a href=" {{route('rankMsncDept',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <a href=" {{route('subdepartments.createMsnc',encrypt($msncstaff->department->deptID))}}">
+                                        <h3 class="text-white">{{$msncunits}}</h3>
+
+                                        <p class="text-white">{{$msncstaff->department->deptName ?? '' }}  Sub Departments</p>
+                                    </a>
+                                </div>
+                                <a href=" {{route('subdepartments.createMsnc',encrypt($msncstaff->department->deptID))}}">
+                                    <div class="icon">
+                                        <i class="fa fa-rectangle-list"></i>
+                                    </div>
+                                </a>
+                                <a href=" {{route('subdepartments.createMsnc',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
                 @endforeach
 
 

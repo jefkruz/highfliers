@@ -101,7 +101,11 @@ Route::group(['middleware' => 'checkRole:sdm', 'prefix' => 'sdm'], function(){
 Route::group(['middleware' => 'isAdmin'], function(){
 //    Route::resource('subdepartments', SubDepartmentController::class);
     Route::get('subdepartments/create/{id}', [SubDepartmentController::class,'create'])->name('subdepartments.create');
+
     Route::post('subdepartments/create/{id}', [SubDepartmentController::class,'store']);
+
+    Route::get('subdepartments/msnc/create/{id}', [SubDepartmentController::class,'createMsnc'])->name('subdepartments.createMsnc');
+    Route::post('subdepartments/msnc/create/{id}', [SubDepartmentController::class,'storeMsnc']);
 
     Route::get('amdl/profile/{id}', [OrganizationController::class,'amdlProfile'])->name('amdlProfile');
     Route::get('msnc/profile/{id}', [StationController::class,'msncProfile'])->name('msncProfile');
