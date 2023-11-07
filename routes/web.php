@@ -103,6 +103,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('staffgradeamdl/{id}', [StationController::class,'staffGradeamdl'])->name('staffGradeAmdl');
 
     Route::get('/directorstaffamdl/{id}', [StationController::class,'directorStaffAmdl'])->name('directorStaffAmdl');
+    Route::get('/directorstaffmsnc/{id}', [StationController::class,'directorStaffMsnc'])->name('directorStaffMsnc');
     Route::get('grade/{id}', [GradeController::class,'grade'])->name('grade');
     Route::get('grade/msnc/{id}', [GradeController::class,'msncGrade'])->name('msncGrade');
     Route::post('grade/{id}', [GradeController::class,'amdlStoreGrade'])->name('amdlStoreGrade');

@@ -42,7 +42,7 @@
                         <tr>
                             <td>{{$user->firstName}}</td>
                             <td>{{$user->lastName}}</td>
-                            <td>{{$user->tblRank->rank?? ''}}</td>
+                            <td>{{$user->level->rank?? ''}}</td>
                             <td>{{$user->emailAddress}}</td>
 
                             <td>{{$user->tblDept->deptName?? 'null'}}</td>

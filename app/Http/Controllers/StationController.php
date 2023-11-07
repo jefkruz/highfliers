@@ -317,6 +317,14 @@ class StationController extends Controller
         return view('station.directorstaffamdl',compact('dept')  );
     }
 
+    public function directorStaffMsnc($id)
+    {
+        //dd($id);
+        $id = decrypt($id);
+        $dept = TblDept::where('deptID',$id)->first();
+        return view('station.deptstaff',compact('dept')  );
+    }
+
 
 
     public function MydeptGoals()
