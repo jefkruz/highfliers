@@ -251,6 +251,7 @@
 
                 </div>
 
+
                     @endforeach
 
                     @foreach($msnc as $msncstaff)
@@ -321,6 +322,25 @@
                             <a href=" {{route('rankAmdlDept',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}">
+                                    <h3 class="text-white">{{$amdlunits}}</h3>
+
+                                    <p class="text-white">{{$department->organization->name ?? '' }}  Sub Departments</p>
+                                </a>
+                            </div>
+                            <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}">
+                                <div class="icon">
+                                    <i class="fa fa-rectangle-list"></i>
+                                </div>
+                            </a>
+                            <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
                 @endforeach
 
                 @foreach($msnc as $msncstaff)
@@ -342,6 +362,25 @@
                             <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <a href=" {{route('rankMsncDept',encrypt($msncstaff->department->deptID))}}">
+                                        <h3 class="text-dark"><i class="fa fa-spin"></i></h3>
+
+                                        <p class="text-dark">Staff Ranks</p>
+                                    </a>
+                                </div>
+                                <a href=" {{route('rankMsncDept',encrypt($msncstaff->department->deptID))}}">
+                                    <div class="icon">
+                                        <i class="fa fa-layer-group"></i>
+                                    </div>
+                                </a>
+                                <a href=" {{route('rankMsncDept',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
                 @endforeach
 
 

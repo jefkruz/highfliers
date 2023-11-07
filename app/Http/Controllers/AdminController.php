@@ -8,6 +8,7 @@ use App\Models\Rank;
 use App\Models\Role;
 use App\Models\Admin;
 use App\Models\Seeker;
+use App\Models\SubDepartment;
 use App\Models\TblDept;
 use App\Models\TblRank;
 use App\Models\TblStation;
@@ -72,7 +73,7 @@ class AdminController extends Controller
         $data['amdl'] = AdminOffice::where('admin_id', $admin->id)
             ->where('company', 'amdl')->get();
         $data['msnc'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
-
+         $data['amdlunits'] = SubDepartment::where('department_id',$admin->organization_id)->count();
         return view('dashboard', $data);
     }
 
@@ -86,6 +87,8 @@ class AdminController extends Controller
                 $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
                 $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',7)->get();
                 $data['supervisors'] = Admin::where('organization_id', $id)->where('role_id',9)->get();
+                $data['amdlunits'] = SubDepartment::where('department_id',$id)->count();
+
 //        $data['ranks'] = Seeker::where('organization_id', $id)
 ////            ->select('rank_id', DB::raw('COUNT(id) as id_count'))
 //            ->groupBy('rank_id')
