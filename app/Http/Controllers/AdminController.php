@@ -13,6 +13,8 @@ use App\Models\TblDept;
 use App\Models\TblRank;
 use App\Models\TblStation;
 use App\Models\TblUser;
+use App\Models\NomenclatureCategory;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -34,6 +36,7 @@ class AdminController extends Controller
         $this->data['amdlStaff'] = Seeker::count();
         $this->data['msncStaff'] = TblUser::where('mission_station_id', 1)->count();
         $this->data['msncRank'] = TblRank::count();
+        $this->data['amdlnomenclature'] = NomenclatureCategory::count();
         $this->data['amdlRank'] = Rank::count();
         $this->data['directors'] = Admin::where('role_id', '6')
             ->count();
