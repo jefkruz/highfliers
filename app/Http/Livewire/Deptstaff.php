@@ -219,4 +219,37 @@ class Deptstaff extends Component
         //TblUser::where('rankID',$id)->delete();
         session()->flash('message', 'Post Deleted Successfully.');
     }
+    public function ban($id)
+    {
+        $post = TblUser::where('userID',$id)->first();
+       // dd($post);
+        if($post->enabled== 1) {
+           // TblUser::where('userID','=',$id)->update(['enabled' => '0']);
+            $profile1 = TblUser::where('userID', $id)->first();
+            //dd($profile1->id);
+            $profile = TblUser::find($profile1->id)->update([
+                'firstName' => $profile1->firstName,
+                'lastName' => $profile1->lastName,
+
+
+                'enabled' => '0',
+            ]);
+
+            $this->cat_id =0;
+            $this->nomGroup_id =0;
+            $this->nomRank_id =0;
+            session()->flash('message', 'Staff Disengaged Successfully.');
+        }else{
+            //TblUser::where('userID', '=',$id)->update(['enabled' => '1']);
+            $profile1 = TblUser::where('userID', $id)->first();
+            //dd($profile1->id);
+            $profile = TblUser::find($profile1->id)->update([
+                'firstName' => $profile1->firstName,
+                'lastName' => $profile1->lastName,
+
+                'enabled' => '1',
+            ]);
+            session()->flash('message', 'Staff engaged Successfully.');
+        }
+    }
 }

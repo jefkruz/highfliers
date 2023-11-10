@@ -33,12 +33,12 @@
         </div>
     </div>
     <div class="row mb-4">
-        <label for="horizontal-email-input" class="col-sm-3 col-form-label">Recruitment Company</label>
+        <label for="horizontal-email-input" class="col-sm-3 col-form-label">Rank Type</label>
         <div class="col">
 
             <select wire:model="company" wire:change="getCompanies" class="form-control" required>
                 {{--                <select name="company" id="company" class="form-control" required>--}}
-                <option value="">Recruitment Company</option>
+                <option value="">Rank Type</option>
                 <option value="rank">Rank</option>
                 <option value="nomenclature">Nomenclature</option>
             </select>

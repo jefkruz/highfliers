@@ -34,6 +34,7 @@
                             <th>Nomenclature Rank</th>
                             <th>Email</th>
                             <th>Department</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
@@ -53,6 +54,13 @@
 
                             <td>{{$user->tblDept->deptName?? 'null'}}</td>
                             <td>
+                                @if($user->enabled==0)
+                                    <button  class="btn btn-danger btn-sm">Disengaged</button>
+                                @else
+                                    <button  class="btn btn-success btn-sm">Active</button>
+                                @endif
+                            </td>
+                            <td>
 
 
                                 <a href="{{route('msncProfile',encrypt($user->userID))}}"> <button   class="btn btn-primary btn-sm"><i class="fa fa-user"></i> View Profile</button></a>
@@ -61,7 +69,12 @@
                                 @if(session('role')== 'director' || session('role')== 'admin' )
                                 <a href="{{route('msncGrade',encrypt($user->userID))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                 <a href="/staffreview/{{$user->userID}}"> <button    class="btn btn-secondary btn-sm">Reviews</button></a>
-                                 <button  class="btn btn-danger btn-sm" wire:click="delete({{$user->id}})"onsubmit="return confirm('Are You sure you want to delete')"  ><i class="fa fa-fw fa-trash"></i> Delete</button>
+{{--                                 <button  class="btn btn-danger btn-sm" wire:click="delete({{$user->id}})"onsubmit="return confirm('Are You sure you want to delete')"  ><i class="fa fa-fw fa-trash"></i> Delete</button>--}}
+                                @endif
+                                @if($user->enabled==1)
+                                    <button wire:click="ban({{ $user->userID }})" class="btn btn-danger btn-sm">Disengage</button>
+                                @else
+                                    <button wire:click="ban({{ $user->userID }})" class="btn btn-success btn-sm">Activate</button>
                                 @endif
 {{--
   <form action="{{ route('msncStaffDelete',$user->userID) }}" method="POST"--}}
