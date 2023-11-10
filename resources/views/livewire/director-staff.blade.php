@@ -41,6 +41,7 @@
                             <th>Email</th>
                             <th>BLW Portal ID</th>
                             <th>Department</th>
+                            <th>Status</th>
                             <th>Action</th>
 
                         </tr>
@@ -62,14 +63,25 @@
                                 <td>{{$user->blw_portal_id}}</td>
 
                                 <td>{{$user->organization->name?? 'null'}}</td>
+                                <td>@if($user->ban==1)
+                                        <button  class="btn btn-danger btn-sm">Disengaged</button>
+                                    @else
+                                        <button  class="btn btn-success btn-sm">Engaged</button>
+                                @endif</td>
                                 <td>
                                     <a href="{{route('amdlProfile',encrypt($user->id))}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
 
                                     <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"> <i class="fa fa-edit"></i> Edit</button>
+                                    @if(session('role')== 'director' || session('role')== 'admin' )
                                     <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                     <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-secondary btn-sm">Review Staff</button></a>
 {{--                                    <a href="/directorgoals/{{$user->id}}"> <button    class="btn btn-danger btn-sm">Appraisals</button></a>--}}
-                                    {{--                                <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm">Delete</button>--}}
+                                        @if($user->ban==0)
+                                        <button wire:click="ban({{ $user->id }})" class="btn btn-danger btn-sm">Disengage</button>
+                                        @else
+                                            <button wire:click="ban({{ $user->id }})" class="btn btn-success btn-sm">Engage</button>
+                                        @endif
+                              @endif
                                 </td>
                             </tr>
 @endif

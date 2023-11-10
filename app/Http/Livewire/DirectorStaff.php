@@ -292,4 +292,16 @@ class DirectorStaff extends Component
         session()->flash('message', 'Staff Deleted Successfully.');
     }
 
+    public function ban($id)
+    {
+        $post = Seeker::find($id);
+        if($post->ban== 0) {
+            Seeker::where('id', $id)->update(['ban' => '1']);
+            session()->flash('message', 'Staff Disengaged Successfully.');
+        }else{
+            Seeker::where('id', $id)->update(['ban' => '0']);
+            session()->flash('message', 'Staff engaged Successfully.');
+        }
+    }
+
 }
