@@ -9,7 +9,10 @@ use App\Models\Rank;
 use App\Models\HrHead;
 use App\Models\Supervisor;
 use App\Models\Organization;
+use App\Models\NomenclatureCategory;
 
+use App\Models\NomenclatureRank;
+use App\Models\NomenclatureGroup;
 class DirectorStaff extends Component
 {
 
@@ -22,6 +25,13 @@ class DirectorStaff extends Component
     public $limitPerPage = 10;
     public $ranks;
     public $rank;
+    public $company;
+    public $cats;
+    public $cat_id = 0;
+    public $nomGroup_id = 0;
+    public $nomRank_id =0;
+    public $nomGroups;
+    public $nomRanks;
     protected $listeners = [
         'load-more' => 'loadMore'
     ];
@@ -71,6 +81,35 @@ class DirectorStaff extends Component
 
         $this->resetInputFields();
     }
+    public function getCompanies(){
+
+        if($this->company == 'rank'){
+            $this->ranks = Rank::get();
+
+
+        }
+        if($this->company == 'nomenclature'){
+
+            $this->cats = NomenclatureCategory::all();
+        }
+
+
+    }
+
+    public function getNomGroup(){
+
+
+        $this->nomGroups = NomenclatureGroup::where('nomenclature_category_id',$this->cat_id)->get();
+
+    }
+
+
+    public function getNomRank(){
+
+
+        $this->nomRanks = NomenclatureRank::where('nomenclature_group_id',$this->nomGroup_id)->get();
+
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -89,6 +128,9 @@ class DirectorStaff extends Component
         $this->blw_portal_id = $post->blw_portal_id;
         $this->nomenclature_rank = $post->nomenclature_rank;
         $this->ranks = Rank::get();
+
+        $this->nomGroups = NomenclatureGroup::where('nomenclature_category_id',$this->cat_id)->get();
+        $this->nomRanks = NomenclatureRank::where('nomenclature_group_id',$this->nomGroup_id)->get();
 
         //  dd( $this->firstName);
 //echo 'bb';
@@ -175,30 +217,64 @@ class DirectorStaff extends Component
     public function update()
     {
 
-
+        if($this->company == 'rank') {
 //        $post = TblRank::where('rankID',$this->rankID)->first();
 //
 //        $post->rank = $this->rank;
 //        $post->save();
-        $this->validate([
-            'firstName' => 'required',
+            $this->validate([
+                'firstName' => 'required',
 //            'otherName' => 'required',
-            'lastName' => 'required',
-            'rank' => 'required',
-            'blw_portal_id' => 'required',
+                'lastName' => 'required',
+                'rank' => 'required',
+                'blw_portal_id' => 'required',
 //            'nomenclature_rank' => 'required',
-        ]);
+            ]);
 
-        Seeker::updateOrCreate(['id' => $this->User_id], [
-            'first_name' => $this->firstName,
-            'other_name' => $this->otherName,
-            'last_name' => $this->lastName,
-            'rank_id' => $this->rank,
-            'blw_portal_id' => $this->blw_portal_id,
-            'nomenclature_rank' => $this->nomenclature_rank,
-        ]);
+            Seeker::updateOrCreate(['id' => $this->User_id], [
+                'first_name' => $this->firstName,
+                'other_name' => $this->otherName,
+                'last_name' => $this->lastName,
+                'rank_id' => $this->rank,
+                'blw_portal_id' => $this->blw_portal_id,
 
+            ]);
 
+            $this->cat_id =0;
+            $this->nomGroup_id =0;
+            $this->nomRank_id =0;
+        }
+
+        if($this->company == 'nomenclature') {
+//        $post = TblRank::where('rankID',$this->rankID)->first();
+//
+//        $post->rank = $this->rank;
+//        $post->save();
+            $this->validate([
+                'firstName' => 'required',
+//            'otherName' => 'required',
+                'lastName' => 'required',
+
+                'blw_portal_id' => 'required',
+//            'nomenclature_rank' => 'required',
+            ]);
+
+            Seeker::updateOrCreate(['id' => $this->User_id], [
+                'first_name' => $this->firstName,
+                'other_name' => $this->otherName,
+                'last_name' => $this->lastName,
+
+                'blw_portal_id' => $this->blw_portal_id,
+
+                'nomenclature_category_id' => $this->cat_id,
+                'nomenclature_group_id' => $this->nomGroup_id,
+                'nomenclature_rank_id' => $this->nomRank_id,
+            ]);
+
+            $this->cat_id =0;
+            $this->nomGroup_id =0;
+            $this->nomRank_id =0;
+        }
         $this->updateMode = false;
 
         session()->flash('message', 'Post Updated Successfully.');

@@ -35,6 +35,9 @@
                             <th>Other Name</th>
                             <th>Last Name</th>
                             <th>Rank</th>
+                            <th>Nomenclature Category</th>
+                            <th>Nomenclature Group</th>
+                            <th>Nomenclature Rank</th>
                             <th>Email</th>
                             <th>BLW Portal ID</th>
                             <th>Department</th>
@@ -52,6 +55,9 @@
                                 <td>{{$user->other_name}}</td>
                                 <td>{{$user->last_name}}</td>
                                 <td>{{$user->rank()->rank ?? 'null'}}</td>
+                                <td>{{$user->nomenclature()->name?? 'null'}}</td>
+                                <td>{{$user->nomenclatureGroup()->name?? 'null'}}</td>
+                                <td>{{$user->nomenclatureRank()->name?? 'null'}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->blw_portal_id}}</td>
 
