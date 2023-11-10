@@ -30,4 +30,18 @@ class TblUser extends Model
         return $this->belongsTo(Rank::class, 'rank_id');
     }
 
+    public function nomenclature()
+    {
+        return NomenclatureCategory::find($this->nomenclature_category_id);
+    }
+
+    public function nomenclatureGroup()
+    {
+        return NomenclatureGroup::find($this->nomenclature_group_id);
+    }
+    public function nomenclatureRank()
+    {
+        return NomenclatureRank::find($this->nomenclature_rank_id);
+    }
+
 }

@@ -30,6 +30,9 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Rank</th>
+                            <th>Nomenclature Category</th>
+                            <th>Nomenclature Group</th>
+                            <th>Nomenclature Rank</th>
                             <th>Email</th>
                             <th>Department</th>
                             <th>Action</th>
@@ -44,6 +47,9 @@
                                 <td>{{$user->first_name}}</td>
                                 <td>{{$user->last_name}}</td>
                                  <td>{{$user->rank()->rank?? 'null'}}</td>
+                                 <td>{{$user->nomenclature()->name?? 'null'}}</td>
+                                 <td>{{$user->nomenclatureGroup()->name?? 'null'}}</td>
+                                 <td>{{$user->nomenclatureRank()->name?? 'null'}}</td>
                                 <td>{{$user->email}}</td>
 
                                 <td>{{$user->organization->name?? 'null'}}</td>

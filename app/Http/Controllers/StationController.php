@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NomenclatureCategory;
+use App\Models\NomenclatureGroup;
 use App\Models\TblRank;
 use App\Models\Rank;
 use Illuminate\Http\Request;
@@ -344,6 +346,26 @@ class StationController extends Controller
     {
 
         return view('station.msncrank' );
+    }
+    public function nomRank()
+    {
+
+        return view('station.nomrank' );
+    }
+    public function nomGroup($id)
+    {
+        //dd($id);
+        $id = decrypt($id);
+        $dept = NomenclatureCategory::find($id);
+        return view('station.nomGroup',compact('dept')  );
+    }
+
+    public function nom($id)
+    {
+        //dd($id);
+        $id = decrypt($id);
+        $dept = NomenclatureGroup::find($id);
+        return view('station.nom',compact('dept')  );
     }
 
     public function amdlRank()

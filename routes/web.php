@@ -60,6 +60,9 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::resource('stations', StationController::class);
     Route::get('amdl/ranks', [StationController::class,'amdlRank'])->name('amdlRank');
     Route::get('msnc/rank', [StationController::class,'msncRank'])->name('msncRank');
+    Route::get('nom/rank', [StationController::class,'nomRank'])->name('nomRank');
+    Route::get('nom/group/{id}', [StationController::class,'nomGroup'])->name('nomGroup');
+    Route::get('nom/{id}', [StationController::class,'nom'])->name('nom');
 
 
     Route::get('/msnc/profile/{id}', [StationController::class,'msncProfile'])->name('msncProfile');

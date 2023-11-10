@@ -112,23 +112,23 @@
                     <a href="{{route('amdlRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            
+
                         <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-lightblue">
                     <div class="inner">
-                        <a href="{{route('amdlRank')}}">
+                        <a href="{{route('nomRank')}}">
                         <h3 class="text-white">{{$amdlnomenclature}}</h3>
 
                         <p class="text-white">AMDL Nomenclature Ranks</p>
                         </a>
                     </div>
-                    <a href="{{route('amdlRank')}}">
+                    <a href="{{route('nomRank')}}">
                     <div class="icon">
                         <i class="fa fa-certificate text-white"></i>
                     </div>
                     </a>
-                    <a href="{{route('amdlRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('nomRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">

@@ -5,7 +5,9 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Seeker;
 use App\Models\Rank;
-
+use App\Models\NomenclatureCategory;
+use App\Models\NomenclatureRank;
+use App\Models\NomenclatureGroup;
 class StaffAmdl extends Component
 {
     public $perPage = 12,$total_monthly =0,$User_id,$showDiv,$search,$department,$firstName,$otherName,$lastName,$rank_id,$nomenclature_rank;
@@ -17,6 +19,13 @@ class StaffAmdl extends Component
     public $limitPerPage = 10;
     public $ranks;
     public $rank;
+    public $company;
+    public $cats;
+    public $cat_id = 0;
+    public $nomGroup_id = 0;
+    public $nomRank_id =0;
+    public $nomGroups;
+    public $nomRanks;
     protected $listeners = [
         'load-more' => 'loadMore'
     ];
@@ -47,6 +56,36 @@ class StaffAmdl extends Component
         $this->rank = '';
 
     }
+    public function getCompanies(){
+
+        if($this->company == 'rank'){
+            $this->ranks = Rank::get();
+
+
+        }
+        if($this->company == 'nomenclature'){
+
+            $this->cats = NomenclatureCategory::all();
+        }
+
+
+    }
+
+    public function getNomGroup(){
+
+
+        $this->nomGroups = NomenclatureGroup::where('nomenclature_category_id',$this->cat_id)->get();
+
+    }
+
+
+    public function getNomRank(){
+
+
+        $this->nomRanks = NomenclatureRank::where('nomenclature_group_id',$this->nomGroup_id)->get();
+
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -84,6 +123,8 @@ class StaffAmdl extends Component
         $this->nomenclature_rank = $post->nomenclature_rank;
         $this->ranks = Rank::get();
 
+        $this->nomGroups = NomenclatureGroup::where('nomenclature_category_id',$this->cat_id)->get();
+        $this->nomRanks = NomenclatureRank::where('nomenclature_group_id',$this->nomGroup_id)->get();
         //  dd( $this->firstName);
 //echo 'bb';
 
@@ -114,22 +155,39 @@ class StaffAmdl extends Component
 //
 //        $post->rank = $this->rank;
 //        $post->save();
-        $this->validate([
-            'firstName' => 'required',
-//            'otherName' => 'required',
-            'lastName' => 'required',
-            'rank' => 'required',
-//            'nomenclature_rank' => 'required',
-        ]);
+        if($this->company == 'rank') {
+//            $this->validate([
+//                'firstName' => 'required',
+//                'otherName' => 'required',
+//                'lastName' => 'required',
+//                'rank' => 'required',
+//            ]);
+            //dd($this->firstName);
+            $see=  Seeker::where('id',$this->User_id )->update([
+                'first_name' => $this->firstName,
+                'other_name' => $this->otherName,
+                'last_name' => $this->lastName,
+                'rank_id' => $this->rank,
+            ]);
+            ;
+            // dd($see);
+        }
 
-        Seeker::updateOrCreate(['id' => $this->User_id], [
-            'first_name' => $this->firstName,
-            'other_name' => $this->otherName,
-            'last_name' => $this->lastName,
-            'rank_id' => $this->rank,
-//            'nomenclature_rank' => $this->nomenclature_rank,
-        ]);
+        if($this->company == 'nomenclature') {
 
+
+            Seeker::where('id',$this->User_id )->update([
+                'first_name' => $this->firstName,
+                'other_name' => $this->otherName,
+                'last_name' => $this->lastName,
+                'nomenclature_category_id' => $this->cat_id,
+                'nomenclature_group_id' => $this->nomGroup_id,
+                'nomenclature_rank_id' => $this->nomRank_id,
+            ]);
+            $this->cat_id =0;
+            $this->nomGroup_id =0;
+            $this->nomRank_id =0;
+        }
 
         $this->updateMode = false;
 
