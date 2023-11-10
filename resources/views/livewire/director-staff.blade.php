@@ -66,7 +66,7 @@
                                 <td>@if($user->ban==1)
                                         <button  class="btn btn-danger btn-sm">Disengaged</button>
                                     @else
-                                        <button  class="btn btn-success btn-sm">Engaged</button>
+                                        <button  class="btn btn-success btn-sm">Active</button>
                                 @endif</td>
                                 <td>
                                     <a href="{{route('amdlProfile',encrypt($user->id))}}"> <button   class="btn btn-danger btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
@@ -76,12 +76,13 @@
                                     <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                     <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-secondary btn-sm">Review Staff</button></a>
 {{--                                    <a href="/directorgoals/{{$user->id}}"> <button    class="btn btn-danger btn-sm">Appraisals</button></a>--}}
-                                        @if($user->ban==0)
+
+                                     @endif
+                                    @if($user->ban==0)
                                         <button wire:click="ban({{ $user->id }})" class="btn btn-danger btn-sm">Disengage</button>
-                                        @else
-                                            <button wire:click="ban({{ $user->id }})" class="btn btn-success btn-sm">Engage</button>
-                                        @endif
-                              @endif
+                                    @else
+                                        <button wire:click="ban({{ $user->id }})" class="btn btn-success btn-sm">Activate</button>
+                                    @endif
                                 </td>
                             </tr>
 @endif
