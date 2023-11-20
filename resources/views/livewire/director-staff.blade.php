@@ -76,7 +76,7 @@
                                     <a href="{{route('amdlProfile',encrypt($user->id))}}"> <button   class="btn btn-primary btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
 
                                     <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"> <i class="fa fa-edit"></i> Edit</button>
-                                    <button  wire:click="subDept({{ $user->id }})"   class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> Add Staff to Sub</button>
+                                    <button  wire:click="subDept({{ $user->id }})"   class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> Assign SubDept</button>
                                     @if(session('role')== 'director' || session('role')== 'admin' )
                                     <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                     <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-secondary btn-sm">Review Staff</button></a>

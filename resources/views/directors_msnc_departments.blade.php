@@ -42,18 +42,19 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <a href=" {{route('subdepartments.createMsnc',encrypt($department->deptID))}}">
+{{--                    <a href=" {{route('subdepartments.createMsnc',encrypt($department->deptID))}}">--}}
+                    <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}">
                         <h3 class="text-white">{{$msncunits}}</h3>
 
                         <p class="text-white">{{$department->deptName ?? '' }}  Sub Departments</p>
                     </a>
                 </div>
-                <a href=" {{route('subdepartments.createMsnc',encrypt($department->deptID))}}">
+                <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}">
                     <div class="icon">
                         <i class="fa fa-rectangle-list"></i>
                     </div>
                 </a>
-                <a href=" {{route('subdepartments.createMsnc',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     <div class="col-lg-3 col-6">

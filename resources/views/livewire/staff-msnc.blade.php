@@ -66,7 +66,9 @@
                                 <a href="{{route('msncProfile',encrypt($user->userID))}}"> <button   class="btn btn-primary btn-sm"><i class="fa fa-user"></i> View Profile</button></a>
 
                                 <button  wire:click="edit({{ $user->userID}})"   class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit Profile</button>
-                                @if(session('role')== 'director' || session('role')== 'admin' )
+                                <button  wire:click="subDept({{ $user->userID }})"   class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> Assign SubDept</button>
+
+                            @if(session('role')== 'director' || session('role')== 'admin' )
                                 <a href="{{route('msncGrade',encrypt($user->userID))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
                                 <a href="/staffreview/{{$user->userID}}"> <button    class="btn btn-secondary btn-sm">Reviews</button></a>
 {{--                                 <button  class="btn btn-danger btn-sm" wire:click="delete({{$user->id}})"onsubmit="return confirm('Are You sure you want to delete')"  ><i class="fa fa-fw fa-trash"></i> Delete</button>--}}

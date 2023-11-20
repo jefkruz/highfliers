@@ -106,6 +106,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('subdepartments/create/{id}', [SubDepartmentController::class,'create'])->name('subdepartments.create');
     Route::delete('subdepartments/delete/{id}', [SubDepartmentController::class,'destroy'])->name('subdepartments.destroy');
     Route::get('subdepartments/index/{id}', [SubDepartmentController::class,'index'])->name('subdepartments.index');
+    Route::get('subdepartments/msncindex/{id}', [SubDepartmentController::class,'msncindex'])->name('subdepartments.msncindex');
 
     Route::post('subdepartments/create/{id}', [SubDepartmentController::class,'store']);
 

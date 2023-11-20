@@ -44,6 +44,16 @@
                         <li class="list-group-item">
                             <span>Posting Type</span> <b class="float-right">{{ucwords($member->postingType)}}</b>
                         </li>
+                        <li class="list-group-item">
+                            <span>Nomenclature Category</span> <b class="float-right">{{ucwords($member->nomenclature()->name?? 'null')}}</b>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Nomenclature Group</span> <b class="float-right">{{ucwords($member->nomenclatureGroup()->name?? 'null')}}</b>
+                        </li>
+                        <li class="list-group-item">
+                            <span>Nomenclature Rank</span> <b class="float-right">{{ucwords($member->nomenclatureRank()->name?? 'null')}}</b>
+                        </li>
+
                     </ul>
 
 

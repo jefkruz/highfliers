@@ -36,6 +36,20 @@ class SubDepartmentController extends Controller
 
     }
 
+    public function msncindex($id)
+    {
+        $id = decrypt($id);
+//        $subDepartments = SubDepartment::paginate();
+        $dept = TblDept::where('deptID',$id)->first();
+        $data['dept'] = TblDept::where('deptID',$id)->first();
+        $data['subDepartments'] = SubDepartment::where('department_id',$dept->deptID)->get();
+
+
+        $data['page_title'] = $dept->deptName;
+        return view('sub-department.msncindex', $data);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -102,6 +116,15 @@ class SubDepartmentController extends Controller
     }
 
     public function viewAmdlSubDeptStaff($id1, $id2)
+    {
+        $id =  decrypt($id1);
+        $dept =  decrypt($id2);
+        $page_title = SubDepartment::where('id',$id)->first();
+        $data['page_title'] = $page_title->name .' Staff';
+        $data['users'] = SubDepStaff::where('sub_dept_id', $id)->where('dept_id',$dept)->get();
+        return view ('organization.subdept-amdl',$data);
+    }
+    public function viewMsncSubDeptStaff($id1, $id2)
     {
         $id =  decrypt($id1);
         $dept =  decrypt($id2);

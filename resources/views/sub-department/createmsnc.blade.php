@@ -10,7 +10,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} Sub Department</span>
+                        <a href="{{route('subdepartments.msncindex',encrypt($dept->deptID))}}" class="btn btn-danger">Back</a>
                     </div>
                     <div class="card-body">
 

@@ -15,9 +15,17 @@ class SubDepartment extends Model
     {
         return $this->belongsTo(Organization::class);
     }
+    public function station()
+    {
+        return $this->belongsTo(TblDept::class,'department_id','deptID');
+    }
 
     public function staffcount()
     {
         return SubDepStaff::where('sub_dept_id',$this->id)->count();
+    }
+    public function staffcountmsnc()
+    {
+        return SubDepStaff::where('sub_dept_id',$this->deptID)->count();
     }
 }
