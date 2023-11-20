@@ -42,18 +42,18 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <a href=" {{route('subdepartments.create',encrypt($department->id))}}">
+                    <a href=" {{route('subdepartments.index',encrypt($department->id))}}">
                         <h3 class="text-white">{{$amdlunits}}</h3>
 
                         <p class="text-white"> Sub Departments</p>
                     </a>
                 </div>
-                <a href=" {{route('subdepartments.create',encrypt($department->id))}}">
+                <a href=" {{route('subdepartments.index',encrypt($department->id))}}">
                     <div class="icon">
                         <i class="fa fa-rectangle-list"></i>
                     </div>
                 </a>
-                <a href=" {{route('subdepartments.create',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href=" {{route('subdepartments.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
     <div class="col-lg-3 col-6">

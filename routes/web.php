@@ -104,9 +104,12 @@ Route::group(['middleware' => 'checkRole:sdm', 'prefix' => 'sdm'], function(){
 Route::group(['middleware' => 'isAdmin'], function(){
 //    Route::resource('subdepartments', SubDepartmentController::class);
     Route::get('subdepartments/create/{id}', [SubDepartmentController::class,'create'])->name('subdepartments.create');
+    Route::delete('subdepartments/delete/{id}', [SubDepartmentController::class,'destroy'])->name('subdepartments.destroy');
+    Route::get('subdepartments/index/{id}', [SubDepartmentController::class,'index'])->name('subdepartments.index');
 
     Route::post('subdepartments/create/{id}', [SubDepartmentController::class,'store']);
 
+    Route::get('subdepartments/amdl/viewstaff/{id1}/{id2}', [SubDepartmentController::class,'viewAmdlSubDeptStaff'])->name('viewAmdlSubDeptStaff');
     Route::get('subdepartments/msnc/create/{id}', [SubDepartmentController::class,'createMsnc'])->name('subdepartments.createMsnc');
     Route::post('subdepartments/msnc/create/{id}', [SubDepartmentController::class,'storeMsnc']);
 

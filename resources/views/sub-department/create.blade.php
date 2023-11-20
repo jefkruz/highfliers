@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
 
-                        <form method="POST"   role="form" enctype="multipart/form-data">
+                        <form method="POST"   role="form"   enctype="multipart/form-data">
                             @csrf
                       <input type="hidden" name="department_id" value="{{$dept->id}}">
                             <div class="col-md-12">

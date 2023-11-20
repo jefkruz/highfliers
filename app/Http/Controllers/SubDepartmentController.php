@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Organization;
+use App\Models\Seeker;
 use App\Models\SubDepartment;
+use App\Models\SubDepStaff;
 use App\Models\TblDept;
 use Illuminate\Http\Request;
 
@@ -20,12 +22,18 @@ class SubDepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $subDepartments = SubDepartment::paginate();
+        $id = decrypt($id);
+//        $subDepartments = SubDepartment::paginate();
+        $dept = Organization::where('id',$id)->first();
+        $data['dept'] = Organization::where('id',$id)->first();
+        $data['subDepartments'] = SubDepartment::where('department_id',$dept->id)->get();
 
-        return view('sub-department.index', compact('subDepartments'))
-            ->with('i', (request()->input('page', 1) - 1) * $subDepartments->perPage());
+
+        $data['page_title'] = $dept->name;
+        return view('sub-department.index', $data);
+
     }
 
     /**
@@ -36,6 +44,7 @@ class SubDepartmentController extends Controller
     public function create($id)
     {
         $id = decrypt($id);
+
         $data['dept'] = Organization::where('id',$id)->first();
 //        $data['hods'] = Admin::where('organization_id',$id)->where('role_id',10)->get();
         $data['page_title'] = 'Create Sub-Department';
@@ -59,6 +68,8 @@ class SubDepartmentController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'department_id' => 'required',
             'name' => 'required|unique:sub_departments',
@@ -89,12 +100,16 @@ class SubDepartmentController extends Controller
         return redirect()->back()
             ->with('message', 'SubDepartment created successfully.');
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
+    public function viewAmdlSubDeptStaff($id1, $id2)
+    {
+        $id =  decrypt($id1);
+        $dept =  decrypt($id2);
+        $page_title = SubDepartment::where('id',$id)->first();
+        $data['page_title'] = $page_title->name .' Staff';
+        $data['users'] = SubDepStaff::where('sub_dept_id', $id)->where('dept_id',$dept)->get();
+        return view ('organization.subdept-amdl',$data);
+    }
     public function show($id)
     {
         $subDepartment = SubDepartment::find($id);
@@ -141,7 +156,7 @@ class SubDepartmentController extends Controller
     {
         $subDepartment = SubDepartment::find($id)->delete();
 
-        return redirect()->route('sub-departments.index')
-            ->with('success', 'SubDepartment deleted successfully');
+        return redirect()->back()
+            ->with('message', 'SubDepartment deleted successfully');
     }
 }

@@ -346,18 +346,18 @@
                         <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}">
+                                <a href=" {{route('subdepartments.index',encrypt($department->organization->id))}}">
                                     <h3 class="text-white">{{$amdlunits}}</h3>
 
                                     <p class="text-white"> Sub Departments</p>
                                 </a>
                             </div>
-                            <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}">
+                            <a href=" {{route('subdepartments.index',encrypt($department->organization->id))}}">
                                 <div class="icon">
                                     <i class="fa fa-rectangle-list"></i>
                                 </div>
                             </a>
-                            <a href=" {{route('subdepartments.create',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href=" {{route('subdepartments.index',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 @endforeach

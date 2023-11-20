@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-8">
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -15,7 +15,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('sub-departments.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('subdepartments.create', encrypt($dept->id)) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -24,6 +24,11 @@
                     @if ($message = Session::get('success'))
                         <div class="alert alert-success">
                             <p>{{ $message }}</p>
+                        </div>
+                    @endif
+                    @if ($message = Session::get('error'))
+                        <div class="alert alert-danger">
+                            <p>{{ $error }}</p>
                         </div>
                     @endif
 
@@ -35,23 +40,25 @@
                                         <th>No</th>
 
 										<th>Department </th>
-										<th>Name</th>
+										<th>Sub Departments</th>
+										<th>Number of Staff</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($subDepartments as $subDepartment)
+                                    @foreach ($subDepartments as $i => $subDepartment)
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-											<td>{{ $subDepartment->department_id }}</td>
+											<td>{{ $subDepartment->department->name }}</td>
 											<td>{{ $subDepartment->name }}</td>
+											<td><a class="btn btn-sm btn-primary" href="{{route('viewAmdlSubDeptStaff',['id1' => encrypt($subDepartment->id), 'id2' => encrypt($dept->id)])}}"><i class="fa fa-fw fa-eye"></i> {{$subDepartment->staffcount()}} Staff</a></td>
 
                                             <td>
-                                                <form action="{{ route('sub-departments.destroy',$subDepartment->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('sub-departments.show',$subDepartment->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('sub-departments.edit',$subDepartment->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                <form action="{{ route('subdepartments.destroy',$subDepartment->id) }}" method="POST">
+{{--                                                    <a class="btn btn-sm btn-primary " href="{{ route('sub-departments.show',$subDepartment->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>--}}
+{{--                                                    <a class="btn btn-sm btn-success" href="{{ route('sub-departments.edit',$subDepartment->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>--}}
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
@@ -64,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $subDepartments->links() !!}
+
             </div>
         </div>
     </div>

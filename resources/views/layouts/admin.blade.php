@@ -272,6 +272,13 @@ $station_menu = isset($station_menu) ? 'active' : '';
                         @if(session('error'))
                             <div class="alert alert-danger dismissAlert">{{session('error')}}</div>
                         @endif
+                            @if($errors->any())
+                                <div class="alert alert-danger dismissAlert">
+                                    @foreach($errors->all()  as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </div>
+                            @endif
                     </div>
                 </div>
                 @yield('content')

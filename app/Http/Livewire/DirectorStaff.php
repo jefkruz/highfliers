@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\SubDepStaff;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Seeker;
@@ -13,12 +14,14 @@ use App\Models\NomenclatureCategory;
 
 use App\Models\NomenclatureRank;
 use App\Models\NomenclatureGroup;
+use App\Models\SubDepartment;
 class DirectorStaff extends Component
 {
 
     public $perPage = 12,$total_monthly =0,$User_id,$showDiv,$search,$department,$firstName,$otherName,$lastName,$rank_id,$blw_portal_id,$nomenclature_rank;
     protected $queryString = ['search'];
     public $updateMode = false;
+    public $subDeptMode = false;
     //public $projects;
     // protected $queryString = ['search'];
     public $isModalOpen = 0;
@@ -32,6 +35,8 @@ class DirectorStaff extends Component
     public $nomRank_id =0;
     public $nomGroups;
     public $nomRanks;
+    public $supDepts;
+    public $sub_dept_id;
     protected $listeners = [
         'load-more' => 'loadMore'
     ];
@@ -138,6 +143,25 @@ class DirectorStaff extends Component
         $this->updateMode = true;
     }
 
+    public function subDept($id)
+    {
+        $post = Seeker::find($id);
+        // dd($post);
+        $this->User_id = $id;
+        $this->firstName = $post->first_name;
+        $this->otherName = $post->other_name;
+        $this->lastName = $post->last_name;
+
+        $this->supDepts = SubDepartment::where('department_id',$this->department->id)->get();
+
+
+         // dd($this->department->id);
+//echo 'bb';
+
+        $this->subDeptMode = true;
+    }
+
+
     public function hr($id)
     {
         $post = Seeker::find($id);
@@ -205,7 +229,10 @@ class DirectorStaff extends Component
      */
     public function cancel()
     {
+        //$this->subDeptMode = false;
+
         $this->updateMode = false;
+        $this->subDeptMode = false;
         $this->resetInputFields();
     }
 
@@ -276,6 +303,41 @@ class DirectorStaff extends Component
             $this->nomRank_id =0;
         }
         $this->updateMode = false;
+
+        session()->flash('message', 'Post Updated Successfully.');
+        $this->resetInputFields();
+    }
+
+
+    public function updateSubUser()
+    {
+
+
+
+//        $post = TblRank::where('rankID',$this->rankID)->first();
+//
+//        $post->rank = $this->rank;
+//        $post->save();
+            $this->validate([
+               // 'firstName' => 'required',
+//            'otherName' => 'required',
+                'sub_dept_id' => 'required',
+
+//            'nomenclature_rank' => 'required',
+            ]);
+
+            SubDepStaff::Create( [
+                'dept_id' => $this->department->id,
+                'sub_dept_id' => $this->sub_dept_id,
+                'user_id' => $this->User_id,
+
+
+            ]);
+
+
+
+        $this->updateMode = false;
+        $this->subDeptMode = false;
 
         session()->flash('message', 'Post Updated Successfully.');
         $this->resetInputFields();

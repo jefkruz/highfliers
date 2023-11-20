@@ -10,4 +10,14 @@ class SubDepartment extends Model
     use HasFactory;
 
     protected $guarded;
+
+    public function department()
+    {
+        return $this->belongsTo(Organization::class);
+    }
+
+    public function staffcount()
+    {
+        return SubDepStaff::where('sub_dept_id',$this->id)->count();
+    }
 }
