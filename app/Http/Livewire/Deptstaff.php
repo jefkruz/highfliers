@@ -251,7 +251,7 @@ class Deptstaff extends Component
         ]);
 
         SubDepStaff::Create( [
-            'dept_id' => $this->department->id,
+            'dept_id' => $this->department->deptID,
             'sub_dept_id' => $this->sub_dept_id,
             'user_id' => $this->User_id,
 

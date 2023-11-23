@@ -31,13 +31,13 @@
 
                         @foreach ($users as $user)
                             <tr>
-                                <td>{{$user->staff->first_name}}</td>
-                                <td>{{$user->staff->last_name}}</td>
-                                <td>{{$user->staff->rank()->rank?? 'null'}}</td>
-                                <td>{{$user->staff->email}}</td>
+                                <td>{{$user->user->firstName}}</td>
+                                <td>{{$user->user->lastName}}</td>
+                                <td>{{$user->user->level->rank?? 'null'}}</td>
+                                <td>{{$user->user->emailAddress}}</td>
 
 
-                                <td>{{$user->department->name?? 'null'}}</td>
+                                <td>{{$user->station->deptName?? 'null'}}</td>
 
                             </tr>
 

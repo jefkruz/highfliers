@@ -26,6 +26,6 @@ class SubDepartment extends Model
     }
     public function staffcountmsnc()
     {
-        return SubDepStaff::where('sub_dept_id',$this->deptID)->count();
+        return SubDepStaff::where('sub_dept_id',$this->id)->count();
     }
 }

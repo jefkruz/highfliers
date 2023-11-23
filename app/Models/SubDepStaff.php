@@ -17,6 +17,11 @@ class SubDepStaff extends Model
         return $this->belongsTo(Seeker::class,'user_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(TblUser::class,'user_id','userID');
+    }
+
     public function subdepartment()
     {
         return $this->belongsTo(SubDepartment::class);
@@ -25,5 +30,10 @@ class SubDepStaff extends Model
     public function department()
     {
         return $this->belongsTo(Organization::class,'dept_id');
+    }
+
+    public function station()
+    {
+        return $this->belongsTo(TblDept::class,'dept_id','deptID');
     }
 }
