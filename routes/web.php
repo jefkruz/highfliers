@@ -111,6 +111,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::post('subdepartments/create/{id}', [SubDepartmentController::class,'store']);
 
     Route::get('subdepartments/amdl/viewstaff/{id1}/{id2}', [SubDepartmentController::class,'viewAmdlSubDeptStaff'])->name('viewAmdlSubDeptStaff');
+    Route::get('subdepartments/msnc/viewstaff/{id1}/{id2}', [SubDepartmentController::class,'viewMsncSubDeptStaff'])->name('viewMsncSubDeptStaff');
     Route::get('subdepartments/msnc/create/{id}', [SubDepartmentController::class,'createMsnc'])->name('subdepartments.createMsnc');
     Route::post('subdepartments/msnc/create/{id}', [SubDepartmentController::class,'storeMsnc']);
 

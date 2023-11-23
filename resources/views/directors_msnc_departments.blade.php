@@ -46,7 +46,7 @@
                     <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}">
                         <h3 class="text-white">{{$msncunits}}</h3>
 
-                        <p class="text-white">{{$department->deptName ?? '' }}  Sub Departments</p>
+                        <p class="text-white"> Sub Departments</p>
                     </a>
                 </div>
                 <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}">

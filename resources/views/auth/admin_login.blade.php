@@ -34,6 +34,13 @@
                     {{ session('error') }}
                 </div>
             @endif
+            @if($errors->any())
+                <div class="alert alert-danger dismissAlert">
+                    @foreach($errors->all()  as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </div>
+            @endif
             <div class="social-auth-links text-center mb-3">
 
                 <div class="container-login100-form-btn">

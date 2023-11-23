@@ -48,7 +48,7 @@ class AuthController extends Controller
             $verified->save();
             return redirect()->route('admin.login',$verified->kc_token);
         } else {
-            return redirect(route('login'))->with('error', 'Record Not Found');
+            return redirect()->route('login')->with('error', 'Record Not Found');
         }
 
     }

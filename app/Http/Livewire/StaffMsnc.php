@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Rank;
+use App\Models\SubDepartment;
 use Livewire\Component;
 use App\Models\TblUser;
 use App\Models\TblRank;
@@ -203,6 +204,7 @@ class StaffMsnc extends Component
         session()->flash('message', 'Post Updated Successfully.');
         $this->resetInputFields();
     }
+
 
     /**
      * The attributes that are mass assignable.

@@ -42,10 +42,8 @@
                             <th>Nomenclature Category</th>
                             <th>Nomenclature Group</th>
                             <th>Nomenclature Rank</th>
-                            <th>Email</th>
-                            <th>BLW Portal ID</th>
                             <th>Department</th>
-                            <th>Status</th>
+{{--                            <th>Status</th>--}}
                             <th>Action</th>
 
                         </tr>
@@ -54,7 +52,7 @@
 
                         <tbody>
                         @foreach ($users as $user)
-                            @if($user->organization_id == $department->id)
+                            @if($user->organization_id == $department->id && $user->ban==0)
                             <tr>
                                 <td>{{$user->first_name}}</td>
                                 <td>{{$user->other_name}}</td>
@@ -63,30 +61,29 @@
                                 <td>{{$user->nomenclature()->name?? 'null'}}</td>
                                 <td>{{$user->nomenclatureGroup()->name?? 'null'}}</td>
                                 <td>{{$user->nomenclatureRank()->name?? 'null'}}</td>
-                                <td>{{$user->email}}</td>
-                                <td>{{$user->blw_portal_id}}</td>
+
 
                                 <td>{{$user->organization->name?? 'null'}}</td>
-                                <td>@if($user->ban==1)
-                                        <button  class="btn btn-danger btn-sm">Disengaged</button>
-                                    @else
-                                        <button  class="btn btn-success btn-sm">Active</button>
-                                @endif</td>
-                                <td>
+{{--                                <td>@if($user->ban==1)--}}
+{{--                                        <button  class="btn btn-danger btn-sm">Disengaged</button>--}}
+{{--                                    @else--}}
+{{--                                        <button  class="btn btn-success btn-sm">Active</button>--}}
+{{--                                @endif</td>--}}
+                                <td class="d-flex flex-row">
                                     <a href="{{route('amdlProfile',encrypt($user->id))}}"> <button   class="btn btn-primary btn-sm"><i class="fa fa-user"></i>  Profile</button></a>
 
-                                    <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"> <i class="fa fa-edit"></i> Edit</button>
-                                    <button  wire:click="subDept({{ $user->id }})"   class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> Assign SubDept</button>
+                                    <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm m-1"> <i class="fa fa-edit"></i> Edit</button>
+                                    <button  wire:click="subDept({{ $user->id }})"   class="btn btn-warning btn-sm m-1"> <i class="fa fa-edit"></i> Assign SubDept</button>
                                     @if(session('role')== 'director' || session('role')== 'admin' )
-                                    <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
-                                    <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-secondary btn-sm">Review Staff</button></a>
+                                    <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm m-1"><i class="fa fa-star"></i>Grade</button></a>
+                                    <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-danger btn-sm m-1"><i class="fa fa-highlighter"></i>Review </button></a>
 {{--                                    <a href="/directorgoals/{{$user->id}}"> <button    class="btn btn-danger btn-sm">Appraisals</button></a>--}}
 
                                      @endif
                                     @if($user->ban==0)
-                                        <button wire:click="ban({{ $user->id }})" class="btn btn-danger btn-sm">Disengage</button>
-                                    @else
-                                        <button wire:click="ban({{ $user->id }})" class="btn btn-success btn-sm">Activate</button>
+                                        <button wire:click="ban({{ $user->id }})" class="btn btn-dark btn-sm m-1"><i class="fa fa-ban"></i> Disengage</button>
+{{--                                    @else--}}
+{{--                                        <button wire:click="ban({{ $user->id }})" class="btn btn-success btn-sm m-1">Activate</button>--}}
                                     @endif
                                 </td>
                             </tr>

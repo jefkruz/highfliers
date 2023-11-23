@@ -339,7 +339,7 @@ class DirectorStaff extends Component
         $this->updateMode = false;
         $this->subDeptMode = false;
 
-        session()->flash('message', 'Post Updated Successfully.');
+        session()->flash('message', 'Staff Assigned Successfully.');
         $this->resetInputFields();
     }
 

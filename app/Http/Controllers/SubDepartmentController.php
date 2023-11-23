@@ -131,7 +131,7 @@ class SubDepartmentController extends Controller
         $page_title = SubDepartment::where('id',$id)->first();
         $data['page_title'] = $page_title->name .' Staff';
         $data['users'] = SubDepStaff::where('sub_dept_id', $id)->where('dept_id',$dept)->get();
-        return view ('organization.subdept-amdl',$data);
+        return view ('organization.subdept-msnc',$data);
     }
     public function show($id)
     {

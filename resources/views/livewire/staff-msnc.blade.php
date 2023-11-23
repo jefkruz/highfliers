@@ -17,11 +17,16 @@
                         </div>
                     @endif
                     <br>
+                    @if($subDeptMode)
+                        @include('livewire.updatestaffSubdept')
+
+                    @endif
                     @if($updateMode)
                         @include('livewire.updatestaffmsnc')
                     @else
                         @include('livewire.createstaffmsnc')
                     @endif
+
                     <br>
                     <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                         <thead>
@@ -32,9 +37,9 @@
                             <th>Nomenclature Category</th>
                             <th>Nomenclature Group</th>
                             <th>Nomenclature Rank</th>
-                            <th>Email</th>
+
                             <th>Department</th>
-                            <th>Status</th>
+{{--                            <th>Status</th>--}}
                             <th>Action</th>
 
                         </tr>
@@ -43,6 +48,7 @@
 
                         <tbody>
                         @foreach ($users as $user)
+                            @if($user->enabled==1)
                         <tr>
                             <td>{{$user->firstName}}</td>
                             <td>{{$user->lastName}}</td>
@@ -50,33 +56,32 @@
                             <td>{{$user->nomenclature()->name?? 'null'}}</td>
                             <td>{{$user->nomenclatureGroup()->name?? 'null'}}</td>
                             <td>{{$user->nomenclatureRank()->name?? 'null'}}</td>
-                            <td>{{$user->emailAddress}}</td>
 
                             <td>{{$user->tblDept->deptName?? 'null'}}</td>
-                            <td>
-                                @if($user->enabled==0)
-                                    <button  class="btn btn-danger btn-sm">Disengaged</button>
-                                @else
-                                    <button  class="btn btn-success btn-sm">Active</button>
-                                @endif
-                            </td>
-                            <td>
+{{--                            <td>--}}
+{{--                                @if($user->enabled==0)--}}
+{{--                                    <button  class="btn btn-danger btn-sm">Disengaged</button>--}}
+{{--                                @else--}}
+{{--                                    <button  class="btn btn-success btn-sm">Active</button>--}}
+{{--                                @endif--}}
+{{--                            </td>--}}
+                            <td class="d-flex flex-row">
 
 
                                 <a href="{{route('msncProfile',encrypt($user->userID))}}"> <button   class="btn btn-primary btn-sm"><i class="fa fa-user"></i> View Profile</button></a>
 
-                                <button  wire:click="edit({{ $user->userID}})"   class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit Profile</button>
-                                <button  wire:click="subDept({{ $user->userID }})"   class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> Assign SubDept</button>
+                                <button  wire:click="edit({{ $user->userID}})"   class="btn btn-success btn-sm m-1"><i class="fa fa-edit"></i> Edit Profile</button>
+                                <button  wire:click="subDept({{ $user->userID }})"   class="btn btn-warning btn-sm m-1"> <i class="fa fa-edit"></i> Assign SubDept</button>
 
                             @if(session('role')== 'director' || session('role')== 'admin' )
-                                <a href="{{route('msncGrade',encrypt($user->userID))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
-                                <a href="/staffreview/{{$user->userID}}"> <button    class="btn btn-secondary btn-sm">Reviews</button></a>
+                                <a href="{{route('msncGrade',encrypt($user->userID))}}"> <button    class="btn btn-info btn-sm m-1"><i class="fa fa-star"></i>Grade</button></a>
+                                <a href="/staffreview/{{$user->userID}}"> <button    class="btn btn-danger btn-sm m-1"><i class="fa fa-highlighter"></i>Review</button></a>
 {{--                                 <button  class="btn btn-danger btn-sm" wire:click="delete({{$user->id}})"onsubmit="return confirm('Are You sure you want to delete')"  ><i class="fa fa-fw fa-trash"></i> Delete</button>--}}
                                 @endif
                                 @if($user->enabled==1)
-                                    <button wire:click="ban({{ $user->userID }})" class="btn btn-danger btn-sm">Disengage</button>
-                                @else
-                                    <button wire:click="ban({{ $user->userID }})" class="btn btn-success btn-sm">Activate</button>
+                                    <button wire:click="ban({{ $user->userID }})" class="btn btn-dark btn-sm"><i class="fa fa-ban"></i>Disengage</button>
+{{--                                @else--}}
+{{--                                    <button wire:click="ban({{ $user->userID }})" class="btn btn-success btn-sm">Activate</button>--}}
                                 @endif
 {{--
   <form action="{{ route('msncStaffDelete',$user->userID) }}" method="POST"--}}
@@ -89,7 +94,7 @@
 {{--                                <button wire:click="delete({{ $user->userID }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Delete</button>--}}
                             </td>
                         </tr>
-
+                            @endif
                         @endforeach
                         </tbody>
                     </table>

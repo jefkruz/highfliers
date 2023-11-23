@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Rank;
+use App\Models\SubDepartment;
+use App\Models\SubDepStaff;
 use App\Models\TblRank;
 use App\Models\TblUser;
 use Livewire\Component;
@@ -15,6 +17,7 @@ class Deptstaff extends Component
     public $perPage = 12,$total_monthly =0,$User_id,$showDiv,$search,$department,$firstName,$otherName,$lastName,$rank_id;
     protected $queryString = ['search'];
     public $updateMode = false;
+    public $subDeptMode = false;
     //public $projects;
     // protected $queryString = ['search'];
     public $isModalOpen = 0;
@@ -29,6 +32,8 @@ class Deptstaff extends Component
     public $nomRank_id =0;
     public $nomGroups;
     public $nomRanks;
+    public $supDepts;
+    public $sub_dept_id;
     protected $listeners = [
         'load-more' => 'loadMore'
     ];
@@ -150,6 +155,25 @@ class Deptstaff extends Component
      *
      * @var array
      */
+
+    public function subDept($id)
+    {
+        $post = TblUser::where('userID',$id)->first();
+//         dd($post);
+        $this->User_id = $post->userID;
+        $this->firstName = $post->firstName;
+        $this->otherName = $post->otherName;
+        $this->lastName = $post->lastName;
+
+        $this->supDepts = SubDepartment::where('department_id',$this->department->deptID)->get();
+
+
+        // dd($this->department->id);
+//echo 'bb';
+
+        $this->subDeptMode = true;
+    }
+
     public function cancel()
     {
         $this->updateMode = false;
@@ -209,11 +233,40 @@ class Deptstaff extends Component
         $this->resetInputFields();
     }
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public function updateSubUser()
+    {
+
+
+
+//        $post = TblRank::where('rankID',$this->rankID)->first();
+//
+//        $post->rank = $this->rank;
+//        $post->save();
+        $this->validate([
+            // 'firstName' => 'required',
+//            'otherName' => 'required',
+            'sub_dept_id' => 'required',
+
+//            'nomenclature_rank' => 'required',
+        ]);
+
+        SubDepStaff::Create( [
+            'dept_id' => $this->department->id,
+            'sub_dept_id' => $this->sub_dept_id,
+            'user_id' => $this->User_id,
+
+
+        ]);
+
+
+
+        $this->updateMode = false;
+        $this->subDeptMode = false;
+
+        session()->flash('message', 'Staff Assigned Successfully.');
+        $this->resetInputFields();
+    }
+
     public function delete($id)
     {
         //TblUser::where('rankID',$id)->delete();
