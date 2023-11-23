@@ -77,7 +77,7 @@ class AdminController extends Controller
             ->where('company', 'amdl')->get();
         $data['msnc'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
          $data['amdlunits'] = SubDepartment::where('department_id',$admin->organization_id)->count();
-        $data['msncunits'] = SubDepartment::where('department_id',$admin->deptID)->count();
+        $data['msncunits'] = SubDepartment::where('department_id',$admin->department_id)->count();
 
         return view('dashboard', $data);
     }
