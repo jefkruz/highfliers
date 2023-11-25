@@ -123,6 +123,12 @@ class SubDepartmentController extends Controller
       $data['user'] = SubDepStaff::where('id', $id)->first();
         return view ('admins.amdl_create_hod',$data);
     }
+    public function assignMsncHod($id)
+    {
+        $id = decrypt($id);
+        $data['user'] = SubDepStaff::where('id', $id)->first();
+        return view ('admins.msnc_create_hod',$data);
+    }
 
     public function viewAmdlSubDeptStaff($id1, $id2)
     {
@@ -142,6 +148,8 @@ class SubDepartmentController extends Controller
         $page_title = SubDepartment::where('id',$id)->first();
         $data['page_title'] = $page_title->name .' Staff';
         $data['users'] = SubDepStaff::where('sub_dept_id', $id)->where('dept_id',$dept)->get();
+        $data['hod']= SubDeptHod::where('sub_dept_id', $id)->where('dept_id',$dept)->first();
+
         return view ('organization.subdept-msnc',$data);
     }
 
@@ -227,6 +235,90 @@ class SubDepartmentController extends Controller
             ->with('message', 'HOD Assigned successfully.');
     }
 
+    public function storeMsncHod(Request $request)
+    {
+
+
+        $request->validate([
+            'sub_dept_staff_id' => 'required',
+            'name' => 'required',
+            'station_id' => 'required',
+            'department_id' => 'required',
+            'sub_department_id' => 'required',
+            'phone' => ['required', 'regex:/^234[789]\d{9}$/'],
+            'username' => 'required',
+        ],
+            [
+                'phone.regex' => 'Invalid phone number format. It should start with 234 and have a total of 13 digits.',
+
+            ]);
+        $phone = $this->verifyKC($request->phone);
+
+        if($phone && array_key_exists('barcode_id', $phone ) ){
+
+        } else {
+            return back()->with('error', 'This Number is not Registered on KingsChat');
+        }
+
+        $adminExists = Admin::where('username',$request->username)->orWhere('phone',$request->phone)->first();
+
+
+        if(!$adminExists){
+            $admin = Admin::Create([
+                'name' => $request->name,
+                'username' => $request->username,
+                'phone' => $request->phone,
+                'company' => 'msnc',
+                'department_id' => $request->department_id,
+                'station_id' => $request->station_id,
+                'role_id' => 10,
+                'status' => 'verified',
+
+            ]);
+
+            AdminOffice::Create([
+                'admin_id' => $admin->id,
+                'company' => 'msnc',
+                'department_id' => $admin->department_id,
+
+            ]);
+        } else{
+            AdminOffice::Create([
+                'admin_id' =>  $adminExists->id,
+                'company' => 'msnc',
+                'organization_id' => $adminExists->department_id,
+
+            ]);
+        }
+
+        $staff = Admin::where('username',$request->username)->orWhere('phone',$request->phone)->first();
+        $office = AdminOffice::where('admin_id',$staff->id)->first();
+
+        $hodExists = SubDeptHod::where('sub_dept_id',$request->sub_department_id)->where('dept_id',$request->department_id)->first();
+
+        if(!$hodExists){
+            $hod = new SubDeptHod();
+            $hod->sub_dept_staff_id = $request->sub_dept_staff_id;
+            $hod->dept_id = $request->department_id;
+            $hod->sub_dept_id = $request->sub_department_id;
+            $hod->admin_id =$staff->id;
+            $hod->admin_office_id =$office->id;
+            $hod->save();
+        }else{
+
+            $hodExists->update([
+                'sub_dept_staff_id' => $request->sub_dept_staff_id,
+                'dept_id' => $request->department_id,
+                'sub_dept_id' => $request->sub_department_id,
+                'admin_id' => $staff->id,
+                'admin_office_id' => $office->id,
+            ]);
+        }
+
+
+        return redirect()->route('viewMsncSubDeptStaff',['id1' => encrypt($request->sub_department_id), 'id2' => encrypt($request->department_id)])
+            ->with('message', 'HOD Assigned successfully.');
+    }
     private function verifyKC($phone)
     {
         $curl = curl_init();

@@ -9,8 +9,9 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
+                                @if($hod)
                                 <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>
-
+                                @endif
                             </span>
 
 
@@ -41,13 +42,15 @@
                                 <td>{{$user->staff->rank()->rank?? 'null'}}</td>
                                 <td>{{$user->staff->email}}</td>
                                 <td>
-                                    @if ( $user->id == $hod->sub_dept_staff_id)
+                                    @if ($hod && $user->id == $hod->sub_dept_staff_id)
                                         <a href="" class="btn btn-sm btn-success"><i class="fa fa-crown"></i> HOD</a>
                                     @else
-                                        <a href="{{route('assignAmdlHod', encrypt($user->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign HOD</a></td>
+                                        <a href="{{route('assignAmdlHod', encrypt($user->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign HOD</a>
                                     @endif
+                                </td>
 
-                                <td><a href="" class="badge-primary"></a> {{$user->department->name?? 'null'}}</td>
+
+                                <td> {{$user->department->name?? 'null'}}</td>
                                 <td>  {{$user->subdepartment->name}}</td>
 
 

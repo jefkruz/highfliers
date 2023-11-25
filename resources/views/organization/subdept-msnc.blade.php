@@ -9,7 +9,9 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                               View Staff Members
+                               @if($hod)
+                                    <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>
+                                @endif
                             </span>
 
 
@@ -19,25 +21,36 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead >
                         <tr>
+                            <th>S/N</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Rank</th>
                             <th>Email</th>
+                            <th>Sub Dept HOD</th>
                             <th>Department</th>
+                            <th>Sub Department</th>
 
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach ($users as $user)
+                        @foreach ($users as $i=> $user)
                             <tr>
+                                <td>{{++$i}}</td>
                                 <td>{{$user->user->firstName}}</td>
                                 <td>{{$user->user->lastName}}</td>
                                 <td>{{$user->user->level->rank?? 'null'}}</td>
                                 <td>{{$user->user->emailAddress}}</td>
 
-
+                                <td>
+                                    @if ($hod && $user->id == $hod->sub_dept_staff_id)
+                                        <a href="" class="btn btn-sm btn-success"><i class="fa fa-crown"></i> HOD</a>
+                                    @else
+                                        <a href="{{route('assignMsncHod', encrypt($user->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign HOD</a>
+                                    @endif
+                                </td>
                                 <td>{{$user->station->deptName?? 'null'}}</td>
+                                <td>  {{$user->subdepartment->name}}</td>
 
                             </tr>
 
