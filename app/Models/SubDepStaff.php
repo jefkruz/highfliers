@@ -24,7 +24,7 @@ class SubDepStaff extends Model
 
     public function subdepartment()
     {
-        return $this->belongsTo(SubDepartment::class);
+        return $this->belongsTo(SubDepartment::class,'sub_dept_id');
     }
 
     public function department()
@@ -35,5 +35,11 @@ class SubDepStaff extends Model
     public function station()
     {
         return $this->belongsTo(TblDept::class,'dept_id','deptID');
+    }
+
+    public function hod()
+    {
+
+        return $this->belongsTo(SubDeptHod::class,'sub_dept_id','sub_dept_id');
     }
 }

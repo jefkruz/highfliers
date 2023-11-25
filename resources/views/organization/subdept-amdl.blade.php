@@ -9,7 +9,8 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                               View Staff Members
+                                <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>
+
                             </span>
 
 
@@ -19,25 +20,36 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead >
                         <tr>
+                            <th>S/N</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Rank</th>
                             <th>Email</th>
+                            <th>Sub Dept HOD</th>
                             <th>Department</th>
+                            <th>Sub Department</th>
 
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach ($users as $user)
+                        @foreach ($users as $i=> $user)
                             <tr>
+                                <td>{{++$i}}</td>
                                 <td>{{$user->staff->first_name}}</td>
                                 <td>{{$user->staff->last_name}}</td>
                                 <td>{{$user->staff->rank()->rank?? 'null'}}</td>
                                 <td>{{$user->staff->email}}</td>
+                                <td>
+                                    @if ( $user->id == $hod->sub_dept_staff_id)
+                                        <a href="" class="btn btn-sm btn-success"><i class="fa fa-crown"></i> HOD</a>
+                                    @else
+                                        <a href="{{route('assignAmdlHod', encrypt($user->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign HOD</a></td>
+                                    @endif
 
+                                <td><a href="" class="badge-primary"></a> {{$user->department->name?? 'null'}}</td>
+                                <td>  {{$user->subdepartment->name}}</td>
 
-                                <td>{{$user->department->name?? 'null'}}</td>
 
                             </tr>
 

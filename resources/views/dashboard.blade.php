@@ -245,8 +245,7 @@
 
             @if(session('role')== 'director')
 
-                    @foreach($amdl as $department)
-
+                @foreach($amdl as $department)
                     <div class="col-lg-3 col-6">
                     <!-- small box -->
                         <div class="small-box bg-blue">
@@ -269,11 +268,9 @@
                     </div>
 
                 </div>
+                @endforeach
 
-
-                    @endforeach
-
-                    @foreach($msnc as $msncstaff)
+                @foreach($msnc as $msncstaff)
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-blue">
@@ -292,8 +289,7 @@
                                 <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
-
-                        @endforeach
+                    @endforeach
             @endif
 
 
@@ -364,7 +360,7 @@
                 @endforeach
 
                 @foreach($msnc as $msncstaff)
-                    <div class="col-lg-3 col-6">
+                        <div class="col-lg-3 col-6">
                         <!-- small box -->
                         <div class="small-box bg-blue">
                             <div class="inner">
@@ -382,7 +378,6 @@
                             <a href="{{route('directorStaffMsnc',encrypt($msncstaff->department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-warning">

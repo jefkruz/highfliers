@@ -28,4 +28,6 @@ class SubDepartment extends Model
     {
         return SubDepStaff::where('sub_dept_id',$this->id)->count();
     }
+
+
 }

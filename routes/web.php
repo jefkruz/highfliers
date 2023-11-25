@@ -110,6 +110,12 @@ Route::group(['middleware' => 'isAdmin'], function(){
 
     Route::post('subdepartments/create/{id}', [SubDepartmentController::class,'store']);
 
+    Route::get('subdepartments/amdl/assignhod/{id}', [SubDepartmentController::class,'assignAmdlHod'])->name('assignAmdlHod');
+    Route::get('subdepartments/msnc/assignhod/{id}', [SubDepartmentController::class,'assignMsncHod'])->name('assignMsncHod');
+
+    Route::post('subdepartments/amdl/assignhod', [SubDepartmentController::class,'storeAmdlHod'])->name('storeAmdlHod');
+    Route::post('subdepartments/msnc/assignhod', [SubDepartmentController::class,'storeMsncHod'])->name('storeMsncHod');
+
     Route::get('subdepartments/amdl/viewstaff/{id1}/{id2}', [SubDepartmentController::class,'viewAmdlSubDeptStaff'])->name('viewAmdlSubDeptStaff');
     Route::get('subdepartments/msnc/viewstaff/{id1}/{id2}', [SubDepartmentController::class,'viewMsncSubDeptStaff'])->name('viewMsncSubDeptStaff');
     Route::get('subdepartments/msnc/create/{id}', [SubDepartmentController::class,'createMsnc'])->name('subdepartments.createMsnc');
