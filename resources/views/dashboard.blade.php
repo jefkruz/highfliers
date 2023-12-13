@@ -113,14 +113,14 @@
                 </div>
             </div>
 
-                        <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-lightblue">
                     <div class="inner">
                         <a href="{{route('nomRank')}}">
                         <h3 class="text-white">{{$amdlnomenclature}}</h3>
 
-                        <p class="text-white">AMDL Nomenclature Ranks</p>
+                        <p class="text-white"> Nomenclature Ranks</p>
                         </a>
                     </div>
                     <a href="{{route('nomRank')}}">
@@ -245,7 +245,7 @@
 
             @if(session('role')== 'director')
 
-                @foreach($amdl as $department)
+                @foreach($amdls as $department)
                     <div class="col-lg-3 col-6">
                     <!-- small box -->
                         <div class="small-box bg-blue">
@@ -270,7 +270,7 @@
                 </div>
                 @endforeach
 
-                @foreach($msnc as $msncstaff)
+                @foreach($msncs as $msncstaff)
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
                             <div class="small-box bg-blue">

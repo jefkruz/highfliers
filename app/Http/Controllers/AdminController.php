@@ -61,11 +61,14 @@ class AdminController extends Controller
     {
 
         $admin = Session::get('admin');
+        $data['id']= 'directorsHome';
         $data['page_title'] = 'Directors Dashboard';
-        $data['amdl'] = AdminOffice::where('admin_id', $admin->id)
+        $data['amdls'] = AdminOffice::where('admin_id', $admin->id)
             ->where('company', 'amdl')->get();
-        $data['msnc'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
 
+
+        $data['msncs'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
+//        if($data['amdls']){$data['amdl'] = 'amdl';}else{$data['amdl']= 'msnc';}
         return view('dashboard', $data);
     }
     public function sdmHome()
@@ -86,6 +89,7 @@ class AdminController extends Controller
     {
 
        $id = decrypt($id);
+        $data['id']= $id;
 
                 $data['department'] = Organization::where('id', $id)->firstOrFail();
                 $data['staff'] = Seeker::where('organization_id', $id)->get();
@@ -93,7 +97,14 @@ class AdminController extends Controller
                 $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',7)->get();
                 $data['supervisors'] = Admin::where('organization_id', $id)->where('role_id',9)->get();
                 $data['amdlunits'] = SubDepartment::where('department_id',$id)->count();
+        $admin = Session::get('admin');
 
+        $data['amdls'] = AdminOffice::where('admin_id', $admin->id)
+            ->where('company', 'amdl')
+            ->where('organization_id', $id)->get();
+        $data['msncs'] =AdminOffice::where('admin_id', $admin->id)
+            ->where('company', 'msncs')
+            ->where('organization_id', $id)->get();
 //        $data['ranks'] = Seeker::where('organization_id', $id)
 ////            ->select('rank_id', DB::raw('COUNT(id) as id_count'))
 //            ->groupBy('rank_id')
@@ -106,8 +117,10 @@ class AdminController extends Controller
     public function directorsDepartmentMsnc($id)
     {
         $id = decrypt($id);
-
+        $data['id']= $id;
         $admin = Session::get('admin');
+        $data['msncs'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')
+            ->where('department_id', $id)->get();
 
         $data['department'] = TblDept::where('deptID', $id)->firstOrFail();
         $data['msncunits'] = SubDepartment::where('department_id',$id)->count();
@@ -117,6 +130,9 @@ class AdminController extends Controller
         $data['hrs'] = Admin::where('station_id', $id)->where('role_id',7)->get();
         $data['supervisors'] = Admin::where('station_id', $id)->where('role_id',9)->get();
         $data['page_title'] = $data['department']['deptName'];
+
+        $data['amdls'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msncdgdgdg')
+            ->where('department_id', $id)->get();
         return view('directors_msnc_departments', $data);
     }
 

@@ -133,6 +133,14 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('nomRank')}}" class="nav-link ">
+                                <i class="nav-icon fa fa-certificate"></i>
+                                <p>
+                                   Nomenclature Ranks
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('amdlRank')}}" class="nav-link ">
                                 <i class="nav-icon fa fa-certificate"></i>
                                 <p>
@@ -192,6 +200,69 @@ $station_menu = isset($station_menu) ? 'active' : '';
                                     </p>
                                 </a>
                             </li>
+{{--                            @php--}}
+{{--                                $admin = Session::get('admin');--}}
+{{--if($id=='directorsHome'){--}}
+{{--    $amdls = \App\Models\AdminOffice::where('admin_id', $admin->id)--}}
+{{--            ->where('company', 'amdl')->get();--}}
+{{--    $msncs = \App\Models\AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();--}}
+{{--}else{--}}
+
+{{--                                    $amdls = \App\Models\AdminOffice::where('admin_id', $admin->id)--}}
+{{--            ->where('company', 'amdl')--}}
+{{--            ->where('organization_id', $id)->get();--}}
+{{--                                    $msncs = \App\Models\AdminOffice::where('admin_id', $admin->id)--}}
+{{--            ->where('company', 'msnc')--}}
+{{--            ->where('organization_id', $id)->get();--}}
+{{--}--}}
+{{--                            @endphp--}}
+{{--                            @if( $amdls->count() >0)--}}
+
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="#" class="nav-link {{$dash_menu}}">--}}
+{{--                                        <i class="nav-icon fas fa-building"></i>--}}
+{{--                                        <p>--}}
+{{--                                            AMDL Departments--}}
+{{--                                            <i class="fas fa-angle-left right"></i>--}}
+{{--                                        </p>--}}
+{{--                                    </a>--}}
+{{--                                    <ul class="nav nav-treeview" style="display: none;">--}}
+{{--                                        @foreach($amdls as $department)--}}
+{{--                                        <li class="nav-item">--}}
+{{--                                            <a href="{{route('directorsDepartmentAmdl',encrypt($department->organization->id))}}" class="nav-link">--}}
+{{--                                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                                <p>{{$department->organization->name ?? '' }}</p>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        @endforeach--}}
+
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+
+{{--                            @endif--}}
+{{--                            @if($msncs->count() >0)--}}
+{{--                                <li class="nav-item">--}}
+{{--                                    <a href="#" class="nav-link {{$dash_menu}}">--}}
+{{--                                        <i class="nav-icon fas fa-building"></i>--}}
+{{--                                        <p>--}}
+{{--                                            MSNC Departments--}}
+{{--                                            <i class="fas fa-angle-left right"></i>--}}
+{{--                                        </p>--}}
+{{--                                    </a>--}}
+{{--                                    <ul class="nav nav-treeview" style="display: none;">--}}
+{{--                                        @foreach($msncs as $msncstaff)--}}
+{{--                                            <li class="nav-item">--}}
+{{--                                                <a href="{{route('directorsDepartmentMsnc',encrypt($msncstaff->department->deptID))}}" class="nav-link">--}}
+{{--                                                <i class="far fa-circle nav-icon"></i>--}}
+{{--                                                <p>{{$msncstaff->department->deptName ?? '' }}</p>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                        @endforeach--}}
+
+{{--                                    </ul>--}}
+{{--                                </li>--}}
+
+{{--                            @endif--}}
 {{--                            <li class="nav-item">--}}
 {{--                                <a href="{{route('directorsHome')}}" class="nav-link">--}}
 {{--                                    <i class="nav-icon fas fa-chart-pie"></i>--}}
