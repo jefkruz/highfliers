@@ -24,6 +24,12 @@ class NomGroup extends Component
      *
      * @return response()
      */
+
+    public function loadMore()
+    {
+
+        $this->perPage = $this->perPage + 5;
+    }
     public function render()
     {
         return view('livewire.nom-group',['posts' => $this->search === null ?
