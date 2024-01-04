@@ -30,7 +30,7 @@
                             <span>Alt Email</span> <b class="float-right">{{$member->alt_email}}</b>
                         </li>
                         <li class="list-group-item">
-                            <span>Current Department</span> <b class="float-right">{{$member->organization->name}}</b>
+                            <span>Current Department</span> <b class="float-right">{{$member->organization->name ?? ''}}</b>
                         </li>
                         <li class="list-group-item">
                             <span>Phone number</span> <b class="float-right">{{$member->phone}}</b>
