@@ -23,7 +23,15 @@ class AuthController extends Controller
     public function showAdminLogin()
     {
         if(session('admin')){
-            return redirect()->route('dashboard');
+            if(session('role')== 'admin'){
+                return redirect()->route('dashboard');
+            }
+            elseif(session('role')== 'director'){
+                return redirect()->route('directorsHome');
+            }
+            elseif(session('role')== 'sdm'){
+                return redirect()->route('sdmHome');
+            }
         }
         return view('auth.admin_login');
     }
