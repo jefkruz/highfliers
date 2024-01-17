@@ -80,11 +80,7 @@ Route::group(['middleware' => 'checkRole:admin', 'prefix' => 'admin'], function(
     Route::get('/deptstaff/{id}', [StationController::class,'deptstaff'])->name('deptstaff');
     Route::delete('msncstaffdelete/{id}', [StationController::class,'msncStaffDelete'])->name('msncStaffDelete');
 
-    Route::get('/goals/{id}', [StationController::class,'goals'])->name('goals');
-    Route::get('/directorgoals/{id}', [StationController::class,'directorgoals'])->name('directorgoals');
-    Route::get('/hrgoals/{id}/{gid}', [StationController::class,'hrgoals'])->name('hrgoals');
-    Route::get('/staffgoals/{id}/{gid}', [StationController::class,'staffgoals'])->name('staffgoals');
-    Route::get('/supervisorGoals/{id}', [StationController::class,'supervisorGoals'])->name('supervisorGoals');
+
     Route::get('/editstaffmsnc', [StationController::class,'editstaffmsnc'])->name('editstaffmsnc');
 
 
@@ -160,4 +156,9 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/msnc/sdms', [AdminController::class, 'msncSdms'])->name('msncSdms');
     Route::get('deletefake', [StationController::class, 'deleteUsers'])->name('deleteUsers');
 
+    Route::get('/goals/{id}', [StationController::class,'goals'])->name('goals');
+    Route::get('/directorgoals/{id}', [StationController::class,'directorgoals'])->name('directorgoals');
+    Route::get('/hrgoals/{id}/{gid}', [StationController::class,'hrgoals'])->name('hrgoals');
+    Route::get('/staffgoals/{id}/{gid}', [StationController::class,'staffgoals'])->name('staffgoals');
+    Route::get('/supervisorGoals/{id}', [StationController::class,'supervisorGoals'])->name('supervisorGoals');
 });

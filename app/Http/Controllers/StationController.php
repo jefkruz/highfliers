@@ -142,9 +142,11 @@ class StationController extends Controller
     }
     public function goals($id)
     {
-        $ID = decrypt($id);
+        $id = decrypt($id);
+        $dept = Organization::find($id);
+        $org = OrgAppraisal::where('organization_id',$dept->id)->get();
 
-        $org = OrgAppraisal::find($ID);
+//        $org = OrgAppraisal::find($ID);
         return view('station.goals',compact('org'));
     }
 

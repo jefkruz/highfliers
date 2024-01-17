@@ -4,8 +4,8 @@
             {{ session('message') }}
         </div>
     @endif
-
-    <table class="table table-bordered">
+        <div class="card-body table-responsive">
+        <table id="example1" class="table table-bordered table-striped">
         <tr>
 
             <th>Monthly Goals</th>
@@ -33,7 +33,7 @@
             </tr>
         @endforeach
     </table>
-
+        </div>
     <form>
         <div class=" add-input">
             <div class="row">

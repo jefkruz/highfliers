@@ -45,10 +45,11 @@ class Goal extends Component
      */
     public function render()
     {
-        Auth::user()->name;
-        $this->contacts = G::where('ministry',Auth::user()->ministry)
-            ->where('seeker_id',Auth::user()->m_id)
-            ->where('appraisals_id',$this->org->id)->get();
+        session('admin')->name;
+        $this->contacts = G::where('ministry',session('admin')->name)
+            ->where('seeker_id',session('admin')->id)
+//            ->where('appraisals_id',$this->org->id)
+            ->get();
         return view('livewire.goal');
     }
 
