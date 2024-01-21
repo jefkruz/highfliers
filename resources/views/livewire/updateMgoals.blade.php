@@ -54,21 +54,60 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Score:</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter score" wire:model="score">
+                            <select class="form-control" wire:model="score">
+                                <option selected value="0">Select Score</option>
+                                <option value="10">10 </option>
+                                <option value="9">9</option>
+                                <option value="8">8</option>
+                                <option value="7">7</option>
+                                <option value="6">6</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
                             @error('score') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Supervisor Score:</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter supervisor score" wire:model="supervisor_score">
+                            <select class="form-control" wire:model="supervisor_score">
+                                <option selected value="0">Select Score</option>
+                                <option value="10">10 </option>
+                                <option value="9">9</option>
+                                <option value="8">8</option>
+                                <option value="7">7</option>
+                                <option value="6">6</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
                             @error('supervisor_score') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">HR Score:</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter HR score" wire:model="hr_score">
+                            <select class="form-control" wire:model="hr_score">
+                                <option selected value="0">Select Score</option>
+                                <option value="10">10 </option>
+                                <option value="9">9</option>
+                                <option value="8">8</option>
+                                <option value="7">7</option>
+                                <option value="6">6</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                                <option value="0">0</option>
+                            </select>
                             @error('hr_score') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>

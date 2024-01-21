@@ -24,8 +24,6 @@
                             </select>
                             @error('staff_id') <span class="text-danger">{{ $message }}</span> @enderror
 
-{{--                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Year" wire:model="year">--}}
-{{--                            @error('year') <span class="text-danger">{{ $message }}</span>@enderror--}}
                         </div>
                     </div>
                 </div>

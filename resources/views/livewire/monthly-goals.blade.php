@@ -21,6 +21,7 @@
 
                             <th>S/N</th>
                             <th>Goal Name</th>
+{{--                            <th>Staff</th>--}}
                             <th>Achievement</th>
                             <th>Timeline</th>
                             <th>End Date</th>
@@ -37,6 +38,7 @@
 
                                 <td>{{ ++$key }}</td>
                                 <td>{{ $goal->name }}</td>
+{{--                                <td>{{ dd($goal->staff_id) }}</td>--}}
                                 <td>{{ $goal->achievement }}</td>
                                 <td>{{ $goal->timeline }}</td>
                                 <td>{{ $goal->end_date }}</td>

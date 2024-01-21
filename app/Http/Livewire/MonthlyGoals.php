@@ -50,7 +50,6 @@ class MonthlyGoals extends Component
             'timeline' => 'required',
             'end_date' => 'required',
             'staff_id' => 'required',
-            'yearly_id' => 'required',
 
         ]);
 
@@ -85,5 +84,43 @@ class MonthlyGoals extends Component
 
 
         $this->updateMode = true;
+    }
+    public function update()
+    {
+        $validatedDate = $this->validate([
+            'name' => 'required',
+            'achievement' => 'required',
+            'timeline' => 'required',
+
+        ]);
+//        dd($validatedDate);
+
+        $goal = Monthly::where('id',$this->goal_id)->first();
+
+        $goal->name = $this->name;
+        $goal->achievement = $this->achievement;
+        $goal->timeline = $this->timeline;
+        $goal->end_date = $this->end_date;
+        $goal->yearly_id = $this->yearly_id;
+        $goal->score = $this->score;
+        $goal->hr_score = $this->hr_score;
+        $goal->supervisor_score = $this->supervisor_score;
+        $goal->save();
+        $this->updateMode = false;
+
+        session()->flash('message', 'Goal Updated Successfully.');
+        $this->resetInputFields();
+    }
+
+    public function cancel()
+    {
+        $this->updateMode = false;
+        $this->resetInputFields();
+    }
+
+    public function delete($id)
+    {
+        Monthly::where('id',$id)->delete();
+        session()->flash('message', 'Goal Deleted Successfully.');
     }
 }
