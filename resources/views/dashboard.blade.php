@@ -361,18 +361,18 @@
                         <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
-                                <a href="{{route('goals',encrypt($department->organization->id))}}">
+                                <a href="{{route('yearlyGoals',encrypt($department->organization->id))}}">
                                     <h3 class="text-white">0</h3>
 
                                     <p class="text-white">Goals</p>
                                 </a>
                             </div>
-                            <a href="{{route('goals',encrypt($department->organization->id))}}">
+                            <a href="{{route('yearlyGoals',encrypt($department->organization->id))}}">
                                 <div class="icon">
                                     <i class="fa fa-star"></i>
                                 </div>
                             </a>
-                            <a href="{{route('goals',encrypt($department->organization->id))}}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            <a href="{{route('yearlyGoals',encrypt($department->organization->id))}}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 @endforeach

@@ -9,6 +9,7 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
+
                                 @if($hod)
                                 <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>
                                 @endif
@@ -27,7 +28,7 @@
                             <th>Rank</th>
                             <th>Email</th>
                             <th>Sub Dept HOD</th>
-                            <th>Department</th>
+                            <th>Goals</th>
                             <th>Sub Department</th>
 
                         </tr>
@@ -50,7 +51,9 @@
                                 </td>
 
 
-                                <td> {{$user->department->name?? 'null'}}</td>
+                                <td>
+                                    <a href="{{route('staffgoals', encrypt($user->staff->id))}}" class="btn btn-sm btn-danger"><i class="fa fa-eye"></i> View Goals</a>
+                                    </td>
                                 <td>  {{$user->subdepartment->name}}</td>
 
 

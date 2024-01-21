@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganizationController;
@@ -156,9 +157,16 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/msnc/sdms', [AdminController::class, 'msncSdms'])->name('msncSdms');
     Route::get('deletefake', [StationController::class, 'deleteUsers'])->name('deleteUsers');
 
+
+    //GOALS
     Route::get('/goals/{id}', [StationController::class,'goals'])->name('goals');
+
+    Route::get('/yearlygoals/{id1}/{id2}', [GoalController::class,'yearlyIndex'])->name('yearlyGoals.index');
+    Route::get('/monthlygoals/{id1}/{id2}', [GoalController::class,'monthlyIndex'])->name('monthlyGoals.index');
+
+
     Route::get('/directorgoals/{id}', [StationController::class,'directorgoals'])->name('directorgoals');
     Route::get('/hrgoals/{id}/{gid}', [StationController::class,'hrgoals'])->name('hrgoals');
-    Route::get('/staffgoals/{id}/{gid}', [StationController::class,'staffgoals'])->name('staffgoals');
+    Route::get('/staffgoals/{id}', [StationController::class,'staffgoals'])->name('staffgoals');
     Route::get('/supervisorGoals/{id}', [StationController::class,'supervisorGoals'])->name('supervisorGoals');
 });

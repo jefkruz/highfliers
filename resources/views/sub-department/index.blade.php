@@ -53,7 +53,10 @@
 
 											<td>{{ $subDepartment->department->name }}</td>
 											<td>{{ $subDepartment->name }}</td>
-											<td><a class="btn btn-sm btn-primary" href="{{route('viewAmdlSubDeptStaff',['id1' => encrypt($subDepartment->id), 'id2' => encrypt($dept->id)])}}"><i class="fa fa-fw fa-eye"></i> {{$subDepartment->staffcount()}} Staff</a></td>
+											<td>
+                                                <a class="btn btn-sm btn-primary" href="{{route('viewAmdlSubDeptStaff',['id1' => encrypt($subDepartment->id), 'id2' => encrypt($dept->id)])}}"><i class="fa fa-fw fa-eye"></i> {{$subDepartment->staffcount()}} Staff</a>
+                                                <a class="btn btn-sm btn-info" href="{{route('yearlyGoals.index',['id1' => encrypt($subDepartment->id), 'id2' => encrypt($dept->id)])}}"><i class="fa fa-fw fa-edit"></i> Goals</a>
+                                            </td>
 
                                             <td>
                                                 <form action="{{ route('subdepartments.destroy',$subDepartment->id) }}" method="POST">

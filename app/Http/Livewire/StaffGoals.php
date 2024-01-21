@@ -19,8 +19,8 @@ class StaffGoals extends Component
      */
     public function render()
     {
-        $this->contacts = G::where('seeker_id',$this->seeker->id)
-            ->where('appraisals_id',$this->org->id)->get();
+
+        $this->contacts = G::where('seeker_id',$this->seeker->id)->get();
         return view('livewire.staff-goals');
     }
 

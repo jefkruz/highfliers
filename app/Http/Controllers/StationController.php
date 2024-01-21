@@ -122,14 +122,16 @@ class StationController extends Controller
         return view('station.hrgoals',compact('seeker','org') );
     }
 
-    public function staffgoals($id,$gid)
+    public function staffgoals($id)
     {
-        $ID = decrypt($id);
-        $GID = decrypt($gid);
-        $seeker = Seeker::find($ID);
-        $org = OrgAppraisal::find($GID);
+        $id = decrypt($id);
+
+//        $GID = decrypt($gid);
+        $seeker = Seeker::find($id);
+//        $org = OrgAppraisal::find($GID);
         //dd( $org);
-        return view('station.staffgoals',compact('seeker','org') );
+//       dd($seeker);
+        return view('station.staffgoals',compact('seeker'));
     }
     public function supervisorGoals($id)
     {

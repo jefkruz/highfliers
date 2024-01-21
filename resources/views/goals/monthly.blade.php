@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
 
+
 @section('content')
 
 
-
-{{--{{dd($seeker)}}--}}
-<h1>{{ $seeker->title. ' '.$seeker->first_name . ' '.$seeker->other_name. ' '.$seeker->last_name  }}</h1>
-    @livewire('staff-goals',['seeker'  => $seeker])
+    <h2>{{ $sub->name }}</h2>
+    <button class="btn btn-primary"><b>YEARLY GOAL:  </b> {{ $yearly->name}}</button>
+    @livewire('monthly-goals',['yearly'  => $yearly,'sub'  => $sub, 'staffs' => $staffs])
     <script type="text/javascript">
         window.onscroll = function (ev) {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -15,4 +15,6 @@
             }
         };
     </script>
+
 @endsection
+
