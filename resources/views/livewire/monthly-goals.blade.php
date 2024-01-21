@@ -1,7 +1,7 @@
 <div>
 
     @if($updateMode)
-        @include('livewire.updateYgoals')
+        @include('livewire.updateMgoals')
     @else
         @include('livewire.createMgoals')
     @endif
@@ -44,7 +44,7 @@
                                 <td>{{ $goal->supervisor_score }}</td>
                                 <td>{{ $goal->hr_score }}</td>
                                 <td>
-                                    <a href="{{route('monthlyGoals.index',['id1' => encrypt($goal->id), 'id2' => encrypt($goal->sub_department_id)])}}"> <button class="btn btn-info btn-sm"><i class="fa fa-star"></i> Score </button></a>
+{{--                                    <a href="{{route('monthlyGoals.index',['id1' => encrypt($goal->id), 'id2' => encrypt($goal->sub_department_id)])}}"> <button class="btn btn-info btn-sm"><i class="fa fa-star"></i> Score </button></a>--}}
 
                                     <button wire:click="edit({{ $goal->id }})" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</button>
                                     <button wire:click="delete({{ $goal->id }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
