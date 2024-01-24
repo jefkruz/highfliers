@@ -13,4 +13,14 @@ class Review extends Model
     {
         return $this->belongsTo(Seeker::class);
     }
+
+    public function rank()
+    {
+        return $this->belongsTo(Rank::class);
+    }
+
+    public function Organization()
+    {
+        return $this->belongsTo(Organization::class);
+    }
 }

@@ -5,9 +5,10 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Http\Livewire\Field;
 use App\Models\Review;
+use App\Models\Rank;
 class ReviewAmdl extends Component
 {
-    public $contacts, $date_of_review, $rank,$salary, $contact_id,$department;
+    public $contacts, $date_of_review, $rank,$salary, $contact_id,$department,$ranks;
     public $updateMode = false;
     public $inputs = [];
     public $i = 1;
@@ -41,7 +42,7 @@ class ReviewAmdl extends Component
      */
     public function render()
     {
-
+        $this->ranks = Rank::all();
         $this->contacts = Review::where('seeker_id',$this->department->id)->get();
         return view('livewire.review-amdl');
     }
@@ -84,12 +85,19 @@ class ReviewAmdl extends Component
         );
 
         foreach ($this->date_of_review as $key => $value) {
+          //  dd( $this->date_of_review[$key]);
+            $arrayResult = explode('-', $this->date_of_review[$key]);
             Review::create([
 
                 'date_of_review' => $this->date_of_review[$key],
-                'rank' => $this->rank[$key],
+                'rank_id' => $this->rank[$key],
                 'salary' => $this->salary[$key],
-                'seeker_id' => $this->department->id
+                'seeker_id' => $this->department->id,
+                'organization_id' => $this->department->organization_id,
+                'year' => $arrayResult[0],
+                'month' => $arrayResult[1],
+                'day' => $arrayResult[2],
+
             ]);
         }
 

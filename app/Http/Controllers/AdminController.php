@@ -15,6 +15,7 @@ use App\Models\TblStation;
 use App\Models\TblUser;
 use App\Models\NomenclatureCategory;
 
+use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -93,6 +94,7 @@ class AdminController extends Controller
 
                 $data['department'] = Organization::where('id', $id)->firstOrFail();
                 $data['staff'] = Seeker::where('organization_id', $id)->get();
+                $data['units'] = Unit::where('department_id', $id)->get();
                 $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
                 $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',7)->get();
                 $data['supervisors'] = Admin::where('organization_id', $id)->where('role_id',9)->get();

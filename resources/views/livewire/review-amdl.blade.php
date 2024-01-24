@@ -16,7 +16,7 @@
             <tr>
 
                 <td>{{ $value->date_of_review }}</td>
-                <td>{{ $value->rank }}</td>
+                <td>{{ $value->rank->rank }}</td>
                 <td>{{ $value->salary }}</td>
             </tr>
         @endforeach
@@ -33,7 +33,14 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" wire:model="rank.0" placeholder="Enter Rank">
+                        <select class="form-control"  wire:model="rank.0">
+                            <option value="0">Select Rank</option>
+                            @foreach($ranks as $level)
+                            <option value="{{$level->id}}">{{$level->rank}}</option>
+                            @endforeach
+
+                        </select>
+{{--                        <input type="text" class="form-control" wire:model="rank.0" placeholder="Enter Rank">--}}
                         @error('rank.0') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                 </div>
@@ -62,9 +69,17 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <input type="text" class="form-control" wire:model="rank.{{ $value }}" placeholder="Enter Rank">
+                            <select class="form-control" wire:model="rank.{{ $value }}">
+                                @foreach($ranks as $level)
+                                    <option value="{{$level->id}}">{{$level->rank}}</option>
+                                @endforeach
+
+                            </select>
+                            {{--                        <input type="text" class="form-control" wire:model="rank.0" placeholder="Enter Rank">--}}
                             @error('rank.'.$value) <span class="text-danger error">{{ $message }}</span>@enderror
+
                         </div>
+
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">

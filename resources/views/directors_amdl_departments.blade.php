@@ -56,6 +56,20 @@
                 <a href=" {{route('subdepartments.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>{{$units->count()}}</h3>
+
+                    <p>Units</p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-rectangle-list"></i>
+                </div>
+                <a href="{{route('unit.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
@@ -112,39 +126,47 @@
                 <a href="{{route('amdlSupervisors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
-{{--        <div class="col-lg-3 col-6">--}}
-{{--            <!-- small box -->--}}
-{{--            <div class="small-box bg-danger">--}}
-{{--                <div class="inner">--}}
-{{--                    <h3></h3>--}}
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-gray">
+                <div class="inner">
+                    <a href="{{route('amdlSupervisors')}}">
+                        <h3 class="text-white">{{$supervisors->count()}}</h3>
 
-{{--                    <p>Pending Staff</p>--}}
-{{--                </div>--}}
-{{--                <div class="icon">--}}
-{{--                    <i class="fa fa-users"></i>--}}
-{{--                </div>--}}
-{{--                <a href="{{route('alldept')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                        <p class="text-white">Goals</p>
+                    </a>
+                </div>
+                <a href="{{route('amdlSupervisors')}}">
+                    <div class="icon">
+                        <i class="fa fa-list"></i>
+                    </div>
+                </a>
+                <a href="{{route('amdlSupervisors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-orange">
+                <div class="inner">
+                    <a href="{{route('reviews.index',encrypt($department->id))}}">
+                        <h3 class="text-white">{{$supervisors->count()}}</h3>
 
-{{--        <div class="col-lg-3 col-6">--}}
-{{--            <!-- small box -->--}}
-{{--            <div class="small-box bg-danger">--}}
-{{--                <div class="inner">--}}
-{{--                    <a href="{{route('yearlyGoals',encrypt($department->id))}}">--}}
-{{--                        <h3 class="text-white">0</h3>--}}
+                        <p class="text-white">Reviews</p>
+                    </a>
+                </div>
+                <a href="{{route('reviews.index',encrypt($department->id))}}">
+                    <div class="icon">
+                        <i class="fa fa-list"></i>
+                    </div>
+                </a>
+                <a href="{{route('reviews.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
 
-{{--                        <p class="text-white">Goals</p>--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--                <a href="{{route('yearlyGoals',encrypt($department->id))}}">--}}
-{{--                    <div class="icon">--}}
-{{--                        <i class="fa fa-star"></i>--}}
-{{--                    </div>--}}
-{{--                </a>--}}
-{{--                <a href="{{route('yearlyGoals',encrypt($department->id))}}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+
+
+
+
 
     </div>
 

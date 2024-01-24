@@ -12,6 +12,7 @@ use App\Models\Skill;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use DB;
 /**
  * Class OrganizationController
  * @package App\Http\Controllers
@@ -146,7 +147,17 @@ class OrganizationController extends Controller
     }
 
 
+    public function reviewIndex($id){
 
+        $id = decrypt($id);
+        $dept = Organization::where('id',$id)->first();
+        $data['page_title'] = $dept->name . ' Reviews';
+        $data['reviews'] = Review::where('organization_id',$id)
+          //  ->select("reviews.*",DB::raw("SUM(reviews.seeker_id)"))
+            ->latest()->get();
+        return view('reviews.index', $data);
+
+     }
 
 
 

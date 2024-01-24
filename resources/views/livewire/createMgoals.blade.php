@@ -31,7 +31,8 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Achievement:</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter achievement" wire:model="achievement">
+                            <textarea class="form-control" rows="3" placeholder="Enter achievement"  wire:model="achievement" ></textarea>
+{{--                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter achievement" wire:model="achievement">--}}
                             @error('achievement') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>

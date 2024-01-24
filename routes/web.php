@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\SubDepartmentController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +31,6 @@ Route::get('/', function () {
 Route::get('login', [AuthController::class, 'showStaffLogin'])->name('showStaffLogin');
 Route::get('admin/login', [AuthController::class, 'showAdminLogin'])->name('login');
 
-
-///API ROUTES///
 Route::get('kc/admin/{token}', [AuthController::class, 'successfulLogin'])->name('admin.login');
 ///API ROUTE ENDS//
 
@@ -99,10 +98,22 @@ Route::group(['middleware' => 'checkRole:sdm', 'prefix' => 'sdm'], function(){
 });
 
 Route::group(['middleware' => 'isAdmin'], function(){
+
+
+    //REVIEWS ROUTES
+
+    Route::get('reviews/index/{id}', [OrganizationController::class,'reviewIndex'])->name('reviews.index');
+
+
+    Route::get('units/index/{id}', [UnitController::class,'index'])->name('unit.index');
+    Route::get('units/create/{id}', [UnitController::class,'create'])->name('unit.create');
+    Route::post('units/create/{id}', [UnitController::class,'store']);
+    Route::delete('units/delete/{id}', [UnitController::class,'destroy'])->name('unit.destroy');
 //    Route::resource('subdepartments', SubDepartmentController::class);
     Route::get('subdepartments/create/{id}', [SubDepartmentController::class,'create'])->name('subdepartments.create');
     Route::delete('subdepartments/delete/{id}', [SubDepartmentController::class,'destroy'])->name('subdepartments.destroy');
     Route::get('subdepartments/index/{id}', [SubDepartmentController::class,'index'])->name('subdepartments.index');
+
     Route::get('subdepartments/msncindex/{id}', [SubDepartmentController::class,'msncindex'])->name('subdepartments.msncindex');
 
     Route::post('subdepartments/create/{id}', [SubDepartmentController::class,'store']);
