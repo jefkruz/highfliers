@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AdminOffice;
 use App\Models\Organization;
 use App\Models\Rank;
+use App\Models\Review;
 use App\Models\Role;
 use App\Models\Admin;
 use App\Models\Seeker;
@@ -95,6 +96,7 @@ class AdminController extends Controller
                 $data['department'] = Organization::where('id', $id)->firstOrFail();
                 $data['staff'] = Seeker::where('organization_id', $id)->get();
                 $data['units'] = Unit::where('department_id', $id)->get();
+                $data['reviews'] = Review::where('organization_id', $id)->get();
                 $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
                 $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',7)->get();
                 $data['supervisors'] = Admin::where('organization_id', $id)->where('role_id',9)->get();

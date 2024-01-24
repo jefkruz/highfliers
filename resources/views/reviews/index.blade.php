@@ -51,8 +51,7 @@
 
                                 <td>
                                     <form action="{{ route('admins.destroy',$user->id) }}" method="POST">
-                                        <a class="btn btn-sm btn-primary " href="{{ route('admins.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> View</a>
-                                        <a class="btn btn-sm btn-success" href="{{ route('admins.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                        <a class="btn btn-sm btn-primary " href="{{ route('admins.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Manage</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>

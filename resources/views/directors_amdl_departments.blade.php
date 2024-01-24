@@ -149,7 +149,7 @@
             <div class="small-box bg-orange">
                 <div class="inner">
                     <a href="{{route('reviews.index',encrypt($department->id))}}">
-                        <h3 class="text-white">{{$supervisors->count()}}</h3>
+                        <h3 class="text-white">{{$reviews->count()}}</h3>
 
                         <p class="text-white">Reviews</p>
                     </a>
