@@ -5,18 +5,6 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-
-
-
-                        <div class="float-right">
-                            <a href="{{ route('admins.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                {{ __('Create New') }}
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
 
                 <div class="card-body table-responsive">
@@ -44,18 +32,14 @@
                                 <td>{{$user->seeker->first_name .' '.$user->seeker->last_name}}</td>
 
                                 <td>{{ $user->rank->rank }}</td>
-                                <td>{{ $user->salary }}</td>
+                                <td>₦ {{ number_format($user->salary, 2) }} </td>
                                 <td>{{ $user->Organization->name }}</td>
-                                <td>{{ $user->date_of_review }}</td>
+                                <td>{{ date("jS F, Y", strtotime($user->date_of_review)) }}</td>
 
 
                                 <td>
-                                    <form action="{{ route('admins.destroy',$user->id) }}" method="POST">
-                                        <a class="btn btn-sm btn-primary " href="{{ route('admins.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Manage</a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                    </form>
+                                    <a class="btn btn-sm btn-primary " href="{{route('staffReviewAmdl', encrypt($user->seeker_id))}}"></i> Manage</a>
+
                                 </td>
                             </tr>
                         @endforeach

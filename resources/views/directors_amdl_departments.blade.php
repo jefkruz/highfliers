@@ -148,18 +148,19 @@
             <!-- small box -->
             <div class="small-box bg-orange">
                 <div class="inner">
-                    <a href="{{route('reviews.index',encrypt($department->id))}}">
+                    <a href="{{route('reviews.years',encrypt($department->id))}}">
                         <h3 class="text-white">{{$reviews->count()}}</h3>
 
                         <p class="text-white">Reviews</p>
                     </a>
                 </div>
-                <a href="{{route('reviews.index',encrypt($department->id))}}">
+                <a href="{{route('reviews.years',encrypt($department->id))}}">
                     <div class="icon">
-                        <i class="fa fa-list"></i>
+
+                        <i class="fa fa-magnifying-glass"></i>
                     </div>
                 </a>
-                <a href="{{route('reviews.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('reviews.years',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
 

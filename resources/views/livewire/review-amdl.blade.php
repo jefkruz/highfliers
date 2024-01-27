@@ -26,7 +26,7 @@
 
 
                          <div class="float-right">
-                             <button  wire:click="edit({{ $user}})"   class="btn btn-success btn-sm m-1"> <i class="fa fa-edit"></i> Add Review</button>
+                             <button  wire:click="edit({{ $user}})"   class="btn btn-success btn-sm m-1"> <i class="fa fa-magnifying-glass"></i> Add Review</button>
 
                          </div>
                      </div>

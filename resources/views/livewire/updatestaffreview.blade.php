@@ -82,13 +82,7 @@
             </div>
         </div>
     @endif
-{{--    <div class="row mb-4">--}}
-{{--        <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">Nomenclature Rank</label>--}}
-{{--        <div class="col-sm-9">--}}
-{{--            <input type="text" class="form-control" id="horizontal-firstname-input" required   wire:model="nomenclature_rank">--}}
-{{--            @error('nomenclature_rank') <span class="text-danger">{{ $message }}</span>@enderror--}}
-{{--        </div>--}}
-{{--    </div>--}}
+
 
     <div class="row justify-content-end">
         <div class="col-sm-9">

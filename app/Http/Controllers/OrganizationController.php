@@ -147,18 +147,47 @@ class OrganizationController extends Controller
     }
 
 
-    public function reviewIndex($id){
+    public function reviewIndex($id1, $id2){
 
-        $id = decrypt($id);
-        $dept = Organization::where('id',$id)->first();
-        $data['page_title'] = $dept->name . ' Reviews';
-        $data['reviews'] = Review::where('organization_id',$id)
-          //  ->select("reviews.*",DB::raw("SUM(reviews.seeker_id)"))
-            ->latest()->get();
+
+        $dept = decrypt($id1);
+        $year = decrypt($id2);
+
+        $dept = Organization::where('id',$dept)->first();
+        $data['page_title']= $dept->name .' '.$year . ' Reviews';
+        $data['reviews'] = Review::where('organization_id',$dept->id)->where('year',$year)->join(
+            \DB::raw('(SELECT seeker_id, MAX(created_at) AS max_created_at FROM reviews GROUP BY seeker_id) latest_reviews'),
+            function ($join) {
+                $join->on('reviews.seeker_id', '=', 'latest_reviews.seeker_id')
+                    ->on('reviews.created_at', '=', 'latest_reviews.max_created_at');
+            }
+        )
+            ->get();;
         return view('reviews.index', $data);
 
      }
 
+    public function reviewYears($id){
+
+        $id = decrypt($id);
+        $dept = Organization::where('id',$id)->first();
+        $data['page_title'] = $dept->name . ' Reviews';
+        $data['dept_id'] = $dept->id;
+        $data['years'] = Review::select('year', \DB::raw('COUNT(*) as count'))
+            ->where('organization_id', $id)
+            ->groupBy('year')
+            ->orderBy('year', 'asc')
+            ->get();
+        return view('reviews.years',$data);
+      }
 
 
+    public function reviewManage($id1, $id2){
+
+        $dept = decrypt($id1);
+        $user = decrypt($id2);
+        $dept = Organization::where('id',$id1)->first();
+        $data['years'] = Review::where('organization_id',$dept->id)->where('seeker_id',$user->id)->get();
+
+     }
 }

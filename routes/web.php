@@ -101,9 +101,11 @@ Route::group(['middleware' => 'isAdmin'], function(){
 
 
     //REVIEWS ROUTES
-
-    Route::get('reviews/index/{id}', [OrganizationController::class,'reviewIndex'])->name('reviews.index');
-
+    Route::group(['prefix' => 'reviews'], function(){
+    Route::get('years/{id}', [OrganizationController::class,'reviewYears'])->name('reviews.years');
+    Route::get('index/{id1}/{id2}', [OrganizationController::class,'reviewIndex'])->name('reviews.index');
+    Route::get('manage/{id1}/{id2}', [OrganizationController::class,'reviewManage'])->name('reviews.manage');
+    });
 
     Route::get('units/index/{id}', [UnitController::class,'index'])->name('unit.index');
     Route::get('units/create/{id}', [UnitController::class,'create'])->name('unit.create');
