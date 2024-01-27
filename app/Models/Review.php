@@ -23,4 +23,18 @@ class Review extends Model
     {
         return $this->belongsTo(Organization::class);
     }
+
+    public function nomenclature()
+    {
+        return NomenclatureCategory::find($this->nomenclature_category_id);
+    }
+
+    public function nomenclatureGroup()
+    {
+        return NomenclatureGroup::find($this->nomenclature_group_id);
+    }
+    public function nomenclatureRank()
+    {
+        return NomenclatureRank::find($this->nomenclature_rank_id);
+    }
 }

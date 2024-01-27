@@ -364,7 +364,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
         <div class="float-right d-none d-sm-block">
             <b>Version</b> 2.0.0
         </div>
-        <strong>Copyright &copy; {{date('Y')}} <a href="https://thehighfliers.org">HIGHFLIERS.ORG</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; {{date('Y')}} <a href="https://thehighfliers.org">HIGHFLIERS.ORG</a> Powered by Advantage Management Definition</strong> All rights reserved.
     </footer>
 
 </div>
