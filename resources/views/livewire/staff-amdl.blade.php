@@ -33,7 +33,7 @@
                             <th>Nomenclature Category</th>
                             <th>Nomenclature Group</th>
                             <th>Nomenclature Rank</th>
-                            <th>Email</th>
+
                             <th>Department</th>
                             <th>Action</th>
 
@@ -50,7 +50,7 @@
                                  <td>{{$user->nomenclature()->name?? 'null'}}</td>
                                  <td>{{$user->nomenclatureGroup()->name?? 'null'}}</td>
                                  <td>{{$user->nomenclatureRank()->name?? 'null'}}</td>
-                                <td>{{$user->email}}</td>
+
 
                                 <td>{{$user->organization->name?? 'null'}}</td>
                                 <td>
@@ -58,8 +58,8 @@
 
                                     <button  wire:click="edit({{ $user->id }})"   class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit Profile</button>
 
-                                    <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>
-                                    <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-secondary btn-sm">Review Staff</button></a>
+{{--                                    <a href="{{route('grade',encrypt($user->id))}}"> <button    class="btn btn-info btn-sm">Grade</button></a>--}}
+                                    <a href="{{route('staffReviewAmdl', encrypt($user->id))}}"> <button    class="btn btn-warning btn-sm"><i class="fa fa-magnifying-glass"></i> Review Staff</button></a>
                                     <button wire:click="delete({{ $user->id }})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</button>
                                 </td>
                             </tr>

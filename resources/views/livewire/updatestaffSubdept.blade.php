@@ -1,5 +1,8 @@
-
-<form>
+<div class="row">
+    <div class="col-sm-10 ">
+        <div class="card">
+            <div class="card-body">
+              <form>
     <div class="row mb-4">
         <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">First Name</label>
         <div class="col-sm-9">
@@ -26,7 +29,7 @@
     </div>
 
         <div class="row mb-4">
-            <label for="horizontal-email-input" class="col-sm-3 col-form-label">Sub-depatment</label>
+            <label for="horizontal-email-input" class="col-sm-3 col-form-label">Unit</label>
             <div class="col">
 
                 <select class="form-control" id="autoSizingSelect" wire:model="sub_dept_id">
@@ -60,3 +63,8 @@
         </div>
     </div>
 </form>
+            </div>
+        </div>
+    </div>
+</div>
+

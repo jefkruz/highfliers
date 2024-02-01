@@ -19,11 +19,8 @@ use DB;
  */
 class OrganizationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function index()
     {
         $data['organizations'] = Organization::paginate();
@@ -34,14 +31,44 @@ class OrganizationController extends Controller
         return view('organization.index', $data);
     }
 
+    public function allstaffamdl()
+    {
+        $data['amdl_allstaff_menu'] = true;
+        $data['page_title'] = 'All AMDL Staff';
+        return view('organization.allstaffamdl' ,$data );
+    }
 
+    public function amdlRank()
+    {
+        $data['amdl_rank_menu'] = true;
+        $data['page_title'] = 'AMDL  Staff Ranks';
+        return view('organization.amdlrank',$data );
+    }
 
+    public function staffreviewamdl($id)
+    {
+        $id = decrypt($id);
+        $dept = Seeker::find($id);
+        //dd( $dept);
+        return view('organization.staffreviewamdl',compact('dept') );
+    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function staffGradeAmdl($id)
+    {
+        $id = decrypt($id);
+        $dept = Seeker::find($id);
+
+        return view('organization.staffgradeamdl',compact('dept') );
+    }
+
+    public function directorStaffAmdl($id)
+    {
+        //dd($id);
+        $id = decrypt($id);
+        $dept = Organization::find($id);
+        return view('organization.directorstaffamdl',compact('dept')  );
+    }
+
     public function create()
     {
         $organization = new Organization();
@@ -72,11 +99,27 @@ class OrganizationController extends Controller
      */
     public function show($id)
     {
+
         $organization = Organization::find($id);
         $data['organization'] = Organization::find($id);
         $data['page_title'] =  $organization->name;
         $data['organization_menu'] = true;
         return view('organization.show', $data);
+    }
+
+    public function gradeDept($id)
+    {
+        $id = decrypt($id);
+        $dept = Organization::find($id);
+        $data['grades'] = Grade::where('organization_id',$dept->id)->join(
+            \DB::raw('(SELECT seeker_id, MAX(created_at) AS max_created_at FROM grades GROUP BY seeker_id) latest_grades'),
+            function ($join) {
+                $join->on('grades.seeker_id', '=', 'latest_grades.seeker_id')
+                    ->on('grades.created_at', '=', 'latest_grades.max_created_at');
+            }
+        )
+            ->get();
+        return view('organization.amdl_grade', $data);
     }
 
     public function amdlProfile($id)
@@ -162,7 +205,7 @@ class OrganizationController extends Controller
                     ->on('reviews.created_at', '=', 'latest_reviews.max_created_at');
             }
         )
-            ->get();;
+            ->get();
         return view('reviews.index', $data);
 
      }
@@ -186,7 +229,7 @@ class OrganizationController extends Controller
 
         $dept = decrypt($id1);
         $user = decrypt($id2);
-        $dept = Organization::where('id',$id1)->first();
+        $dept = Organization::where('id',$dept)->first();
         $data['years'] = Review::where('organization_id',$dept->id)->where('seeker_id',$user->id)->get();
 
      }

@@ -1,5 +1,9 @@
 
-<form>
+<div class="row">
+    <div class="col-sm-10 ">
+        <div class="card">
+            <div class="card-body">
+              <form>
     <div class="row mb-4">
         <label for="horizontal-firstname-input" class="col-sm-3 col-form-label">First Name</label>
         <div class="col-sm-9">
@@ -133,3 +137,7 @@
         </div>
     </div>
 </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -98,7 +98,7 @@ class AuthController extends Controller
         // Redirect based on user's role
         switch ($admin->role()->name) {
             case 'admin':
-                return redirect('/admin');
+                return redirect('/administrator');
                 break;
 
             case 'director':

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminOffice;
+use App\Models\Grade;
 use App\Models\Organization;
+use App\Models\ProbationStaff;
 use App\Models\Rank;
 use App\Models\Review;
 use App\Models\Role;
@@ -11,7 +13,9 @@ use App\Models\Admin;
 use App\Models\Seeker;
 use App\Models\SubDepartment;
 use App\Models\TblDept;
+use App\Models\TblProbationStaff;
 use App\Models\TblRank;
+use App\Models\TblReview;
 use App\Models\TblStation;
 use App\Models\TblUser;
 use App\Models\NomenclatureCategory;
@@ -55,6 +59,7 @@ class AdminController extends Controller
     public function home()
     {
         $data = $this->data;
+        $data['dash_menu'] = true;
         $data['page_title'] = 'Dashboard';
         return view('dashboard', $data);
     }
@@ -87,6 +92,20 @@ class AdminController extends Controller
         return view('dashboard', $data);
     }
 
+    public function financeHome()
+    {
+
+        $admin = Session::get('admin');
+        $data['page_title'] = 'Finance Dashboard';
+//        $data['amdl'] = AdminOffice::where('admin_id', $admin->id)
+//            ->where('company', 'amdl')->get();
+//        $data['msnc'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')->get();
+//        $data['amdlunits'] = SubDepartment::where('department_id',$admin->organization_id)->count();
+//        $data['msncunits'] = SubDepartment::where('department_id',$admin->department_id)->count();
+
+        return view('dashboard', $data);
+    }
+
     public function directorsDepartmentAmdl($id)
     {
 
@@ -95,11 +114,12 @@ class AdminController extends Controller
 
                 $data['department'] = Organization::where('id', $id)->firstOrFail();
                 $data['staff'] = Seeker::where('organization_id', $id)->get();
-                $data['units'] = Unit::where('department_id', $id)->get();
+                $data['grades'] = Grade::where('organization_id', $id)->get();
+
                 $data['reviews'] = Review::where('organization_id', $id)->get();
+                $data['probation'] = ProbationStaff::where('department_id', $id)->count();
                 $data['sdms'] = Admin::where('organization_id', $id)->where('role_id',5)->get();
-                $data['hrs'] = Admin::where('organization_id', $id)->where('role_id',7)->get();
-                $data['supervisors'] = Admin::where('organization_id', $id)->where('role_id',9)->get();
+
                 $data['amdlunits'] = SubDepartment::where('department_id',$id)->count();
         $admin = Session::get('admin');
 
@@ -109,10 +129,7 @@ class AdminController extends Controller
         $data['msncs'] =AdminOffice::where('admin_id', $admin->id)
             ->where('company', 'msncs')
             ->where('organization_id', $id)->get();
-//        $data['ranks'] = Seeker::where('organization_id', $id)
-////            ->select('rank_id', DB::raw('COUNT(id) as id_count'))
-//            ->groupBy('rank_id')
-//            ->count();
+
 
         $data['page_title'] = $data['department']['name'];
 
@@ -125,10 +142,10 @@ class AdminController extends Controller
         $admin = Session::get('admin');
         $data['msncs'] = AdminOffice::where('admin_id', $admin->id)->where('company', 'msnc')
             ->where('department_id', $id)->get();
-
+        $data['probation'] = TblProbationStaff::where('station_id', $id)->count();
         $data['department'] = TblDept::where('deptID', $id)->firstOrFail();
         $data['msncunits'] = SubDepartment::where('department_id',$id)->count();
-
+        $data['reviews'] = TblReview::where('organization_id', $id)->get();
         $data['staff'] = TblUser::where('deptID', $id)->get();
         $data['sdms'] = Admin::where('station_id', $id)->where('role_id',5)->get();
         $data['hrs'] = Admin::where('station_id', $id)->where('role_id',7)->get();
@@ -144,6 +161,7 @@ class AdminController extends Controller
     {
 
         $data['page_title'] = 'All Directors';
+        $data['directors_menu'] = true;
         $data['users'] = Admin::where('role_id',6)->get();
 
         return view('admins.index',$data);
@@ -153,6 +171,7 @@ class AdminController extends Controller
     {
 
         $data['page_title'] = 'All SDM Managers';
+        $data['sdms_menu'] = true;
         $data['users'] = Admin::where('role_id',5)->get();
         return view('admins.index',$data);
     }
@@ -173,10 +192,11 @@ class AdminController extends Controller
 
 
 
-    public function hrs()
+    public function supervisors()
     {
 
-        $data['page_title'] = 'All HR Managers';
+        $data['page_title'] = 'All Supervisors';
+        $data['hods_menu'] = true;
         $data['users'] = Admin::where('role_id',7)->get();
         return view('admins.index',$data);
     }
@@ -195,10 +215,11 @@ class AdminController extends Controller
         return view('admins.index',$data);
     }
 
-    public function supervisors()
+    public function financePayroll()
     {
 
-        $data['page_title'] = 'All Supervisors';
+        $data['page_title'] = 'All Payroll Managers';
+        $data['finance_menu'] = true;
         $data['users'] = Admin::where('role_id',9)->get();
         return view('admins.index',$data);
     }
@@ -220,6 +241,7 @@ class AdminController extends Controller
     public function index()
     {
         $data = $this->data;
+        $data['admin_menu'] = true;
         $users = Admin::where('role_id', '1')->get();
         $data['users'] = Admin::where('role_id', '1')->get();
 

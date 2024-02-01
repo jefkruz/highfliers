@@ -6,6 +6,7 @@ use App\Models\NomenclatureCategory;
 use App\Models\NomenclatureGroup;
 use App\Models\TblRank;
 use App\Models\Rank;
+use App\Models\TblReview;
 use Illuminate\Http\Request;
 use App\Models\TblStation;
 use App\Models\OrgAppraisal;
@@ -167,13 +168,7 @@ class StationController extends Controller
     }
 
 
-    public function staffreviewamdl($id)
-    {
-        $id = decrypt($id);
-        $dept = Seeker::find($id);
-        //dd( $dept);
-        return view('station.staffreviewamdl',compact('dept') );
-    }
+
 
     public function rankMsncStaff($id)
     {
@@ -252,8 +247,9 @@ class StationController extends Controller
         return view('organization.amdl_rank', $data);
     }
 
-    public function staffreview($id)
+    public function staffReviewMsnc($id)
     {
+        $id = decrypt($id);
         $dept = TblUser::where('userID',$id)->first();
        // dd( $dept);
         return view('station.staffreview',compact('dept') );
@@ -261,21 +257,18 @@ class StationController extends Controller
 
     public function alldept()
     {
-
-        return view('station.alldept' );
+        $data['stations_menu'] = true;
+        return view('station.alldept',$data );
     }
 
     public function allstaffmsnc()
     {
-
-        return view('station.allstaffmsnc' );
+        $data['msnc_allstaff_menu'] = true;
+        $data['page_title'] = 'ALl MSNC Staff';
+        return view('station.allstaffmsnc', $data );
     }
 
-    public function allstaffamdl()
-    {
 
-        return view('station.allstaffamdl' );
-    }
 
     public function depthr()
     {
@@ -286,7 +279,6 @@ class StationController extends Controller
     public function msncProfile($id)
     {
         $id = decrypt($id);
-
         $data['page_title'] = 'Staff Profile';
         $data['member'] = TblUser::where('userID',$id)->firstOrfail();
 //        $data['grades'] = Grade::where('seeker_id',$id)->get();
@@ -297,7 +289,48 @@ class StationController extends Controller
         return view('station.profile', $data);
     }
 
+    public function reviewYears($id){
 
+        $id = decrypt($id);
+        $dept = TblDept::where('deptID',$id)->first();
+        $data['page_title'] = $dept->deptName . ' Reviews';
+        $data['dept_id'] = $dept->deptID;
+        $data['years'] = TblReview::select('year', \DB::raw('COUNT(*) as count'))
+            ->where('organization_id', $id)
+            ->groupBy('year')
+            ->orderBy('year', 'asc')
+            ->get();
+        return view('reviews.msncyears',$data);
+    }
+
+    public function reviewIndex($id1, $id2){
+
+
+        $dept = decrypt($id1);
+        $year = decrypt($id2);
+
+        $dept = TblDept::where('deptID',$dept)->first();
+        $data['page_title']= $dept->deptName .' '.$year . ' Reviews';
+        $data['reviews'] = TblReview::where('organization_id',$dept->deptID)->where('year',$year)->join(
+            \DB::raw('(SELECT seeker_id, MAX(created_at) AS max_created_at FROM tbl_reviews GROUP BY seeker_id) latest_tbl_reviews'),
+            function ($join) {
+                $join->on('tbl_reviews.seeker_id', '=', 'latest_tbl_reviews.seeker_id')
+                    ->on('tbl_reviews.created_at', '=', 'latest_tbl_reviews.max_created_at');
+            }
+        )
+            ->get();;
+        return view('reviews.msncindex', $data);
+
+    }
+
+    public function reviewManage($id1, $id2){
+
+        $dept = decrypt($id1);
+        $user = decrypt($id2);
+        $dept = TblDept::where('deptID',$dept)->first();
+        $data['years'] = TblReview::where('organization_id',$dept->deptID)->where('seeker_id',$user->userID)->get();
+
+    }
     public function addstaff($id)
     {
         $dept = Seeker::find($id);
@@ -322,13 +355,7 @@ class StationController extends Controller
         return view('station.deptSupervisor' );
     }
 
-    public function directorStaffAmdl($id)
-    {
-        //dd($id);
-        $id = decrypt($id);
-        $dept = Organization::find($id);
-        return view('station.directorstaffamdl',compact('dept')  );
-    }
+
 
     public function directorStaffMsnc($id)
     {
@@ -348,13 +375,15 @@ class StationController extends Controller
 
     public function msncRank()
     {
-
-        return view('station.msncrank' );
+        $data['msnc_rank_menu'] = true;
+        $data['page_title'] = 'MSNC  Staff Ranks';
+        return view('station.msncrank',  $data);
     }
     public function nomRank()
     {
-
-        return view('station.nomrank' );
+        $data['nomenclature_menu'] = true;
+        $data['page_title'] = 'Nomenclature';
+        return view('station.nomrank', $data );
     }
     public function nomGroup($id)
     {
@@ -372,11 +401,7 @@ class StationController extends Controller
         return view('station.nom',compact('dept')  );
     }
 
-    public function amdlRank()
-    {
 
-        return view('station.amdlrank' );
-    }
 
 
     /**

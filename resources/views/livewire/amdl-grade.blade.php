@@ -8,9 +8,9 @@
 
 
                         <div class="float-right">
-                            <a href="{{ route('grade', encrypt($user->id)) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                {{ __('Grade Staff') }}
-                            </a>
+{{--                            <a href="{{ route('grade', encrypt($user->id)) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">--}}
+{{--                                {{ __('Grade Staff') }}--}}
+{{--                            </a>--}}
                         </div>
                     </div>
                 </div>
@@ -21,6 +21,7 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
+
                             <th>Year</th>
                             <th>Grade</th>
 
@@ -30,8 +31,9 @@
 
 
                         <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($contacts as $user)
                             <tr>
+
                                 <td>{{$user->year}}</td>
                                 <td>{{$user->grade_score}}</td>
 

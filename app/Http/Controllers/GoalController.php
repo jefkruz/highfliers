@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Goal;
 use App\Models\Organization;
+use App\Models\Seeker;
 use App\Models\SubDepartment;
 use App\Models\SubDepStaff;
+use App\Models\TblDept;
+use App\Models\TblUser;
 use App\Models\YearlyGoals;
 use Illuminate\Http\Request;
 
@@ -32,13 +35,25 @@ class GoalController extends Controller
 
     public function monthlyIndex($id1, $id2)
     {
-        $year = decrypt($id1);
-        $sub = decrypt($id2);
-        $yearly = YearlyGoals::find($year);
-        $sub = SubDepartment::find($sub);
-        $staffs = SubDepStaff::where('sub_dept_id', $sub->id)->where('dept_id',$sub->department_id)->get();
+        $dept = decrypt($id1);
+        $user = decrypt($id2);
 
-        return view('goals.monthly',compact('yearly','sub','staffs' ));
+        $dept = Organization::find($dept);
+        $user = Seeker::find($user);
+        $staff = SubDepStaff::where('user_id',$user->id)->where('dept_id',$dept->id)->first();
+
+        return view('goals.monthly',compact('dept','staff' ));
+    }
+    public function msncMonthlyIndex($id1, $id2)
+    {
+        $dept = decrypt($id1);
+        $user = decrypt($id2);
+
+        $dept = TblDept::where('deptID',$dept)->first();
+        $user = TblUser::where('userID',$user)->first();
+        $staff = SubDepStaff::where('user_id',$user->userID)->where('dept_id',$dept->deptID)->first();
+
+        return view('goals.monthly',compact('dept','staff' ));
     }
 
 

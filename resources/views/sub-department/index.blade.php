@@ -10,12 +10,10 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
-                                {{ __('Sub Department') }}
-                            </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('subdepartments.create', encrypt($dept->id)) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+
+                             <div class="float-left">
+                                <a href="{{ route('subdepartments.create', encrypt($dept->id)) }}" class="btn btn-primary btn-sm float-left"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -40,7 +38,7 @@
                                         <th>No</th>
 
 										<th>Department </th>
-										<th>Sub Departments</th>
+										<th>Units</th>
 										<th>Number of Staff</th>
 
                                         <th></th>
@@ -55,7 +53,7 @@
 											<td>{{ $subDepartment->name }}</td>
 											<td>
                                                 <a class="btn btn-sm btn-primary" href="{{route('viewAmdlSubDeptStaff',['id1' => encrypt($subDepartment->id), 'id2' => encrypt($dept->id)])}}"><i class="fa fa-fw fa-eye"></i> {{$subDepartment->staffcount()}} Staff</a>
-                                                <a class="btn btn-sm btn-info" href="{{route('yearlyGoals.index',['id1' => encrypt($subDepartment->id), 'id2' => encrypt($dept->id)])}}"><i class="fa fa-fw fa-edit"></i> Goals</a>
+{{--                                                <a class="btn btn-sm btn-info" href="{{route('yearlyGoals.index',['id1' => encrypt($subDepartment->id), 'id2' => encrypt($dept->id)])}}"><i class="fa fa-fw fa-edit"></i> Goals</a>--}}
                                             </td>
 
                                             <td>

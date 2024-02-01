@@ -7,8 +7,8 @@ use App\Models\MonthlyGoals as Monthly;
 
 class MonthlyGoals extends Component
 {
-    public $perPage = 12, $yearly, $name,$yearly_id,$department_id,  $sub, $sub_department_id, $staff_id, $achievement,
-    $timeline, $end_date,$score,$supervisor_score,$hr_score, $staffs;
+    public $perPage = 12, $yearly, $name,$yearly_id,$department_id,  $dept, $sub, $sub_department_id, $staff_id, $achievement,
+    $timeline, $end_date,$score,$supervisor_score,$hr_score, $staff;
     public $updateMode = false;
     public $inputs = [];
     public $isModalOpen = 0;
@@ -24,7 +24,8 @@ class MonthlyGoals extends Component
     }
     public function render()
     {
-        $this->goals = Monthly::where('yearly_id',$this->yearly->id)->where('sub_department_id',$this->sub->id)->get();
+
+        $this->goals = Monthly::where('staff_id',$this->staff->user_id)->where('department_id',$this->dept->id)->get();
         return view('livewire.monthly-goals');
     }
 
@@ -49,7 +50,6 @@ class MonthlyGoals extends Component
             'achievement' => 'required',
             'timeline' => 'required',
             'end_date' => 'required',
-            'staff_id' => 'required',
 
         ]);
 
@@ -59,10 +59,10 @@ class MonthlyGoals extends Component
             'achievement' => $request['achievement'],
             'timeline' => $request['timeline'],
             'end_date' => $request['end_date'],
-            'staff_id' => $request['staff_id'],
-            'department_id' => $this->sub->department_id,
-            'yearly_id' => $this->yearly->id,
-            'sub_department_id' => $this->sub->id]);
+            'staff_id' => $this->staff->user_id,
+            'department_id' => $this->dept->id
+//            'sub_department_id' => $this->sub->id
+          ]);
 
         session()->flash('message', 'Goal Created Successfully.');
 
@@ -77,7 +77,6 @@ class MonthlyGoals extends Component
         $this->achievement = $goal->achievement;
         $this->timeline = $goal->timeline;
         $this->end_date = $goal->end_date;
-        $this->yearly_id = $goal->yearly_id;
         $this->score = $goal->score;
         $this->hr_score = $goal->hr_score;
         $this->supervisor_score = $goal->supervisor_score;
@@ -101,7 +100,6 @@ class MonthlyGoals extends Component
         $goal->achievement = $this->achievement;
         $goal->timeline = $this->timeline;
         $goal->end_date = $this->end_date;
-        $goal->yearly_id = $this->yearly_id;
         $goal->score = $this->score;
         $goal->hr_score = $this->hr_score;
         $goal->supervisor_score = $this->supervisor_score;

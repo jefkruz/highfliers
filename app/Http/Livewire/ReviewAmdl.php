@@ -54,7 +54,7 @@ class ReviewAmdl extends Component
     public function render()
     {
         $this->ranks = Rank::all();
-        $this->contacts = Review::where('seeker_id',$this->department->id)->get();
+        $this->contacts = Review::where('seeker_id',$this->department->id)->latest()->get();
         $this->user = $this->department->id;
         $this->cats = NomenclatureCategory::all();
         $this->company == 'nomenclature';

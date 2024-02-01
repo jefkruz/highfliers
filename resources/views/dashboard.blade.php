@@ -26,20 +26,7 @@
 
             </div>
 
-{{--            <div class="col-lg-3 col-6">--}}
-{{--                <!-- small box -->--}}
-{{--                <div class="small-box bg-success">--}}
-{{--                    <div class="inner">--}}
-{{--                        <h3>{{$station->count()}}</h3>--}}
 
-{{--                        <p>Mission Stations (MSNC)</p>--}}
-{{--                    </div>--}}
-{{--                    <div class="icon">--}}
-{{--                        <i class="fa fa-people-roof"></i>--}}
-{{--                    </div>--}}
-{{--                    <a href="{{route('stations.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
@@ -94,6 +81,7 @@
                     <a href="{{route('allstaffmsnc')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
+
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-lightblue">
@@ -101,7 +89,7 @@
                         <a href="{{route('amdlRank')}}">
                         <h3 class="text-white">{{$amdlRank}}</h3>
 
-                        <p class="text-white">AMDL Ranks</p>
+                        <p class="text-white">AMDL Staff Ranks</p>
                         </a>
                     </div>
                     <a href="{{route('amdlRank')}}">
@@ -110,6 +98,25 @@
                     </div>
                     </a>
                     <a href="{{route('amdlRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-purple">
+                    <div class="inner">
+                        <a href="{{route('msncRank')}}">
+                            <h3 class="text-white">{{$msncRank}}</h3>
+
+                            <p class="text-white">MSNC Staff Ranks</p>
+                        </a>
+                    </div>
+                    <a href="{{route('msncRank')}}">
+                        <div class="icon">
+                            <i class="fa fa-certificate text-white"></i>
+                        </div>
+                    </a>
+
+                    <a href="{{route('msncRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -129,25 +136,6 @@
                     </div>
                     </a>
                     <a href="{{route('nomRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-purple">
-                    <div class="inner">
-                        <a href="{{route('msncRank')}}">
-                        <h3 class="text-white">{{$msncRank}}</h3>
-
-                        <p class="text-white">MSNC Ranks</p>
-                        </a>
-                    </div>
-                    <a href="{{route('msncRank')}}">
-                    <div class="icon">
-                        <i class="fa fa-certificate text-white"></i>
-                    </div>
-                    </a>
-
-                    <a href="{{route('msncRank')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
 
@@ -192,18 +180,18 @@
                 <!-- small box -->
                 <div class="small-box bg-gradient-danger">
                     <div class="inner">
-                        <a href="{{route('hrs')}}">
+                        <a href="{{route('supervisors')}}">
                         <h3 class="text-white">{{$hrs}}</h3>
 
-                        <p class="text-white">HR Managers</p>
+                        <p class="text-white">HOD/ Supervisors</p>
                         </a>
                     </div>
-                    <a href="{{route('hrs')}}">
+                    <a href="{{route('supervisors')}}">
                     <div class="icon">
                         <i class="fas fa-user "></i>
                     </div>
                     </a>
-                    <a href="{{route('hrs')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="{{route('supervisors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="col-lg-3 col-6">
@@ -213,7 +201,7 @@
                         <a href="{{route('sdms')}}">
                         <h3 class="text-white">{{$supervisors}}</h3>
 
-                        <p class="text-white"> Supervisors</p>
+                        <p class="text-white"> Finance Payroll</p>
                         </a>
                     </div>
                     <div class="icon">
@@ -305,7 +293,7 @@
                                 <a href="{{route('directorStaffAmdl',encrypt($department->organization->id))}}">
                                     <h3 class="text-white">{{$department->organization->seeker->count() ?? ''}} </h3>
 
-                                    <p class="text-white"> {{$department->organization->name ?? '' }} </p>
+                                    <p class="text-white"> {{$department->organization->name ?? '' }}  Staff</p>
                                 </a>
                             </div>
                             <a href="{{route('directorStaffAmdl',encrypt($department->organization->id))}}">
@@ -435,6 +423,87 @@
                 @endforeach
 
 
+            @endif
+
+            @if(session('role')== 'finance')
+
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-blue">
+
+                        <div class="inner">
+                            <a href="{{route('organizations.index')}}">
+                                <h3 class="text-white">{{$organization->count()}}</h3>
+
+                                <p class="text-white">AMDL HQ Departments </p>
+                            </a>
+                        </div>
+                        <a href="{{route('organizations.index')}}">
+                            <div class="icon">
+                                <i class="fa fa-people-roof"></i>
+                            </div>
+                        </a>
+                        <a href="{{route('organizations.index')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <a href="{{route('alldept')}}">
+                                <h3 class="text-dark">{{$msncOffice}}</h3>
+
+                                <p class="text-dark">MSNC HQ departments</p>
+                            </a>
+                        </div>
+                        <a href="{{route('alldept')}}">
+                            <div class="icon">
+                                <i class="fa fa-building"></i>
+                            </div>
+                        </a>
+                        <a href="{{route('alldept')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-gradient-fuchsia">
+                        <div class="inner">
+                            <a href="{{route('allstaffamdl')}}">
+                                <h3 class="text-white">{{$amdlStaff}}</h3>
+
+                                <p class="text-white">AMDL HQ Staff</p>
+                            </a>
+                        </div>
+                        <a href="{{route('allstaffamdl')}}">
+                            <div class="icon">
+                                <i class="fa fa-users-line"></i>
+                            </div>
+                        </a>
+                        <a href="{{route('allstaffamdl')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <a href="{{route('allstaffmsnc')}}">
+                                <h3 class="text-white">{{$msncStaff}}</h3>
+
+                                <p class="text-white">MSNC HQ Staff </p>
+                            </a>
+                        </div>
+                        <a href="{{route('allstaffmsnc')}}">
+                            <div class="icon">
+                                <i class="fa fa-users-line"></i>
+                            </div>
+                        </a>
+                        <a href="{{route('allstaffmsnc')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
             @endif
 
             @can('isSupervisor')

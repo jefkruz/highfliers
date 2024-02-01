@@ -10,9 +10,9 @@
 
                             <span id="card_title">
 
-                                @if($hod)
-                                <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>
-                                @endif
+{{--                                @if($hod)--}}
+{{--                                <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>--}}
+{{--                                @endif--}}
                             </span>
 
 
@@ -29,7 +29,8 @@
                             <th>Email</th>
                             <th>Sub Dept HOD</th>
                             <th>Goals</th>
-                            <th>Sub Department</th>
+{{--                            <th>Sub Department</th>--}}
+                            <th></th>
 
                         </tr>
                         </thead>
@@ -43,20 +44,30 @@
                                 <td>{{$user->staff->rank()->rank?? 'null'}}</td>
                                 <td>{{$user->staff->email}}</td>
                                 <td>
-                                    @if ($hod && $user->id == $hod->sub_dept_staff_id)
-                                        <a href="" class="btn btn-sm btn-success"><i class="fa fa-crown"></i> HOD</a>
-                                    @else
-                                        <a href="{{route('assignAmdlHod', encrypt($user->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign HOD</a>
-                                    @endif
+{{--                                    @if ($hod && $user->id == $hod->sub_dept_staff_id)--}}
+{{--                                        <a href="" class="btn btn-sm btn-success"><i class="fa fa-crown"></i> HOD</a>--}}
+{{--                                    @else--}}
+                                        <a href="{{route('assignAmdlHod', encrypt($user->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign Supervisor</a>
+{{--                                    @endif--}}
                                 </td>
 
 
                                 <td>
-                                    <a href="{{route('staffgoals', encrypt($user->staff->id))}}" class="btn btn-sm btn-danger"><i class="fa fa-eye"></i> View Goals</a>
+                                    <a class="btn btn-sm btn-info" href="{{route('monthlyGoals.index',['id1' => encrypt($user->dept_id), 'id2' => encrypt($user->staff->id)])}}"><i class="fa fa-fw fa-edit"></i> Goals</a>
+
+{{--                                    <a href="{{route('staffgoals', encrypt($user->staff->id))}}" class="btn btn-sm btn-warning"><i class="fa fa-eye"></i> View Goals</a>--}}
                                     </td>
-                                <td>  {{$user->subdepartment->name}}</td>
+{{--                                <td>  {{$user->subdepartment->name}}</td>--}}
 
-
+                                <td>
+                                    <form action="{{ route('subdeptstaff.destroy',$user->id) }}" method="POST">
+                                        {{--                                                    <a class="btn btn-sm btn-primary " href="{{ route('sub-departments.show',$subDepartment->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>--}}
+                                        {{--                                                    <a class="btn btn-sm btn-success" href="{{ route('sub-departments.edit',$subDepartment->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>--}}
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                    </form>
+                                </td>
                             </tr>
 
                         @endforeach

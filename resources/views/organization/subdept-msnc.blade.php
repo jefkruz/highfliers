@@ -9,9 +9,9 @@
                     <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                               @if($hod)
-                                    <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>
-                                @endif
+{{--                               @if($hod)--}}
+{{--                                    <a href="" class="btn btn-sm btn-success text-bold"><i class="fa fa-crown"></i>CURRENT HOD: {{$hod->staff->name}}</a>--}}
+{{--                                @endif--}}
                             </span>
 
 
@@ -43,14 +43,14 @@
                                 <td>{{$user->user->emailAddress}}</td>
 
                                 <td>
-                                    @if ($hod && $user->id == $hod->sub_dept_staff_id)
-                                        <a href="" class="btn btn-sm btn-success"><i class="fa fa-crown"></i> HOD</a>
-                                    @else
-                                        <a href="{{route('assignMsncHod', encrypt($user->id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign HOD</a>
-                                    @endif
+{{--                                    @if ($hod && $user->user_id == $hod->sub_dept_staff_id)--}}
+{{--                                        <a href="" class="btn btn-sm btn-success"><i class="fa fa-crown"></i> HOD</a>--}}
+{{--                                    @else--}}
+                                        <a href="{{route('assignMsncHod', encrypt($user->user_id))}}" class="btn btn-sm btn-primary"><i class="fa fa-user-tie"></i> Assign HOD</a>
+{{--                                    @endif--}}
                                 </td>
                                 <td>{{$user->station->deptName?? 'null'}}</td>
-                                <td>  {{$user->subdepartment->name}}</td>
+                                <td>  {{$user->subdepartment->name}} </td>
 
                             </tr>
 

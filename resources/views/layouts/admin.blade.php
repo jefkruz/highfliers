@@ -1,7 +1,17 @@
 <?php
 $dash_menu = isset($dash_menu) ? 'active' : '';
 $organization_menu = isset($organization_menu) ? 'active' : '';
-$station_menu = isset($station_menu) ? 'active' : '';
+$stations_menu = isset($stations_menu) ? 'active' : '';
+$msnc_allstaff_menu = isset($msnc_allstaff_menu) ? 'active' : '';
+$amdl_allstaff_menu = isset($amdl_allstaff_menu) ? 'active' : '';
+$amdl_rank_menu = isset($amdl_rank_menu) ? 'active' : '';
+$msnc_rank_menu = isset($msnc_rank_menu) ? 'active' : '';
+$nomenclature_menu = isset($nomenclature_menu) ? 'active' : '';
+$directors_menu = isset($directors_menu) ? 'active' : '';
+$sdms_menu = isset($sdms_menu) ? 'active' : '';
+$hods_menu = isset($hods_menu) ? 'active' : '';
+$finance_menu = isset($finance_menu) ? 'active' : '';
+$admin_menu = isset($admin_menu) ? 'active' : '';
 
 ?>
 <!DOCTYPE html>
@@ -109,7 +119,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
 {{--                        </li>--}}
 
                         <li class="nav-item">
-                            <a href="{{route('alldept')}}" class="nav-link ">
+                            <a href="{{route('alldept')}}" class="nav-link {{$stations_menu}}">
                                 <i class="nav-icon fa fa-building"></i>
                                 <p>
                                     MSNC HQ Departments
@@ -117,7 +127,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('allstaffmsnc')}}" class="nav-link ">
+                            <a href="{{route('allstaffmsnc')}}" class="nav-link {{$msnc_allstaff_menu}}">
                                 <i class="nav-icon fa fa-users-line"></i>
                                 <p>
                                    MSNC Staff
@@ -125,40 +135,41 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('allstaffamdl')}}" class="nav-link ">
+                            <a href="{{route('allstaffamdl')}}" class="nav-link {{$amdl_allstaff_menu}}">
                                 <i class="nav-icon fa fa-users-line"></i>
                                 <p>
                                    AMDL Staff
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="{{route('nomRank')}}" class="nav-link ">
+                            <a href="{{route('amdlRank')}}" class="nav-link {{$amdl_rank_menu}} ">
                                 <i class="nav-icon fa fa-certificate"></i>
                                 <p>
-                                   Nomenclature Ranks
+                                    AMDL Staff Ranks
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('amdlRank')}}" class="nav-link ">
+                            <a href="{{route('msncRank')}}" class="nav-link {{$msnc_rank_menu}}">
                                 <i class="nav-icon fa fa-certificate"></i>
                                 <p>
-                                    AMDL Ranks
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('msncRank')}}" class="nav-link ">
-                                <i class="nav-icon fa fa-certificate"></i>
-                                <p>
-                                    MSNC Ranks
+                                    MSNC  Staff Ranks
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{route('directors')}}" class="nav-link ">
+                            <a href="{{route('nomRank')}}" class="nav-link {{$nomenclature_menu}}">
+                                <i class="nav-icon fa fa-certificate"></i>
+                                <p>
+                                    Nomenclature Ranks
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('directors')}}" class="nav-link {{$directors_menu}}">
                                 <i class="nav-icon fa fa-users-rectangle"></i>
                                 <p>
                                     Directors
@@ -166,7 +177,7 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('sdms')}}" class="nav-link ">
+                            <a href="{{route('sdms')}}" class="nav-link {{$sdms_menu}}">
                                 <i class="nav-icon fa fa-users-rectangle"></i>
                                 <p>
                                     SDM/Admin
@@ -174,15 +185,23 @@ $station_menu = isset($station_menu) ? 'active' : '';
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('hrs')}}" class="nav-link ">
+                            <a href="{{route('supervisors')}}" class="nav-link {{$hods_menu}}">
                                 <i class="nav-icon fa fa-users-rectangle"></i>
                                 <p>
-                                   HR Managers
+                                   HOD/Supervisors
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admins.index')}}" class="nav-link ">
+                            <a href="{{route('finance.payroll')}}" class="nav-link {{$finance_menu}}">
+                                <i class="nav-icon fa fa-user"></i>
+                                <p>
+                                    Finance Payroll
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admins.index')}}" class="nav-link {{$admin_menu}}">
                                 <i class="nav-icon fa fa-user"></i>
                                 <p>
                                     Administrators

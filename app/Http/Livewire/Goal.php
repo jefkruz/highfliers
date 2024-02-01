@@ -16,11 +16,7 @@ class Goal extends Component
     public $i = 1;
     public $org;
 
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+
     public function add($i)
     {
         $i = $i + 1;

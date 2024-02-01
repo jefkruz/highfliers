@@ -40,112 +40,6 @@
     </div>
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <a href=" {{route('subdepartments.index',encrypt($department->id))}}">
-                        <h3 class="text-white">{{$amdlunits}}</h3>
-
-                        <p class="text-white"> Sub Departments</p>
-                    </a>
-                </div>
-                <a href=" {{route('subdepartments.index',encrypt($department->id))}}">
-                    <div class="icon">
-                        <i class="fa fa-rectangle-list"></i>
-                    </div>
-                </a>
-                <a href=" {{route('subdepartments.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3>{{$units->count()}}</h3>
-
-                    <p>Units</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-rectangle-list"></i>
-                </div>
-                <a href="{{route('unit.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-success">
-            <div class="inner">
-                <a href="{{route('amdlSdms')}}">
-                <h3 class="text-white">{{$sdms->count()}}</h3>
-
-                <p class="text-white">SDM/Admin</p>
-                </a>
-            </div>
-            <a href="{{route('amdlSdms')}}">
-            <div class="icon">
-                <i class="fa fa-people-roof"></i>
-            </div>
-            </a>
-            <a href="{{route('amdlSdms')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-pink">
-            <div class="inner">
-                <a href="{{route('amdlHrs')}}">
-                <h3 class="text-white">{{$hrs->count()}}</h3>
-
-                <p class="text-white">Payroll Managers</p>
-                </a>
-            </div>
-            <a href="{{route('amdlHrs')}}">
-            <div class="icon">
-                <i class="fa fa-users"></i>
-            </div>
-            </a>
-            <a href="{{route('amdlHrs')}}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-
-
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-purple">
-                <div class="inner">
-                    <a href="{{route('amdlSupervisors')}}">
-                    <h3 class="text-white">{{$supervisors->count()}}</h3>
-
-                    <p class="text-white">HODs/Supervisors</p>
-                    </a>
-                </div>
-                <a href="{{route('amdlSupervisors')}}">
-                <div class="icon">
-                    <i class="fa fa-users"></i>
-                </div>
-                </a>
-                <a href="{{route('amdlSupervisors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-gray">
-                <div class="inner">
-                    <a href="{{route('amdlSupervisors')}}">
-                        <h3 class="text-white">{{$supervisors->count()}}</h3>
-
-                        <p class="text-white">Goals</p>
-                    </a>
-                </div>
-                <a href="{{route('amdlSupervisors')}}">
-                    <div class="icon">
-                        <i class="fa fa-list"></i>
-                    </div>
-                </a>
-                <a href="{{route('amdlSupervisors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
             <div class="small-box bg-orange">
                 <div class="inner">
                     <a href="{{route('reviews.years',encrypt($department->id))}}">
@@ -163,6 +57,46 @@
                 <a href="{{route('reviews.years',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <a href="{{route('grade.index',encrypt($department->id))}}">
+                        <h3 class="text-white">{{$grades->count()}}</h3>
+
+                        <p class="text-white">Historical & Current Grades</p>
+                    </a>
+                </div>
+                <a href="{{route('grade.index',encrypt($department->id))}}">
+                    <div class="icon">
+
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                </a>
+                <a href="{{route('grade.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <a href=" {{route('probation.index',encrypt($department->id))}}">
+                        <h3 class="text-white">{{$probation}}</h3>
+
+                        <p class="text-white"> Probation  For New Recruits</p>
+                    </a>
+                </div>
+                <a href=" {{route('probation.index',encrypt($department->id))}}">
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                </a>
+                <a href=" {{route('probation.index',encrypt($department->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
 
 
 

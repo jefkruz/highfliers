@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for=""> Name of Sub Department</label>
+                                    <label for=""> Name of Unit</label>
                                     <input type="text" class="form-control"  placeholder=" Name" name="name" value="{{old('name')}}">
                                 </div>
                             </div>

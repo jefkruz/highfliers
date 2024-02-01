@@ -10,12 +10,10 @@
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
-                            <span id="card_title">
-                                {{ __('Sub Department') }}
-                            </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('subdepartments.createMsnc', encrypt($dept->deptID)) }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+
+                             <div class="float-left">
+                                <a href="{{ route('subdepartments.createMsnc', encrypt($dept->deptID)) }}" class="btn btn-primary btn-sm float-left"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -40,7 +38,7 @@
                                         <th>No</th>
 
 										<th>Department </th>
-										<th>Sub Departments</th>
+										<th>Units</th>
 										<th>Number of Staff</th>
 
                                         <th></th>

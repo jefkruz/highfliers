@@ -63,7 +63,7 @@ class SubDepartmentController extends Controller
 
         $data['dept'] = Organization::where('id',$id)->first();
 //        $data['hods'] = Admin::where('organization_id',$id)->where('role_id',10)->get();
-        $data['page_title'] = 'Create Sub-Department';
+        $data['page_title'] = 'Create Unit';
         return view('sub-department.create', $data);
     }
 
@@ -72,7 +72,7 @@ class SubDepartmentController extends Controller
         $id = decrypt($id);
         $data['dept'] = TblDept::where('deptID',$id)->first();
 //        $data['hods'] = Admin::where('organization_id',$id)->where('role_id',10)->get();
-        $data['page_title'] = 'Create Sub-Department';
+        $data['page_title'] = 'Create Unit';
         return view('sub-department.createmsnc', $data);
     }
 
@@ -98,7 +98,7 @@ class SubDepartmentController extends Controller
         $ev->save();
 
         return redirect()->back()
-            ->with('message', 'SubDepartment created successfully.');
+            ->with('message', 'Unit created successfully.');
     }
     public function storeMsnc(Request $request)
     {
@@ -114,19 +114,20 @@ class SubDepartmentController extends Controller
         $ev->save();
 
         return redirect()->back()
-            ->with('message', 'SubDepartment created successfully.');
+            ->with('message', 'Unit created successfully.');
     }
 
     public function assignAmdlHod($id)
     {
       $id = decrypt($id);
-      $data['user'] = SubDepStaff::where('id', $id)->first();
+      $data['user'] = SubDepStaff::where('user_id', $id)->first();
         return view ('admins.amdl_create_hod',$data);
     }
     public function assignMsncHod($id)
     {
         $id = decrypt($id);
-        $data['user'] = SubDepStaff::where('id', $id)->first();
+
+        $data['user'] = SubDepStaff::where('user_id', $id)->first();
         return view ('admins.msnc_create_hod',$data);
     }
 
@@ -137,7 +138,7 @@ class SubDepartmentController extends Controller
         $page_title = SubDepartment::where('id',$id)->first();
         $data['page_title'] = $page_title->name .' Staff';
         $data['users'] = SubDepStaff::where('sub_dept_id', $id)->where('dept_id',$dept)->get();
-        $data['hod']= SubDeptHod::where('sub_dept_id', $id)->where('dept_id',$dept)->first();
+//        $data['hod']= SubDeptHod::where('sub_dept_id', $id)->where('dept_id',$dept)->first();
 
         return view ('organization.subdept-amdl',$data);
     }
@@ -148,7 +149,7 @@ class SubDepartmentController extends Controller
         $page_title = SubDepartment::where('id',$id)->first();
         $data['page_title'] = $page_title->name .' Staff';
         $data['users'] = SubDepStaff::where('sub_dept_id', $id)->where('dept_id',$dept)->get();
-        $data['hod']= SubDeptHod::where('sub_dept_id', $id)->where('dept_id',$dept)->first();
+//        $data['hod']= SubDeptHod::where('sub_dept_id', $id)->where('dept_id',$dept)->first();
 
         return view ('organization.subdept-msnc',$data);
     }
@@ -387,6 +388,14 @@ class SubDepartmentController extends Controller
         $subDepartment = SubDepartment::find($id)->delete();
 
         return redirect()->back()
-            ->with('message', 'SubDepartment deleted successfully');
+            ->with('message', 'Unit deleted successfully');
+    }
+
+    public function subDeptStaffDestroy($id)
+    {
+        $subDepartment = SubDepStaff::find($id)->delete();
+
+        return redirect()->back()
+            ->with('message', 'Record deleted successfully');
     }
 }

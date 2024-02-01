@@ -8,7 +8,8 @@
                     <div class="col-sm-8">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Goal Name:</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Goal" wire:model="name">
+                            <textarea class="form-control" rows="3" placeholder="Enter Goal" wire:model="name" ></textarea>
+
                             @error('name') <span class="text-danger">{{ $message }}</span>@enderror
                         </div>
                     </div>
@@ -16,11 +17,10 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Staff:</label>
-                            <select class="form-control"  wire:model="staff_id">
-                                <option selected value="">Assign Staff</option>
-                                @foreach($staffs as $staff)
+                            <select class="form-control"  wire:model="staff_id" disabled>
+
                                     <option  value="{{ $staff->user_id }}">{{ $staff->staff->first_name .' '.$staff->staff->other_name .' '.$staff->staff->last_name}}</option>
-                                @endforeach
+
                             </select>
                             @error('staff_id') <span class="text-danger">{{ $message }}</span> @enderror
 

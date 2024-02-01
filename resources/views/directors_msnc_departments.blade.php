@@ -40,23 +40,44 @@
         </div>
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-orange">
                 <div class="inner">
-{{--                    <a href=" {{route('subdepartments.createMsnc',encrypt($department->deptID))}}">--}}
-                    <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}">
-                        <h3 class="text-white">{{$msncunits}}</h3>
+                    <a href="{{route('msncReviews.years',encrypt($department->deptID))}}">
+                        <h3 class="text-white">{{$reviews->count()}}</h3>
 
-                        <p class="text-white"> Sub Departments</p>
+                        <p class="text-white">Reviews</p>
                     </a>
                 </div>
-                <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}">
+                <a href="{{route('msncReviews.years',encrypt($department->deptID))}}">
                     <div class="icon">
-                        <i class="fa fa-rectangle-list"></i>
+
+                        <i class="fa fa-magnifying-glass"></i>
                     </div>
                 </a>
-                <a href=" {{route('subdepartments.msncindex',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{route('msncReviews.years',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <a href=" {{route('msncProbation.index',encrypt($department->deptID))}}">
+                        <h3 class="text-white">{{$probation}}</h3>
+
+                        <p class="text-white"> Probation </p>
+                    </a>
+                </div>
+                <a href=" {{route('msncProbation.index',encrypt($department->deptID))}}">
+                    <div class="icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                </a>
+                <a href=" {{route('msncProbation.index',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+
     <div class="col-lg-3 col-6">
         <!-- small box -->
         <div class="small-box bg-success">
@@ -71,48 +92,9 @@
             <a href="{{route('msncSdms')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
     </div>
-    <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-pink">
-            <div class="inner">
-                <h3>{{$hrs->count()}}</h3>
 
-                <p>Payroll Managers</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-users"></i>
-            </div>
-            <a href="{{route('msncHrs')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-purple">
-                <div class="inner">
-                    <h3>{{$supervisors->count()}}</h3>
 
-                    <p>HODs/Supervisors</p>
-                </div>
-                <div class="icon">
-                    <i class="fa fa-users"></i>
-                </div>
-                <a href="{{route('msncSupervisors')}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-{{--        <div class="col-lg-3 col-6">--}}
-{{--            <!-- small box -->--}}
-{{--            <div class="small-box bg-danger">--}}
-{{--                <div class="inner">--}}
-{{--                    <h3></h3>--}}
 
-{{--                    <p>Pending Staff</p>--}}
-{{--                </div>--}}
-{{--                <div class="icon">--}}
-{{--                    <i class="fa fa-users"></i>--}}
-{{--                </div>--}}
-{{--                <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     </div>
 
 @endsection
