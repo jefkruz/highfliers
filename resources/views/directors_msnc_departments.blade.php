@@ -57,6 +57,26 @@
                 <a href="{{route('msncReviews.years',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <a href="{{route('grade.index',encrypt($department->deptID))}}">
+                        <h3 class="text-white">{{$grades->count()}}</h3>
+
+                        <p class="text-white">Historical & Current Grades</p>
+                    </a>
+                </div>
+                <a href="{{route('grade.index',encrypt($department->deptID))}}">
+                    <div class="icon">
+
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                </a>
+                <a href="{{route('grade.index',encrypt($department->deptID))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
 
         <div class="col-lg-3 col-6">
             <!-- small box -->

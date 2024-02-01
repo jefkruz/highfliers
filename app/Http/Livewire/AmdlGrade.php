@@ -39,4 +39,5 @@ class AmdlGrade extends Component
         return view('livewire.amdl-grade');
     }
 
+
 }

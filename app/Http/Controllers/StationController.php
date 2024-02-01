@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grade;
 use App\Models\NomenclatureCategory;
 use App\Models\NomenclatureGroup;
 use App\Models\TblRank;
@@ -50,6 +51,21 @@ class StationController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function gradeDept()
+    {
+        $id = decrypt($id);
+        $dept = Organization::find($id);
+        $data['grades'] = Grade::where('organization_id',$dept->id)->join(
+            \DB::raw('(SELECT seeker_id, MAX(created_at) AS max_created_at FROM grades GROUP BY seeker_id) latest_grades'),
+            function ($join) {
+                $join->on('grades.seeker_id', '=', 'latest_grades.seeker_id')
+                    ->on('grades.created_at', '=', 'latest_grades.max_created_at');
+            }
+        )
+            ->get();
+        return view('organization.amdl_grade', $data);
     }
 
     /**

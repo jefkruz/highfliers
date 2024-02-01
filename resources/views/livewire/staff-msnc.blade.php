@@ -70,7 +70,7 @@
 
            <a href="{{route('msncProfile',encrypt($user->userID))}}"> <button   class="btn btn-primary"><i class="fa fa-user"></i> View Profile</button></a>
 
-           <button  wire:click="edit({{ $user->userID}})"   class="btn btn-success btn-sm m-1"><i class="fa fa-edit"></i> Edit Profile</button>
+{{--           <button  wire:click="edit({{ $user->userID}})"   class="btn btn-success btn-sm m-1"><i class="fa fa-edit"></i> Edit Profile</button>--}}
 {{--           <button  wire:click="subDept({{ $user->userID }})"   class="btn btn-warning btn-sm m-1"> <i class="fa fa-edit"></i> Assign SubDept</button>--}}
 
        @if(session('role')== 'director' || session('role')== 'admin' )

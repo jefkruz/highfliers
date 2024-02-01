@@ -140,11 +140,20 @@ Route::group(['middleware' => 'isAdmin'], function(){
 
     Route::group(['prefix' => 'amdl/grades'], function(){
         Route::get('grades/{id}', [OrganizationController::class,'gradeDept'])->name('grade.index');
-        Route::get('index/{id1}/{id2}', [OrganizationController::class,'reviewIndex'])->name('reviews.index');
-        Route::get('manage/{id1}/{id2}', [OrganizationController::class,'reviewManage'])->name('reviews.manage');
+//        Route::get('index/{id1}/{id2}', [OrganizationController::class,'reviewIndex'])->name('reviews.index');
+//        Route::get('manage/{id1}/{id2}', [OrganizationController::class,'reviewManage'])->name('reviews.manage');
         Route::get('staff/grade/{id}', [OrganizationController::class,'staffGradeAmdl'])->name('staffGradeAmdl');
 
     });
+
+    Route::group(['prefix' => 'msnc/grades'], function(){
+        Route::get('grades/{id}', [StationController::class,'gradeDept'])->name('msncGrade.index');
+        Route::get('index/{id1}/{id2}', [StationController::class,'reviewIndex'])->name('reviews.index');
+        Route::get('manage/{id1}/{id2}', [StationController::class,'reviewManage'])->name('reviews.manage');
+        Route::get('staff/grade/{id}', [StationController::class,'staffGradeMsnc'])->name('staffGradeMsnc');
+
+    });
+
     Route::group(['prefix' => 'amdl/reviews'], function(){
         Route::get('years/{id}', [OrganizationController::class,'reviewYears'])->name('reviews.years');
         Route::get('index/{id1}/{id2}', [OrganizationController::class,'reviewIndex'])->name('reviews.index');
