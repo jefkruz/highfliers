@@ -12,20 +12,7 @@
         </div>
     </div>
 
-    <div class="row mb-4">
-        <label for="horizontal-email-input" class="col-sm-3 col-form-label">Rank Type</label>
-        <div class="col">
-        <select class="form-control"  wire:model="rank.0">
 
-            <option value="0">Select Rank</option>
-            @foreach($ranks as $level)
-                <option value="{{$level->id}}">{{$level->rank}}</option>
-            @endforeach
-
-        </select>
-        </div>
-        @error('rank.0') <span class="text-danger error">{{ $message }}</span>@enderror
-    </div>
 
 
     <div class="row mb-4">
@@ -85,7 +72,20 @@
             </div>
         </div>
     @endif
+                  <div class="row mb-4">
+                      <label for="horizontal-email-input" class="col-sm-3 col-form-label">Administrative Rank</label>
+                      <div class="col">
+                          <select class="form-control"  wire:model="rank.0">
 
+                              <option value="0">Select Rank</option>
+                              @foreach($ranks as $level)
+                                  <option value="{{$level->id}}">{{$level->rank}}</option>
+                              @endforeach
+
+                          </select>
+                      </div>
+                      @error('rank.0') <span class="text-danger error">{{ $message }}</span>@enderror
+                  </div>
 
     <div class="row justify-content-end">
         <div class="col-sm-9">
