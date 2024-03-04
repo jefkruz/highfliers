@@ -43,6 +43,7 @@
                             <th>Nomenclature Category</th>
                             <th>Nomenclature Group</th>
                             <th>Nomenclature Rank</th>
+                            <th>Nomenclature Number</th>
 
                             <th>Salary</th>
                             <th>Status</th>
@@ -57,6 +58,7 @@
                                 <td>{{ $value->nomenclature()->name ?? 'null'}}</td>
                                 <td>{{ $value->nomenclatureGroup()->name ?? 'null'}}</td>
                                 <td>{{ $value->nomenclatureRank()->name ?? 'null'}}</td>
+                                <td>{{ $value->nomenclature_number ?? 'null'}}</td>
                                 <td>₦ {{ number_format($value->salary, 2) }}</td>
                                 <td>
                                     @if ($value->status =='COMPLETED')

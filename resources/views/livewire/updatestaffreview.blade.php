@@ -71,6 +71,22 @@
                 {{--                @error('nomRank_id') <span class="text-danger">{{ $message }}</span>@enderror--}}
             </div>
         </div>
+
+                      <div class="row mb-4">
+                          <label for="horizontal-email-input" class="col-sm-3 col-form-label">Nomenclature Number</label>
+                          <div class="col">
+
+                              <select class="form-control" id="autoSizingSelect" wire:model="nomRank_number">
+                                  <option selected>Choose...</option>
+                                  @for ($i = 1; $i <= 100; $i++)
+                                      {{-- Perform actions here for each iteration --}}
+                                      <option value="{{$i}}">{{$i}}</option>
+                                  @endfor
+
+                              </select>
+                              {{--                @error('nomRank_id') <span class="text-danger">{{ $message }}</span>@enderror--}}
+                          </div>
+                      </div>
     @endif
                   <div class="row mb-4">
                       <label for="horizontal-email-input" class="col-sm-3 col-form-label">Administrative Rank</label>

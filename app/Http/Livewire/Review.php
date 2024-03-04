@@ -12,7 +12,7 @@ use App\Http\Livewire\Field;
 use App\Models\TblReview;
 class Review extends Component
 {
-    public $contacts, $date_of_review, $rank,$salary, $contact_id,$department,$ranks;
+    public $contacts, $date_of_review, $rank,$salary, $contact_id,$department,$ranks, $nomRank_number;
     public $updateMode = false;
     public $inputs = [];
     public $i = 1;

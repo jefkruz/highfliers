@@ -12,7 +12,7 @@ use App\Models\Review;
 use App\Models\Rank;
 class ReviewAmdl extends Component
 {
-    public $contacts, $date_of_review, $rank,$salary, $contact_id,$department,$ranks;
+    public $contacts, $date_of_review, $rank,$salary, $contact_id,$department,$ranks,$nomRank_number;
     public $updateMode = false;
     public $inputs = [];
     public $i = 1;
@@ -111,6 +111,7 @@ class ReviewAmdl extends Component
                 'nomenclature_category_id' => $this->cat_id,
                 'nomenclature_group_id' => $this->nomGroup_id,
                 'nomenclature_rank_id' => $this->nomRank_id,
+                'nomenclature_number' => $this->nomRank_number,
                 'salary' => $this->salary[$key],
                 'seeker_id' => $this->department->id,
                 'organization_id' => $this->department->organization_id,
@@ -198,11 +199,13 @@ class ReviewAmdl extends Component
                 'nomenclature_category_id' => $this->cat_id,
                 'nomenclature_group_id' => $this->nomGroup_id,
                 'nomenclature_rank_id' => $this->nomRank_id,
+                'nomenclature_number' => $this->nomRank_number,
             ]);
 
             $this->cat_id =0;
             $this->nomGroup_id =0;
             $this->nomRank_id =0;
+            $this->nomRank_number =0;
         }
         $this->updateMode = false;
 
