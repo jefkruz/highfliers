@@ -345,24 +345,7 @@
                             <a href=" {{route('subdepartments.index',encrypt($department->organization->id))}}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-danger">
-                            <div class="inner">
-                                <a href="{{route('yearlyGoals',encrypt($department->organization->id))}}">
-                                    <h3 class="text-white">0</h3>
 
-                                    <p class="text-white">Goals</p>
-                                </a>
-                            </div>
-                            <a href="{{route('yearlyGoals',encrypt($department->organization->id))}}">
-                                <div class="icon">
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </a>
-                            <a href="{{route('yearlyGoals',encrypt($department->organization->id))}}" class="small-box-footer text-white">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
                 @endforeach
 
                 @foreach($msnc as $msncstaff)
